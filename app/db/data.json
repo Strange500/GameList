@@ -1,74 +1,147 @@
 [
   {
-    "id": 1,
-    "slug": "dgeneration-hd",
-    "name": "D/Generation HD",
-    "name_original": "D/Generation HD",
-    "description": "The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself. <br/><br/>You arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.<br/><br/>Will you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?<br/><br/>Key Features<br/><ul><li> New high res graphics<br/></li><li> New music by Mark 'TDK' Knight<br/></li><li> New control menu<br/></li><li> Can save at any point in the game<br/></li><li> Leaderboards<br/></li><li> Achievements<br/></li><li> Same great gameplay</li></ul>",
-    "metacritic": null,
-    "metacritic_platforms": [],
-    "released": "2015-10-23",
-    "tba": false,
-    "updated": "2024-10-22T19:35:16",
-    "background_image": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg",
-    "background_image_additional": "https://media.rawg.io/media/screenshots/8bd/8bd3afed5e0bb62ea03899f9807d1b38.jpg",
-    "website": "http://dgeneration.net",
-    "rating": 2,
-    "rating_top": 1,
-    "ratings": [
+    "id": 41494,
+    "slug": "cyberpunk-2077",
+    "name": "Cyberpunk 2077",
+    "name_original": "Cyberpunk 2077",
+    "description": "<p>Cyberpunk 2077 is a science fiction game loosely based on the role-playing game Cyberpunk 2020.</p>\n<h3>Setting</h3>\n<p>The game is set in the year 2077 in a fictional futuristic metropolis Night City in California. In the world of the game, there are developed cybernetic augmentations that enhance people&#39;s strength, agility, and memory. The city is governed by corporations. Many jobs are taken over by the robots, leaving a lot of people poor and homeless. Night City has a roaring underworld, with black markets, underground surgeons, drug dealers, and street gangs abound.</p>\n<h3>Characters</h3>\n<p>The main protagonist is fully customizable, including his or her sex and appearance, and goes by the nickname V. He or she is an underground mercenary who does “dirty business” for the various contractors. An NPC companion named Jackie joins the protagonist early at the game, and various other companions may join the player on certain missions as the plot demands. However, the game has no parties and no companion system.</p>\n<h3>Gameplay</h3>\n<p>The player controls V from the first person view, with the third-person view used for cutscenes only. The protagonist can travel across the city on feet or using various vehicles, in a manner some observers compared to GTA series. There are many options for the character customization, including three character classes, and a variety of augmentations V can install to enhance his or her abilities.</p>",
+    "metacritic": 73,
+    "metacritic_platforms": [
       {
-        "id": 1,
-        "title": "skip",
-        "count": 4,
-        "percent": 66.67
+        "metascore": 87,
+        "url": "https://www.metacritic.com/game/xbox-series-x/cyberpunk-2077",
+        "platform": {
+          "platform": 186,
+          "name": "Xbox Series S/X",
+          "slug": "xbox-series-x"
+        }
       },
+      {
+        "metascore": 61,
+        "url": "https://www.metacritic.com/game/xbox-one/cyberpunk-2077",
+        "platform": {
+          "platform": 1,
+          "name": "Xbox One",
+          "slug": "xbox-one"
+        }
+      },
+      {
+        "metascore": 75,
+        "url": "https://www.metacritic.com/game/playstation-5/cyberpunk-2077",
+        "platform": {
+          "platform": 187,
+          "name": "PlayStation 5",
+          "slug": "playstation5"
+        }
+      },
+      {
+        "metascore": 57,
+        "url": "https://www.metacritic.com/game/playstation-4/cyberpunk-2077",
+        "platform": {
+          "platform": 18,
+          "name": "PlayStation 4",
+          "slug": "playstation4"
+        }
+      },
+      {
+        "metascore": 86,
+        "url": "https://www.metacritic.com/game/pc/cyberpunk-2077",
+        "platform": {
+          "platform": 4,
+          "name": "PC",
+          "slug": "pc"
+        }
+      }
+    ],
+    "released": "2020-12-10",
+    "tba": false,
+    "updated": "2024-12-19T00:02:52",
+    "background_image": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg",
+    "background_image_additional": "https://media.rawg.io/media/screenshots/d14/d14e45904ec4e2f184428315a3810417.jpg",
+    "website": "https://www.cyberpunk.net/",
+    "rating": 4.19,
+    "rating_top": 5,
+    "ratings": [
       {
         "id": 5,
         "title": "exceptional",
-        "count": 1,
-        "percent": 16.67
+        "count": 1372,
+        "percent": 48.6
+      },
+      {
+        "id": 4,
+        "title": "recommended",
+        "count": 941,
+        "percent": 33.33
       },
       {
         "id": 3,
         "title": "meh",
-        "count": 1,
-        "percent": 16.67
+        "count": 348,
+        "percent": 12.33
+      },
+      {
+        "id": 1,
+        "title": "skip",
+        "count": 162,
+        "percent": 5.74
       }
     ],
     "reactions": {
-      "13": 2
+      "1": 23,
+      "2": 2,
+      "3": 16,
+      "4": 4,
+      "5": 9,
+      "6": 2,
+      "7": 5,
+      "8": 1,
+      "9": 9,
+      "10": 15,
+      "11": 8,
+      "12": 14,
+      "13": 15,
+      "14": 12,
+      "15": 2,
+      "16": 3,
+      "17": 3,
+      "18": 1,
+      "19": 1,
+      "20": 2,
+      "21": 8
     },
-    "added": 126,
+    "added": 13252,
     "added_by_status": {
-      "yet": 3,
-      "owned": 119,
-      "beaten": 1,
-      "toplay": 2,
-      "dropped": 1
+      "yet": 845,
+      "owned": 6814,
+      "beaten": 2199,
+      "toplay": 2425,
+      "dropped": 466,
+      "playing": 503
     },
-    "playtime": 1,
-    "screenshots_count": 28,
+    "playtime": 29,
+    "screenshots_count": 32,
     "movies_count": 0,
-    "creators_count": 0,
-    "achievements_count": 80,
-    "parent_achievements_count": 49,
-    "reddit_url": "",
+    "creators_count": 6,
+    "achievements_count": 259,
+    "parent_achievements_count": 37,
+    "reddit_url": "https://www.reddit.com/r/cyberpunkgame/",
     "reddit_name": "",
     "reddit_description": "",
     "reddit_logo": "",
-    "reddit_count": 0,
-    "twitch_count": 12,
+    "reddit_count": 9265,
+    "twitch_count": 108,
     "youtube_count": 1000000,
-    "reviews_text_count": 1,
-    "ratings_count": 5,
-    "suggestions_count": 275,
+    "reviews_text_count": 98,
+    "ratings_count": 2725,
+    "suggestions_count": 632,
     "alternative_names": [],
-    "metacritic_url": "",
+    "metacritic_url": "https://www.metacritic.com/game/pc/cyberpunk-2077",
     "parents_count": 0,
-    "additions_count": 0,
-    "game_series_count": 0,
+    "additions_count": 1,
+    "game_series_count": 1,
     "user_game": null,
-    "reviews_count": 6,
+    "reviews_count": 2823,
     "saturated_color": "0f0f0f",
     "dominant_color": "0f0f0f",
     "parent_platforms": [
@@ -92,37 +165,9 @@
           "name": "Xbox",
           "slug": "xbox"
         }
-      },
-      {
-        "platform": {
-          "id": 5,
-          "name": "Apple Macintosh",
-          "slug": "mac"
-        }
-      },
-      {
-        "platform": {
-          "id": 7,
-          "name": "Nintendo",
-          "slug": "nintendo"
-        }
       }
     ],
     "platforms": [
-      {
-        "platform": {
-          "id": 1,
-          "name": "Xbox One",
-          "slug": "xbox-one",
-          "image": null,
-          "year_end": null,
-          "year_start": null,
-          "games_count": 5672,
-          "image_background": "https://media.rawg.io/media/games/d1a/d1a2e99ade53494c6330a0ed945fe823.jpg"
-        },
-        "released_at": "2016-02-12",
-        "requirements": {}
-      },
       {
         "platform": {
           "id": 18,
@@ -134,21 +179,7 @@
           "games_count": 6873,
           "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
         },
-        "released_at": null,
-        "requirements": {}
-      },
-      {
-        "platform": {
-          "id": 7,
-          "name": "Nintendo Switch",
-          "slug": "nintendo-switch",
-          "image": null,
-          "year_end": null,
-          "year_start": null,
-          "games_count": 5566,
-          "image_background": "https://media.rawg.io/media/games/63f/63f0e68688cad279ed38cde931dbfcdb.jpg"
-        },
-        "released_at": "2018-03-27",
+        "released_at": "2020-12-10",
         "requirements": {}
       },
       {
@@ -162,45 +193,58 @@
           "games_count": 541497,
           "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
         },
-        "released_at": "2015-10-23",
+        "released_at": "2020-12-10",
         "requirements": {
-          "minimum": "Minimum:\nMemory: 4 GB RAM\nDirectX: Version 11",
-          "recommended": "Recommended:\nMemory: 8 GB RAM\nDirectX: Version 11"
+          "minimum": "Minimum:\r\n\r\n\r\nOS: Windows 7 or 10 (64-bit)\r\n\r\nCPU: Intel Core i5-3570K or AMD FX-8310\r\n\r\nRAM: 8GB\r\n\r\nGPU: Nvidia GeForce GTX 780 3GB or AMD Radeon RX 470\r\n\r\nVRAM: 3GB\r\n\r\nDirect X: Version 12\r\n\r\nAvailable Storage Space: 70GB HDD \r\n\r\nGFX Setting Game Can Be Played On: Low",
+          "recommended": "Recommended:\r\n\r\n\r\nOS: Windows 10 (64-bit)\r\n\r\nCPU: Intel Core i7-4790 or AMD Ryzen 3 3200G\r\n\r\nRAM: 12GB\r\n\r\nGPU: Nvidia GeForce GTX 1060 6GB, a GTX 1660 Super, or AMD Radeon RX 590\r\n\r\nVRAM: 6GB\r\n\r\nDirect X: Version 12\r\n\r\nAvailable Storage Space: 70GB SSD\r\n\r\nGFX Setting Game Can Be Played On: High"
         }
       },
       {
         "platform": {
-          "id": 5,
-          "name": "macOS",
-          "slug": "macos",
+          "id": 186,
+          "name": "Xbox Series S/X",
+          "slug": "xbox-series-x",
+          "image": null,
+          "year_end": null,
+          "year_start": 2020,
+          "games_count": 1026,
+          "image_background": "https://media.rawg.io/media/games/ffe/ffed87105b14f5beff72ff44a7793fd5.jpg"
+        },
+        "released_at": "2020-12-10",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 187,
+          "name": "PlayStation 5",
+          "slug": "playstation5",
+          "image": null,
+          "year_end": null,
+          "year_start": 2020,
+          "games_count": 1171,
+          "image_background": "https://media.rawg.io/media/games/b4a/b4adf80c36e267b35acc3497ed2af19c.jpg"
+        },
+        "released_at": "2020-12-10",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 1,
+          "name": "Xbox One",
+          "slug": "xbox-one",
           "image": null,
           "year_end": null,
           "year_start": null,
-          "games_count": 105436,
-          "image_background": "https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg"
+          "games_count": 5672,
+          "image_background": "https://media.rawg.io/media/games/d1a/d1a2e99ade53494c6330a0ed945fe823.jpg"
         },
-        "released_at": "2015-10-23",
-        "requirements": {
-          "minimum": "Minimum:\nMemory: 4 GB RAM",
-          "recommended": "Recommended:\nMemory: 8 GB RAM\nGraphics: Nvidia or AMD graphics"
-        }
+        "released_at": "2020-12-10",
+        "requirements": {}
       }
     ],
     "stores": [
       {
-        "id": 1,
-        "url": "",
-        "store": {
-          "id": 2,
-          "name": "Xbox Store",
-          "slug": "xbox-store",
-          "domain": "microsoft.com",
-          "games_count": 4903,
-          "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
-        }
-      },
-      {
-        "id": 2808,
+        "id": 328185,
         "url": "",
         "store": {
           "id": 3,
@@ -212,7 +256,19 @@
         }
       },
       {
-        "id": 19827,
+        "id": 328856,
+        "url": "",
+        "store": {
+          "id": 2,
+          "name": "Xbox Store",
+          "slug": "xbox-store",
+          "domain": "microsoft.com",
+          "games_count": 4903,
+          "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+        }
+      },
+      {
+        "id": 328102,
         "url": "",
         "store": {
           "id": 1,
@@ -224,41 +280,67 @@
         }
       },
       {
-        "id": 46741,
+        "id": 329088,
         "url": "",
         "store": {
-          "id": 6,
-          "name": "Nintendo Store",
-          "slug": "nintendo",
-          "domain": "nintendo.com",
-          "games_count": 9099,
-          "image_background": "https://media.rawg.io/media/games/25c/25c4776ab5723d5d735d8bf617ca12d9.jpg"
+          "id": 11,
+          "name": "Epic Games",
+          "slug": "epic-games",
+          "domain": "epicgames.com",
+          "games_count": 1365,
+          "image_background": "https://media.rawg.io/media/games/310/3106b0e012271c5ffb16497b070be739.jpg"
+        }
+      },
+      {
+        "id": 328182,
+        "url": "",
+        "store": {
+          "id": 5,
+          "name": "GOG",
+          "slug": "gog",
+          "domain": "gog.com",
+          "games_count": 6525,
+          "image_background": "https://media.rawg.io/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg"
         }
       }
     ],
     "developers": [
       {
-        "id": 10183,
-        "name": "West Coast Software",
-        "slug": "west-coast-software",
-        "games_count": 3,
-        "image_background": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg"
+        "id": 9023,
+        "name": "CD PROJEKT RED",
+        "slug": "cd-projekt-red",
+        "games_count": 24,
+        "image_background": "https://media.rawg.io/media/games/3dc/3dceff39e3e3b5ae75a80e5db75b9451.jpg"
+      },
+      {
+        "id": 24,
+        "name": "CD PROJEKT",
+        "slug": "cd-projekt-sa",
+        "games_count": 7,
+        "image_background": "https://media.rawg.io/media/games/f17/f17cda0990c7335557efbf60720d4bcb.jpg"
       }
     ],
     "genres": [
       {
-        "id": 3,
-        "name": "Adventure",
-        "slug": "adventure",
-        "games_count": 144217,
-        "image_background": "https://media.rawg.io/media/games/48c/48cb04ca483be865e3a83119c94e6097.jpg"
+        "id": 4,
+        "name": "Action",
+        "slug": "action",
+        "games_count": 184421,
+        "image_background": "https://media.rawg.io/media/games/490/49016e06ae2103881ff6373248843069.jpg"
       },
       {
-        "id": 7,
-        "name": "Puzzle",
-        "slug": "puzzle",
-        "games_count": 97320,
-        "image_background": "https://media.rawg.io/media/games/948/948fe7f00b6cba8472f5ecd07a455077.jpg"
+        "id": 2,
+        "name": "Shooter",
+        "slug": "shooter",
+        "games_count": 59541,
+        "image_background": "https://media.rawg.io/media/games/16b/16b1b7b36e2042d1128d5a3e852b3b2f.jpg"
+      },
+      {
+        "id": 5,
+        "name": "RPG",
+        "slug": "role-playing-games-rpg",
+        "games_count": 58206,
+        "image_background": "https://media.rawg.io/media/games/e6d/e6de699bd788497f4b52e2f41f9698f2.jpg"
       }
     ],
     "tags": [
@@ -271,377 +353,269 @@
         "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
       },
       {
-        "id": 40847,
-        "name": "Steam Achievements",
-        "slug": "steam-achievements",
+        "id": 13,
+        "name": "Atmospheric",
+        "slug": "atmospheric",
         "language": "eng",
-        "games_count": 42372,
-        "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg"
+        "games_count": 35490,
+        "image_background": "https://media.rawg.io/media/games/bc0/bc06a29ceac58652b684deefe7d56099.jpg"
       },
       {
-        "id": 40836,
-        "name": "Full controller support",
-        "slug": "full-controller-support",
+        "id": 42,
+        "name": "Great Soundtrack",
+        "slug": "great-soundtrack",
         "language": "eng",
-        "games_count": 20091,
-        "image_background": "https://media.rawg.io/media/games/4cf/4cfc6b7f1850590a4634b08bfab308ab.jpg"
+        "games_count": 3415,
+        "image_background": "https://media.rawg.io/media/games/b8c/b8c243eaa0fbac8115e0cdccac3f91dc.jpg"
       },
       {
-        "id": 40850,
-        "name": "Steam Leaderboards",
-        "slug": "steam-leaderboards",
+        "id": 24,
+        "name": "RPG",
+        "slug": "rpg",
         "language": "eng",
-        "games_count": 7392,
-        "image_background": "https://media.rawg.io/media/games/1fb/1fb1c5f7a71d771f440b27ce7f71e7eb.jpg"
+        "games_count": 22968,
+        "image_background": "https://media.rawg.io/media/games/62c/62c7c8b28a27b83680b22fb9d33fc619.jpg"
       },
       {
-        "id": 74,
-        "name": "Retro",
-        "slug": "retro",
+        "id": 118,
+        "name": "Story Rich",
+        "slug": "story-rich",
         "language": "eng",
-        "games_count": 42584,
-        "image_background": "https://media.rawg.io/media/games/6c5/6c55e22185876626881b76c11922b073.jpg"
+        "games_count": 23569,
+        "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
+      },
+      {
+        "id": 36,
+        "name": "Open World",
+        "slug": "open-world",
+        "language": "eng",
+        "games_count": 8145,
+        "image_background": "https://media.rawg.io/media/games/713/713269608dc8f2f40f5a670a14b2de94.jpg"
+      },
+      {
+        "id": 8,
+        "name": "First-Person",
+        "slug": "first-person",
+        "language": "eng",
+        "games_count": 33604,
+        "image_background": "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg"
+      },
+      {
+        "id": 32,
+        "name": "Sci-fi",
+        "slug": "sci-fi",
+        "language": "eng",
+        "games_count": 20186,
+        "image_background": "https://media.rawg.io/media/games/f87/f87457e8347484033cb34cde6101d08d.jpg"
+      },
+      {
+        "id": 30,
+        "name": "FPS",
+        "slug": "fps",
+        "language": "eng",
+        "games_count": 13848,
+        "image_background": "https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Exploration",
+        "slug": "exploration",
+        "language": "eng",
+        "games_count": 25227,
+        "image_background": "https://media.rawg.io/media/games/951/951572a3dd1e42544bd39a5d5b42d234.jpg"
+      },
+      {
+        "id": 37,
+        "name": "Sandbox",
+        "slug": "sandbox",
+        "language": "eng",
+        "games_count": 7457,
+        "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg"
+      },
+      {
+        "id": 34,
+        "name": "Violent",
+        "slug": "violent",
+        "language": "eng",
+        "games_count": 7061,
+        "image_background": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
+      },
+      {
+        "id": 69,
+        "name": "Action-Adventure",
+        "slug": "action-adventure",
+        "language": "eng",
+        "games_count": 18102,
+        "image_background": "https://media.rawg.io/media/games/2ad/2ad87a4a69b1104f02435c14c5196095.jpg"
+      },
+      {
+        "id": 97,
+        "name": "Action RPG",
+        "slug": "action-rpg",
+        "language": "eng",
+        "games_count": 7595,
+        "image_background": "https://media.rawg.io/media/games/530/5302dd22a190e664531236ca724e8726.jpg"
+      },
+      {
+        "id": 468,
+        "name": "role-playing",
+        "slug": "role-playing",
+        "language": "eng",
+        "games_count": 1612,
+        "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+      },
+      {
+        "id": 44,
+        "name": "Nudity",
+        "slug": "nudity",
+        "language": "eng",
+        "games_count": 7248,
+        "image_background": "https://media.rawg.io/media/games/bee/bee483efadcf9d7e657e52184316a34e.jpg"
+      },
+      {
+        "id": 192,
+        "name": "Mature",
+        "slug": "mature",
+        "language": "eng",
+        "games_count": 3698,
+        "image_background": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg"
+      },
+      {
+        "id": 110,
+        "name": "Cinematic",
+        "slug": "cinematic",
+        "language": "eng",
+        "games_count": 2599,
+        "image_background": "https://media.rawg.io/media/games/942/9424d6bb763dc38d9378b488603c87fa.jpg"
+      },
+      {
+        "id": 167,
+        "name": "Futuristic",
+        "slug": "futuristic",
+        "language": "eng",
+        "games_count": 5929,
+        "image_background": "https://media.rawg.io/media/games/ebd/ebdbb7eb52bd58b0e7fa4538d9757b60.jpg"
+      },
+      {
+        "id": 50,
+        "name": "Sexual Content",
+        "slug": "sexual-content",
+        "language": "eng",
+        "games_count": 7045,
+        "image_background": "https://media.rawg.io/media/games/e44/e445335e611b4ccf03af71fffcbd30a4.jpg"
+      },
+      {
+        "id": 226,
+        "name": "Cyberpunk",
+        "slug": "cyberpunk",
+        "language": "eng",
+        "games_count": 4805,
+        "image_background": "https://media.rawg.io/media/games/d4b/d4bcd78873edd9992d93aff9cc8db0c8.jpg"
+      },
+      {
+        "id": 144,
+        "name": "Crime",
+        "slug": "crime",
+        "language": "eng",
+        "games_count": 2994,
+        "image_background": "https://media.rawg.io/media/screenshots/4f4/4f4722571e32954af43a4508607c1748.jpg"
+      },
+      {
+        "id": 197,
+        "name": "Robots",
+        "slug": "robots",
+        "language": "eng",
+        "games_count": 8455,
+        "image_background": "https://media.rawg.io/media/games/c80/c80bcf321da44d69b18a06c04d942662.jpg"
+      },
+      {
+        "id": 478,
+        "name": "3rd-Person Perspective",
+        "slug": "3rd-person-perspective",
+        "language": "eng",
+        "games_count": 87,
+        "image_background": "https://media.rawg.io/media/games/21c/21cc15d233117c6809ec86870559e105.jpg"
+      },
+      {
+        "id": 270,
+        "name": "Blood",
+        "slug": "blood",
+        "language": "eng",
+        "games_count": 2096,
+        "image_background": "https://media.rawg.io/media/screenshots/f2f/f2f3c93d6153da7aee590f3ab8ccd803.jpg"
+      },
+      {
+        "id": 78,
+        "name": "America",
+        "slug": "america",
+        "language": "eng",
+        "games_count": 779,
+        "image_background": "https://media.rawg.io/media/games/662/66261db966238da20c306c4b78ae4603.jpg"
+      },
+      {
+        "id": 578,
+        "name": "Masterpiece",
+        "slug": "masterpiece",
+        "language": "eng",
+        "games_count": 300,
+        "image_background": "https://media.rawg.io/media/games/9b5/9b5b8cf04ca150ec83867b388f29b999.jpg"
+      },
+      {
+        "id": 295,
+        "name": "Soundtrack",
+        "slug": "soundtrack",
+        "language": "eng",
+        "games_count": 3133,
+        "image_background": "https://media.rawg.io/media/screenshots/0d3/0d3b915b3daf1aa6babaaa16301a155e.jpeg"
+      },
+      {
+        "id": 227,
+        "name": "Hacking",
+        "slug": "hacking",
+        "language": "eng",
+        "games_count": 1088,
+        "image_background": "https://media.rawg.io/media/screenshots/38d/38de014fb42ed1844d4a0f250cf876f4.jpg"
+      },
+      {
+        "id": 467,
+        "name": "Role Playing Game",
+        "slug": "role-playing-game",
+        "language": "eng",
+        "games_count": 19,
+        "image_background": "https://media.rawg.io/media/games/8ea/8ea1e2850d7568bc9733d546c0ac6ce1.jpg"
+      },
+      {
+        "id": 1500,
+        "name": "immersive",
+        "slug": "immersive",
+        "language": "eng",
+        "games_count": 994,
+        "image_background": "https://media.rawg.io/media/screenshots/50c/50ca35b80bd7a35a1a7d9fecdbcd6517_kJS1cIB.jpg"
+      },
+      {
+        "id": 683,
+        "name": "Photorealistic",
+        "slug": "photorealistic",
+        "language": "eng",
+        "games_count": 454,
+        "image_background": "https://media.rawg.io/media/screenshots/907/907d69cf2727bf0a3f89d8184a48c8af.jpg"
       }
     ],
     "publishers": [
       {
-        "id": 8169,
-        "name": "West Coast Software",
-        "slug": "west-coast-software",
-        "games_count": 4,
-        "image_background": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg"
+        "id": 7411,
+        "name": "CD PROJEKT RED",
+        "slug": "cd-projekt-red",
+        "games_count": 27,
+        "image_background": "https://media.rawg.io/media/games/742/7424c1f7d0a8da9ae29cd866f985698b.jpg"
       }
     ],
     "esrb_rating": {
-      "id": 2,
-      "name": "Everyone 10+",
-      "slug": "everyone-10-plus"
+      "id": 4,
+      "name": "Mature",
+      "slug": "mature"
     },
     "clip": null,
-    "description_raw": "The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself.\nYou arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.\nWill you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?\nKey Features\nNew high res graphics\nNew music by Mark 'TDK' Knight\nNew control menu\nCan save at any point in the game\nLeaderboards\nAchievements\nSame great gameplay"
-  },
-  1,
-  [
-    {
-      "id": 1,
-      "slug": "dgeneration-hd",
-      "name": "D/Generation HD",
-      "name_original": "D/Generation HD",
-      "description": "The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself. <br/><br/>You arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.<br/><br/>Will you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?<br/><br/>Key Features<br/><ul><li> New high res graphics<br/></li><li> New music by Mark 'TDK' Knight<br/></li><li> New control menu<br/></li><li> Can save at any point in the game<br/></li><li> Leaderboards<br/></li><li> Achievements<br/></li><li> Same great gameplay</li></ul>",
-      "metacritic": null,
-      "metacritic_platforms": [],
-      "released": "2015-10-23",
-      "tba": false,
-      "updated": "2024-10-22T19:35:16",
-      "background_image": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg",
-      "background_image_additional": "https://media.rawg.io/media/screenshots/8bd/8bd3afed5e0bb62ea03899f9807d1b38.jpg",
-      "website": "http://dgeneration.net",
-      "rating": 2,
-      "rating_top": 1,
-      "ratings": [
-        {
-          "id": 1,
-          "title": "skip",
-          "count": 4,
-          "percent": 66.67
-        },
-        {
-          "id": 5,
-          "title": "exceptional",
-          "count": 1,
-          "percent": 16.67
-        },
-        {
-          "id": 3,
-          "title": "meh",
-          "count": 1,
-          "percent": 16.67
-        }
-      ],
-      "reactions": {
-        "13": 2
-      },
-      "added": 126,
-      "added_by_status": {
-        "yet": 3,
-        "owned": 119,
-        "beaten": 1,
-        "toplay": 2,
-        "dropped": 1
-      },
-      "playtime": 1,
-      "screenshots_count": 28,
-      "movies_count": 0,
-      "creators_count": 0,
-      "achievements_count": 80,
-      "parent_achievements_count": 49,
-      "reddit_url": "",
-      "reddit_name": "",
-      "reddit_description": "",
-      "reddit_logo": "",
-      "reddit_count": 0,
-      "twitch_count": 12,
-      "youtube_count": 1000000,
-      "reviews_text_count": 1,
-      "ratings_count": 5,
-      "suggestions_count": 275,
-      "alternative_names": [],
-      "metacritic_url": "",
-      "parents_count": 0,
-      "additions_count": 0,
-      "game_series_count": 0,
-      "user_game": null,
-      "reviews_count": 6,
-      "saturated_color": "0f0f0f",
-      "dominant_color": "0f0f0f",
-      "parent_platforms": [
-        {
-          "platform": {
-            "id": 1,
-            "name": "PC",
-            "slug": "pc"
-          }
-        },
-        {
-          "platform": {
-            "id": 2,
-            "name": "PlayStation",
-            "slug": "playstation"
-          }
-        },
-        {
-          "platform": {
-            "id": 3,
-            "name": "Xbox",
-            "slug": "xbox"
-          }
-        },
-        {
-          "platform": {
-            "id": 5,
-            "name": "Apple Macintosh",
-            "slug": "mac"
-          }
-        },
-        {
-          "platform": {
-            "id": 7,
-            "name": "Nintendo",
-            "slug": "nintendo"
-          }
-        }
-      ],
-      "platforms": [
-        {
-          "platform": {
-            "id": 1,
-            "name": "Xbox One",
-            "slug": "xbox-one",
-            "image": null,
-            "year_end": null,
-            "year_start": null,
-            "games_count": 5672,
-            "image_background": "https://media.rawg.io/media/games/d1a/d1a2e99ade53494c6330a0ed945fe823.jpg"
-          },
-          "released_at": "2016-02-12",
-          "requirements": {}
-        },
-        {
-          "platform": {
-            "id": 18,
-            "name": "PlayStation 4",
-            "slug": "playstation4",
-            "image": null,
-            "year_end": null,
-            "year_start": null,
-            "games_count": 6873,
-            "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
-          },
-          "released_at": null,
-          "requirements": {}
-        },
-        {
-          "platform": {
-            "id": 7,
-            "name": "Nintendo Switch",
-            "slug": "nintendo-switch",
-            "image": null,
-            "year_end": null,
-            "year_start": null,
-            "games_count": 5566,
-            "image_background": "https://media.rawg.io/media/games/63f/63f0e68688cad279ed38cde931dbfcdb.jpg"
-          },
-          "released_at": "2018-03-27",
-          "requirements": {}
-        },
-        {
-          "platform": {
-            "id": 4,
-            "name": "PC",
-            "slug": "pc",
-            "image": null,
-            "year_end": null,
-            "year_start": null,
-            "games_count": 541497,
-            "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
-          },
-          "released_at": "2015-10-23",
-          "requirements": {
-            "minimum": "Minimum:\nMemory: 4 GB RAM\nDirectX: Version 11",
-            "recommended": "Recommended:\nMemory: 8 GB RAM\nDirectX: Version 11"
-          }
-        },
-        {
-          "platform": {
-            "id": 5,
-            "name": "macOS",
-            "slug": "macos",
-            "image": null,
-            "year_end": null,
-            "year_start": null,
-            "games_count": 105436,
-            "image_background": "https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg"
-          },
-          "released_at": "2015-10-23",
-          "requirements": {
-            "minimum": "Minimum:\nMemory: 4 GB RAM",
-            "recommended": "Recommended:\nMemory: 8 GB RAM\nGraphics: Nvidia or AMD graphics"
-          }
-        }
-      ],
-      "stores": [
-        {
-          "id": 1,
-          "url": "",
-          "store": {
-            "id": 2,
-            "name": "Xbox Store",
-            "slug": "xbox-store",
-            "domain": "microsoft.com",
-            "games_count": 4903,
-            "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
-          }
-        },
-        {
-          "id": 2808,
-          "url": "",
-          "store": {
-            "id": 3,
-            "name": "PlayStation Store",
-            "slug": "playstation-store",
-            "domain": "store.playstation.com",
-            "games_count": 8009,
-            "image_background": "https://media.rawg.io/media/games/310/3106b0e012271c5ffb16497b070be739.jpg"
-          }
-        },
-        {
-          "id": 19827,
-          "url": "",
-          "store": {
-            "id": 1,
-            "name": "Steam",
-            "slug": "steam",
-            "domain": "store.steampowered.com",
-            "games_count": 104541,
-            "image_background": "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg"
-          }
-        },
-        {
-          "id": 46741,
-          "url": "",
-          "store": {
-            "id": 6,
-            "name": "Nintendo Store",
-            "slug": "nintendo",
-            "domain": "nintendo.com",
-            "games_count": 9099,
-            "image_background": "https://media.rawg.io/media/games/25c/25c4776ab5723d5d735d8bf617ca12d9.jpg"
-          }
-        }
-      ],
-      "developers": [
-        {
-          "id": 10183,
-          "name": "West Coast Software",
-          "slug": "west-coast-software",
-          "games_count": 3,
-          "image_background": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg"
-        }
-      ],
-      "genres": [
-        {
-          "id": 3,
-          "name": "Adventure",
-          "slug": "adventure",
-          "games_count": 144217,
-          "image_background": "https://media.rawg.io/media/games/48c/48cb04ca483be865e3a83119c94e6097.jpg"
-        },
-        {
-          "id": 7,
-          "name": "Puzzle",
-          "slug": "puzzle",
-          "games_count": 97320,
-          "image_background": "https://media.rawg.io/media/games/948/948fe7f00b6cba8472f5ecd07a455077.jpg"
-        }
-      ],
-      "tags": [
-        {
-          "id": 31,
-          "name": "Singleplayer",
-          "slug": "singleplayer",
-          "language": "eng",
-          "games_count": 233006,
-          "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
-        },
-        {
-          "id": 40847,
-          "name": "Steam Achievements",
-          "slug": "steam-achievements",
-          "language": "eng",
-          "games_count": 42372,
-          "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg"
-        },
-        {
-          "id": 40836,
-          "name": "Full controller support",
-          "slug": "full-controller-support",
-          "language": "eng",
-          "games_count": 20091,
-          "image_background": "https://media.rawg.io/media/games/4cf/4cfc6b7f1850590a4634b08bfab308ab.jpg"
-        },
-        {
-          "id": 40850,
-          "name": "Steam Leaderboards",
-          "slug": "steam-leaderboards",
-          "language": "eng",
-          "games_count": 7392,
-          "image_background": "https://media.rawg.io/media/games/1fb/1fb1c5f7a71d771f440b27ce7f71e7eb.jpg"
-        },
-        {
-          "id": 74,
-          "name": "Retro",
-          "slug": "retro",
-          "language": "eng",
-          "games_count": 42584,
-          "image_background": "https://media.rawg.io/media/games/6c5/6c55e22185876626881b76c11922b073.jpg"
-        }
-      ],
-      "publishers": [
-        {
-          "id": 8169,
-          "name": "West Coast Software",
-          "slug": "west-coast-software",
-          "games_count": 4,
-          "image_background": "https://media.rawg.io/media/screenshots/5c4/5c41cb3b0d15ef0974f930898cedbc6c.jpg"
-        }
-      ],
-      "esrb_rating": {
-        "id": 2,
-        "name": "Everyone 10+",
-        "slug": "everyone-10-plus"
-      },
-      "clip": null,
-      "description_raw": "The year is 2021, and Genoq has become a leading corporation in bio-medical research. However the tower, some 90 stories high, is not all that it seems. Somewhere within the tower, highly illegal bio-weapons research has been conducted in secret. June 26th, disaster strikes and the lethal organic weapons have escaped and threaten not only the staff members stranded in the tower, but the world itself.\nYou arrive on the 80th floor with an urgent package addressed to Derrida, the lead scientist at Genoq working on the bio-weapons research. Set back from your goal, you must climb the tower, assisting those in need or focusing solely on your task at hand, and stopping the virus from escaping the tower and threatening all life on the planet.\nWill you help the stranded survivors or hinder them? Can you deliver the package to Derrida in time? Can you prevent the impending catastrophe and escape with your life?\nKey Features\nNew high res graphics\nNew music by Mark 'TDK' Knight\nNew control menu\nCan save at any point in the game\nLeaderboards\nAchievements\nSame great gameplay"
-    }
-  ]
+    "description_raw": "Cyberpunk 2077 is a science fiction game loosely based on the role-playing game Cyberpunk 2020.\r\n\r\n###Setting\r\nThe game is set in the year 2077 in a fictional futuristic metropolis Night City in California. In the world of the game, there are developed cybernetic augmentations that enhance people's strength, agility, and memory. The city is governed by corporations. Many jobs are taken over by the robots, leaving a lot of people poor and homeless. Night City has a roaring underworld, with black markets, underground surgeons, drug dealers, and street gangs abound.\r\n\r\n###Characters\r\nThe main protagonist is fully customizable, including his or her sex and appearance, and goes by the nickname V. He or she is an underground mercenary who does “dirty business” for the various contractors. An NPC companion named Jackie joins the protagonist early at the game, and various other companions may join the player on certain missions as the plot demands. However, the game has no parties and no companion system.\r\n\r\n###Gameplay\r\nThe player controls V from the first person view, with the third-person view used for cutscenes only. The protagonist can travel across the city on feet or using various vehicles, in a manner some observers compared to GTA series. There are many options for the character customization, including three character classes, and a variety of augmentations V can install to enhance his or her abilities."
+  }
 ]

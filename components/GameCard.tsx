@@ -1,0 +1,38 @@
+import Image from 'next/image';
+
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
+import { GameDetails } from '@/app/db/gameDetail';
+import { log } from 'console';
+import Link from 'next/link';
+import { buttonVariants } from './ui/button';
+
+export const GameCard = async ({ game}: { game: GameDetails }) => {
+    log(game);
+    return (
+        <Card key={game.id}>
+              <CardHeader>
+                {game.background_image ? (
+                    <Image src={game.background_image} alt={game.name} width={300} height={200} />
+                ) : (
+                    <Image src="https://placehold.co/600x400" alt={game.name} width={300} height={200} />
+                )}
+                
+              </CardHeader>
+              <CardContent>
+                <CardTitle>{game.name}</CardTitle>
+                <CardDescription dangerouslySetInnerHTML={{__html: game.description.length > 100 ? `${game.description.substring(0, 250)}...` : game.description}}>
+                </CardDescription>
+              </CardContent>
+              <CardFooter>
+              <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Click here</Link>
+              </CardFooter>
+        </Card>
+    )
+}
