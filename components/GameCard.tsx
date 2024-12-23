@@ -9,12 +9,10 @@ import {
     CardTitle,
   } from "@/components/ui/card"
 import { GameDetails } from '@/app/db/gameDetail';
-import { log } from 'console';
 import Link from 'next/link';
 import { buttonVariants } from './ui/button';
 
 export const GameCard = async ({ game}: { game: GameDetails }) => {
-    log(game);
     return (
         <Card key={game.id}>
               <CardHeader>

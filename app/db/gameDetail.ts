@@ -1,4 +1,5 @@
 export interface GameDetails {
+    path:                        string;
     id:                          number;
     slug:                        string;
     name:                        string;

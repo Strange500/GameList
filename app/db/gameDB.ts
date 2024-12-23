@@ -58,6 +58,23 @@ export async function getGameDetails(id: number): Promise<GameDetails> {
     return (response as GameDetails);
 }
 
+export async function saveGameWithId(id: number) {
+    return saveGame((await getGameDetails(id)));
+}
+
+export function setGamePath(id: number, path: string) {
+    const gameIndex = games.findIndex(g => g.id === id);
+    if (gameIndex !== -1) {
+        games[gameIndex].path = path;
+    }
+    try {
+        fs.writeFileSync('app/db/data.json', JSON.stringify(games, null, 2));
+        console.log('Game path saved');
+    } catch (error) {
+        console.error('Error saving game path:', error);
+    }
+}
+
 export function saveGame(game: GameDetails) {
     let gamess: GameDetails[] = [];
 
@@ -119,4 +136,42 @@ async function fetchData(apiUrl: string, params: Record<string, string>): Promis
         console.error('Error fetching data:', error);
         throw error; // Rethrow the error if needed
     }
+}
+
+
+
+export async  function detectGames() {
+    const gameFolder = process.env.GAME_FOLDER_PATH;
+    if (!gameFolder) {
+        console.error('GAME_FOLDER_PATH environment variable not set');
+        return;
+    }
+
+    fs.readdir(gameFolder, (err, files) => {
+        if (err) {
+            console.error('Error reading game folder:', err);
+            return;
+        }
+
+        files.forEach(async (file) => {
+            if (games.find(game => game.path === file)) {
+                console.log('Game already exists:', file);
+                return;
+            }else {
+                const game: SearchResults = await findGame(file);
+                if (game.count === 0) {
+                    console.error('Game not found:', file);
+                    return;
+                }
+                console.log('Game found:', game.results[0].name);
+                saveGameWithId(game.results[0].id);
+                setGamePath(game.results[0].id, file);
+            }
+            
+        });
+    });
+
+
+
+    return;
 }

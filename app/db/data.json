@@ -1,5 +1,337 @@
 [
   {
+    "id": 965471,
+    "slug": "miside",
+    "name": "MiSide",
+    "name_original": "MiSide",
+    "description": "<p> </p><p>Every day, you will come to see me, help me with chores, cook for me, and buy me gifts.</p><p>You are so nice! I love you!</p><p>I want to keep you with me every day, and live with you every day~</p><p>I know you also want to be with me every day, so I let you to come to our sweet home~</p><p>How is that? Are you happy? That way we can stay together all the time!</p><p><strong>Let's take a selfie first, It will last longer~</strong></p><p><strong>Enjoy a wonderful lunch together~</strong></p><p>You may feel sudden, but it doesn't matter. I don't care as long as we can be together~</p><p>Why does it feel like you are so eager to go back ? Don't you love me anymore? <strong>Why are you leaving? Why are you leaving? Why are you leaving? Why are you leaving!</strong></p><ul><li><p>Original visual style<br/>The authors hope to emphasize the contrast of colorful anime style against the background of the disturbing adventures of the main character.</p></li><li><p>Interesting plot<br/>The game has an unexpectedly developing storyline, accompanied by psychological tension.</p></li><li><p>Original musical accompaniment<br/>The game experience is accompanied by an authentic warm soundtrack, transitioning into an atmospheric ambient.</p></li><li><p>Unique Characters<br/>In the world of MiSide, the player will encounter various characters who play a role in the narrative part of the game to varying degrees. Helping the hero, scaring him, or just messing with him.</p><p>※This game contains intense scenes. It is not recommended for those with weak hearts. </p></li></ul>",
+    "metacritic": null,
+    "metacritic_platforms": [],
+    "released": "2024-12-10",
+    "tba": false,
+    "updated": "2024-12-22T22:47:21",
+    "background_image": "https://media.rawg.io/media/screenshots/3b1/3b1fc757b53f3a48433a6ce1315b96ef.jpg",
+    "background_image_additional": "https://media.rawg.io/media/screenshots/320/3205e1c4736b8b8b3291a90b972e6e73.jpg",
+    "website": "",
+    "rating": 4.58,
+    "rating_top": 5,
+    "ratings": [
+      {
+        "id": 5,
+        "title": "exceptional",
+        "count": 12,
+        "percent": 63.16
+      },
+      {
+        "id": 4,
+        "title": "recommended",
+        "count": 6,
+        "percent": 31.58
+      },
+      {
+        "id": 3,
+        "title": "meh",
+        "count": 1,
+        "percent": 5.26
+      }
+    ],
+    "reactions": {
+      "1": 1,
+      "10": 1
+    },
+    "added": 57,
+    "added_by_status": {
+      "yet": 5,
+      "owned": 22,
+      "beaten": 22,
+      "toplay": 7,
+      "playing": 1
+    },
+    "playtime": 6,
+    "screenshots_count": 3,
+    "movies_count": 0,
+    "creators_count": 0,
+    "achievements_count": 26,
+    "parent_achievements_count": 26,
+    "reddit_url": "",
+    "reddit_name": "",
+    "reddit_description": "",
+    "reddit_logo": "",
+    "reddit_count": 0,
+    "twitch_count": 0,
+    "youtube_count": 0,
+    "reviews_text_count": 1,
+    "ratings_count": 18,
+    "suggestions_count": 110,
+    "alternative_names": [],
+    "metacritic_url": "",
+    "parents_count": 0,
+    "additions_count": 0,
+    "game_series_count": 0,
+    "user_game": null,
+    "reviews_count": 19,
+    "saturated_color": "0f0f0f",
+    "dominant_color": "0f0f0f",
+    "parent_platforms": [
+      {
+        "platform": {
+          "id": 1,
+          "name": "PC",
+          "slug": "pc"
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "platform": {
+          "id": 4,
+          "name": "PC",
+          "slug": "pc",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 541497,
+          "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
+        },
+        "released_at": "2024-12-10",
+        "requirements": {
+          "minimum": "Minimum:\nOS *: Windows 7/8/10\nProcessor: Intel Core i5-2300 @ 2,80 GHz, AMD FX 8120 @ 3.1 GHz\nMemory: 4 GB RAM\nGraphics: NVIDIA GT 630 / 650m, AMD Radeon HD6570 or equivalent\nDirectX: Version 10\nStorage: 2 GB available space\nSound Card: 100% DirectX 9.0c compatible sound card",
+          "recommended": "Recommended:\nOS *: Windows 7/8/10\nProcessor: Intel i7 920 @ 2.7 GHz, AMD Phenom II 945 @ 3.0 GHz\nMemory: 8 GB RAM\nGraphics: NVIDIA GTX 1050\nDirectX: Version 11\nStorage: 2 GB available space\nSound Card: 100% DirectX 9.0c compatible sound card"
+        }
+      }
+    ],
+    "stores": [
+      {
+        "id": 964737,
+        "url": "",
+        "store": {
+          "id": 9,
+          "name": "itch.io",
+          "slug": "itch",
+          "domain": "itch.io",
+          "games_count": 654161,
+          "image_background": "https://media.rawg.io/media/games/3ef/3eff92562640e452d3487c04ba6d7fae.jpg"
+        }
+      },
+      {
+        "id": 964736,
+        "url": "",
+        "store": {
+          "id": 1,
+          "name": "Steam",
+          "slug": "steam",
+          "domain": "store.steampowered.com",
+          "games_count": 104541,
+          "image_background": "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg"
+        }
+      }
+    ],
+    "developers": [
+      {
+        "id": 24202,
+        "name": "AIHASTO",
+        "slug": "aihasto",
+        "games_count": 12,
+        "image_background": "https://media.rawg.io/media/screenshots/279/2798be88baca09507180b15eec8d7e70.jpg"
+      }
+    ],
+    "genres": [
+      {
+        "id": 3,
+        "name": "Adventure",
+        "slug": "adventure",
+        "games_count": 144217,
+        "image_background": "https://media.rawg.io/media/games/48c/48cb04ca483be865e3a83119c94e6097.jpg"
+      },
+      {
+        "id": 5,
+        "name": "RPG",
+        "slug": "role-playing-games-rpg",
+        "games_count": 58206,
+        "image_background": "https://media.rawg.io/media/games/e6d/e6de699bd788497f4b52e2f41f9698f2.jpg"
+      },
+      {
+        "id": 14,
+        "name": "Simulation",
+        "slug": "simulation",
+        "games_count": 72150,
+        "image_background": "https://media.rawg.io/media/games/054/0549f1a0a5e782d4e81cdf8d022073fa.jpg"
+      },
+      {
+        "id": 51,
+        "name": "Indie",
+        "slug": "indie",
+        "games_count": 73037,
+        "image_background": "https://media.rawg.io/media/games/4cf/4cfc6b7f1850590a4634b08bfab308ab.jpg"
+      }
+    ],
+    "tags": [
+      {
+        "id": 31,
+        "name": "Singleplayer",
+        "slug": "singleplayer",
+        "language": "eng",
+        "games_count": 233006,
+        "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
+      },
+      {
+        "id": 40847,
+        "name": "Steam Achievements",
+        "slug": "steam-achievements",
+        "language": "eng",
+        "games_count": 42372,
+        "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg"
+      },
+      {
+        "id": 13,
+        "name": "Atmospheric",
+        "slug": "atmospheric",
+        "language": "eng",
+        "games_count": 35490,
+        "image_background": "https://media.rawg.io/media/games/bc0/bc06a29ceac58652b684deefe7d56099.jpg"
+      },
+      {
+        "id": 24,
+        "name": "RPG",
+        "slug": "rpg",
+        "language": "eng",
+        "games_count": 22968,
+        "image_background": "https://media.rawg.io/media/games/62c/62c7c8b28a27b83680b22fb9d33fc619.jpg"
+      },
+      {
+        "id": 118,
+        "name": "Story Rich",
+        "slug": "story-rich",
+        "language": "eng",
+        "games_count": 23569,
+        "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
+      },
+      {
+        "id": 8,
+        "name": "First-Person",
+        "slug": "first-person",
+        "language": "eng",
+        "games_count": 33604,
+        "image_background": "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg"
+      },
+      {
+        "id": 45,
+        "name": "2D",
+        "slug": "2d",
+        "language": "eng",
+        "games_count": 199601,
+        "image_background": "https://media.rawg.io/media/games/8ca/8ca40b562a755d6a0e30d48e6c74b178.jpg"
+      },
+      {
+        "id": 16,
+        "name": "Horror",
+        "slug": "horror",
+        "language": "eng",
+        "games_count": 46092,
+        "image_background": "https://media.rawg.io/media/games/da1/da1b267764d77221f07a4386b6548e5a.jpg"
+      },
+      {
+        "id": 69,
+        "name": "Action-Adventure",
+        "slug": "action-adventure",
+        "language": "eng",
+        "games_count": 18102,
+        "image_background": "https://media.rawg.io/media/games/2ad/2ad87a4a69b1104f02435c14c5196095.jpg"
+      },
+      {
+        "id": 88,
+        "name": "Cute",
+        "slug": "cute",
+        "language": "eng",
+        "games_count": 35496,
+        "image_background": "https://media.rawg.io/media/games/c89/c89ca70716080733d03724277df2c6c7.jpg"
+      },
+      {
+        "id": 571,
+        "name": "3D",
+        "slug": "3d",
+        "language": "eng",
+        "games_count": 87031,
+        "image_background": "https://media.rawg.io/media/games/d97/d97f663b752a6484df105993f17abb49.jpg"
+      },
+      {
+        "id": 209,
+        "name": "Drama",
+        "slug": "drama",
+        "language": "eng",
+        "games_count": 4695,
+        "image_background": "https://media.rawg.io/media/games/0f4/0f4f4764555736eebfeb01571e44e99e.jpg"
+      },
+      {
+        "id": 140,
+        "name": "Hidden Object",
+        "slug": "hidden-object",
+        "language": "eng",
+        "games_count": 4398,
+        "image_background": "https://media.rawg.io/media/screenshots/a09/a09387c63a3e0101f03b985d797c3460.jpg"
+      },
+      {
+        "id": 183,
+        "name": "Thriller",
+        "slug": "thriller",
+        "language": "eng",
+        "games_count": 2968,
+        "image_background": "https://media.rawg.io/media/games/ba9/ba981ea851b2a85b78d63d9ec53c19e5.jpg"
+      },
+      {
+        "id": 91686,
+        "name": "Family Sharing",
+        "slug": "family-sharing",
+        "language": "eng",
+        "games_count": 12699,
+        "image_background": "https://media.rawg.io/media/screenshots/b33/b3302320b181022698309395f415d1cc.jpg"
+      },
+      {
+        "id": 151,
+        "name": "Modern",
+        "slug": "modern",
+        "language": "eng",
+        "games_count": 1817,
+        "image_background": "https://media.rawg.io/media/games/7e3/7e327a055bedb9b6d1be86593bef473d.jpg"
+      },
+      {
+        "id": 342,
+        "name": "Conversation",
+        "slug": "conversation",
+        "language": "eng",
+        "games_count": 2388,
+        "image_background": "https://media.rawg.io/media/screenshots/723/723bdd7982914f9f5253889149ff4989.jpg"
+      },
+      {
+        "id": 49960,
+        "name": "Life Sim",
+        "slug": "life-sim-2",
+        "language": "eng",
+        "games_count": 2216,
+        "image_background": "https://media.rawg.io/media/games/154/1540d92a4768230fe46bfd05954b8ab4.jpg"
+      }
+    ],
+    "publishers": [
+      {
+        "id": 55212,
+        "name": "IndieArk",
+        "slug": "indieark",
+        "games_count": 48,
+        "image_background": "https://media.rawg.io/media/screenshots/d05/d050ccea1bc7005246f27903683bd2eb.jpg"
+      },
+      {
+        "id": 81758,
+        "name": "Shochiku",
+        "slug": "shochiku-japan",
+        "games_count": 1,
+        "image_background": "https://media.rawg.io/media/screenshots/3b1/3b1fc757b53f3a48433a6ce1315b96ef.jpg"
+      }
+    ],
+    "esrb_rating": null,
+    "clip": null,
+    "description_raw": "Tips※This game contains intense scenes. It is not recommended for those with weak hearts.\nAbout the Game Every day, you will come to see me, help me with chores, cook for me, and buy me gifts.You are so nice! I love you!I want to keep you with me every day, and live with you every day~I know you also want to be with me every day, so I let you to come to our sweet home~How is that? Are you happy? That way we can stay together all the time!Let's take a selfie first, It will last longer~Enjoy a wonderful lunch together~You may feel sudden, but it doesn't matter. I don't care as long as we can be together~Why does it feel like you are so eager to go back ? Don't you love me anymore? Why are you leaving? Why are you leaving? Why are you leaving? Why are you leaving!Original visual style\nThe authors hope to emphasize the contrast of colorful anime style against the background of the disturbing adventures of the main character.Interesting plot\nThe game has an unexpectedly developing storyline, accompanied by psychological tension.Original musical accompaniment\nThe game experience is accompanied by an authentic warm soundtrack, transitioning into an atmospheric ambient.Unique Characters\nIn the world of MiSide, the player will encounter various characters who play a role in the narrative part of the game to varying degrees. Helping the hero, scaring him, or just messing with him.※This game contains intense scenes. It is not recommended for those with weak hearts."
+  },
+  {
     "id": 41494,
     "slug": "cyberpunk-2077",
     "name": "Cyberpunk 2077",
@@ -617,5 +949,620 @@
     },
     "clip": null,
     "description_raw": "Cyberpunk 2077 is a science fiction game loosely based on the role-playing game Cyberpunk 2020.\r\n\r\n###Setting\r\nThe game is set in the year 2077 in a fictional futuristic metropolis Night City in California. In the world of the game, there are developed cybernetic augmentations that enhance people's strength, agility, and memory. The city is governed by corporations. Many jobs are taken over by the robots, leaving a lot of people poor and homeless. Night City has a roaring underworld, with black markets, underground surgeons, drug dealers, and street gangs abound.\r\n\r\n###Characters\r\nThe main protagonist is fully customizable, including his or her sex and appearance, and goes by the nickname V. He or she is an underground mercenary who does “dirty business” for the various contractors. An NPC companion named Jackie joins the protagonist early at the game, and various other companions may join the player on certain missions as the plot demands. However, the game has no parties and no companion system.\r\n\r\n###Gameplay\r\nThe player controls V from the first person view, with the third-person view used for cutscenes only. The protagonist can travel across the city on feet or using various vehicles, in a manner some observers compared to GTA series. There are many options for the character customization, including three character classes, and a variety of augmentations V can install to enhance his or her abilities."
+  },
+  {
+    "id": 10419,
+    "slug": "subnautica",
+    "name": "Subnautica",
+    "name_original": "Subnautica",
+    "description": "<p>Subnautica is a first-person game about survival in the deep sea. You control Ryley Robinson, a space traveler in the 22nd century, who crash-landed his starship on a planet that is covered almost entirely by the ocean. The protagonist needs to eat and drink, although this can be disabled in lower difficulty modes. He can desalinate oceanic water, catch or gather the seafood, and create useful tools and structures. Unlike many survival games, Subnautica has a detailed plot, in which Ryley has to uncover why his ship crashed. By exploring the ocean, finding the remnants of other crashes, and listening to the radio messages, Robinson will learn about the enormous Leviathan, the mysterious Precursors, and the reason why this planet is quarantined.<br />\nThe game is famous for its spectacular portrayal of the ocean and its wildlife. Robinson is equipped with a scuba diving gear that allows the player to spend most of the game underwater, although oxygen still has to be replenished. The player can dive deep and explore the world full of corals, fish, and other colorful sea creatures, often grotesque or bio-luminescent. The environment is randomly generated to improve replayability.</p>",
+    "metacritic": 83,
+    "metacritic_platforms": [
+      {
+        "metascore": 81,
+        "url": "https://www.metacritic.com/game/xbox-one/subnautica",
+        "platform": {
+          "platform": 1,
+          "name": "Xbox One",
+          "slug": "xbox-one"
+        }
+      },
+      {
+        "metascore": 80,
+        "url": "https://www.metacritic.com/game/playstation-4/subnautica",
+        "platform": {
+          "platform": 18,
+          "name": "PlayStation 4",
+          "slug": "playstation4"
+        }
+      },
+      {
+        "metascore": 87,
+        "url": "https://www.metacritic.com/game/pc/subnautica",
+        "platform": {
+          "platform": 4,
+          "name": "PC",
+          "slug": "pc"
+        }
+      }
+    ],
+    "released": "2018-01-23",
+    "tba": false,
+    "updated": "2024-12-20T17:32:49",
+    "background_image": "https://media.rawg.io/media/games/739/73990e3ec9f43a9e8ecafe207fa4f368.jpg",
+    "background_image_additional": "https://media.rawg.io/media/screenshots/b12/b12ca25d98abc1a16a633539a558ab1b.jpg",
+    "website": "http://unknownworlds.com/subnautica",
+    "rating": 4.24,
+    "rating_top": 5,
+    "ratings": [
+      {
+        "id": 5,
+        "title": "exceptional",
+        "count": 687,
+        "percent": 47.81
+      },
+      {
+        "id": 4,
+        "title": "recommended",
+        "count": 525,
+        "percent": 36.53
+      },
+      {
+        "id": 3,
+        "title": "meh",
+        "count": 169,
+        "percent": 11.76
+      },
+      {
+        "id": 1,
+        "title": "skip",
+        "count": 56,
+        "percent": 3.9
+      }
+    ],
+    "reactions": {
+      "1": 11,
+      "2": 3,
+      "3": 14,
+      "4": 3,
+      "5": 4,
+      "6": 1,
+      "7": 7,
+      "9": 3,
+      "10": 1,
+      "11": 2,
+      "12": 4,
+      "16": 1
+    },
+    "added": 6899,
+    "added_by_status": {
+      "yet": 488,
+      "owned": 4340,
+      "beaten": 804,
+      "toplay": 424,
+      "dropped": 670,
+      "playing": 173
+    },
+    "playtime": 10,
+    "screenshots_count": 33,
+    "movies_count": 2,
+    "creators_count": 9,
+    "achievements_count": 22,
+    "parent_achievements_count": 2,
+    "reddit_url": "https://www.reddit.com/r/subnautica/",
+    "reddit_name": "",
+    "reddit_description": "",
+    "reddit_logo": "",
+    "reddit_count": 3854,
+    "twitch_count": 123,
+    "youtube_count": 1000000,
+    "reviews_text_count": 24,
+    "ratings_count": 1413,
+    "suggestions_count": 878,
+    "alternative_names": [],
+    "metacritic_url": "https://www.metacritic.com/game/pc/subnautica",
+    "parents_count": 0,
+    "additions_count": 0,
+    "game_series_count": 1,
+    "user_game": null,
+    "reviews_count": 1437,
+    "saturated_color": "0f0f0f",
+    "dominant_color": "0f0f0f",
+    "parent_platforms": [
+      {
+        "platform": {
+          "id": 1,
+          "name": "PC",
+          "slug": "pc"
+        }
+      },
+      {
+        "platform": {
+          "id": 2,
+          "name": "PlayStation",
+          "slug": "playstation"
+        }
+      },
+      {
+        "platform": {
+          "id": 3,
+          "name": "Xbox",
+          "slug": "xbox"
+        }
+      },
+      {
+        "platform": {
+          "id": 5,
+          "name": "Apple Macintosh",
+          "slug": "mac"
+        }
+      },
+      {
+        "platform": {
+          "id": 7,
+          "name": "Nintendo",
+          "slug": "nintendo"
+        }
+      }
+    ],
+    "platforms": [
+      {
+        "platform": {
+          "id": 18,
+          "name": "PlayStation 4",
+          "slug": "playstation4",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 6873,
+          "image_background": "https://media.rawg.io/media/games/618/618c2031a07bbff6b4f611f10b6bcdbc.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 186,
+          "name": "Xbox Series S/X",
+          "slug": "xbox-series-x",
+          "image": null,
+          "year_end": null,
+          "year_start": 2020,
+          "games_count": 1026,
+          "image_background": "https://media.rawg.io/media/games/ffe/ffed87105b14f5beff72ff44a7793fd5.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 4,
+          "name": "PC",
+          "slug": "pc",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 541497,
+          "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {
+          "minimum": "Minimum:\nOS: Windows Vista SP2 or newer, 64-bit\nProcessor: Intel Haswell 2 cores / 4 threads @ 2.5Ghz or equivalent\nMemory: 4 GB RAM\nGraphics: Intel HD 4600 or equivalent - This includes most GPUs scoring greater than 950pts in the 3DMark Fire Strike benchmark\nStorage: 6 GB available space\nAdditional Notes: Subnautica is an Early Access game, and minimum specifications may change during development",
+          "recommended": "Recommended:\nOS: Windows Vista SP2 or newer, 64-bit\nProcessor: Intel Haswell 4 cores / 4 threads @ 3.2Ghz or equivalent\nMemory: 8 GB RAM\nGraphics: Nvidia GTX 550 ti or equivalent\nStorage: 6 GB available space\nAdditional Notes: Subnautica is an Early Access game, and recommended specifications may change during development."
+        }
+      },
+      {
+        "platform": {
+          "id": 5,
+          "name": "macOS",
+          "slug": "macos",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 105436,
+          "image_background": "https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {
+          "minimum": "Minimum:\nOS: OS X 10.9 Mavericks\nProcessor: Intel Haswell 2 cores / 4 threads @ 2.5Ghz or equivalent\nGraphics: Intel HD 4600 or equivalent\nStorage: 6 GB available space\nAdditional Notes: Subnautica is an Early Access game, and minimum specifications may change during development",
+          "recommended": "Recommended:\nOS: OS X 10.9 Mavericks\nProcessor: Intel Haswell 4 cores / 4 threads @ 3.2Ghz or equivalent\nGraphics: Nvidia GTX 550 ti\nStorage: 6 GB available space\nAdditional Notes: Subnautica is an Early Access game, and recommended specifications may change during development."
+        }
+      },
+      {
+        "platform": {
+          "id": 7,
+          "name": "Nintendo Switch",
+          "slug": "nintendo-switch",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 5566,
+          "image_background": "https://media.rawg.io/media/games/63f/63f0e68688cad279ed38cde931dbfcdb.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 1,
+          "name": "Xbox One",
+          "slug": "xbox-one",
+          "image": null,
+          "year_end": null,
+          "year_start": null,
+          "games_count": 5672,
+          "image_background": "https://media.rawg.io/media/games/d1a/d1a2e99ade53494c6330a0ed945fe823.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {}
+      },
+      {
+        "platform": {
+          "id": 187,
+          "name": "PlayStation 5",
+          "slug": "playstation5",
+          "image": null,
+          "year_end": null,
+          "year_start": 2020,
+          "games_count": 1171,
+          "image_background": "https://media.rawg.io/media/games/b4a/b4adf80c36e267b35acc3497ed2af19c.jpg"
+        },
+        "released_at": "2018-01-23",
+        "requirements": {}
+      }
+    ],
+    "stores": [
+      {
+        "id": 267746,
+        "url": "",
+        "store": {
+          "id": 3,
+          "name": "PlayStation Store",
+          "slug": "playstation-store",
+          "domain": "store.playstation.com",
+          "games_count": 8009,
+          "image_background": "https://media.rawg.io/media/games/310/3106b0e012271c5ffb16497b070be739.jpg"
+        }
+      },
+      {
+        "id": 472816,
+        "url": "",
+        "store": {
+          "id": 6,
+          "name": "Nintendo Store",
+          "slug": "nintendo",
+          "domain": "nintendo.com",
+          "games_count": 9099,
+          "image_background": "https://media.rawg.io/media/games/25c/25c4776ab5723d5d735d8bf617ca12d9.jpg"
+        }
+      },
+      {
+        "id": 11409,
+        "url": "",
+        "store": {
+          "id": 1,
+          "name": "Steam",
+          "slug": "steam",
+          "domain": "store.steampowered.com",
+          "games_count": 104541,
+          "image_background": "https://media.rawg.io/media/games/73e/73eecb8909e0c39fb246f457b5d6cbbe.jpg"
+        }
+      },
+      {
+        "id": 46070,
+        "url": "",
+        "store": {
+          "id": 2,
+          "name": "Xbox Store",
+          "slug": "xbox-store",
+          "domain": "microsoft.com",
+          "games_count": 4903,
+          "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
+        }
+      },
+      {
+        "id": 295654,
+        "url": "",
+        "store": {
+          "id": 11,
+          "name": "Epic Games",
+          "slug": "epic-games",
+          "domain": "epicgames.com",
+          "games_count": 1365,
+          "image_background": "https://media.rawg.io/media/games/310/3106b0e012271c5ffb16497b070be739.jpg"
+        }
+      }
+    ],
+    "developers": [
+      {
+        "id": 3825,
+        "name": "Unknown Worlds Entertainment",
+        "slug": "unknown-worlds-entertainment",
+        "games_count": 6,
+        "image_background": "https://media.rawg.io/media/screenshots/aa0/aa01a125a6084cf9da0e03ee7e4a7820.jpg"
+      }
+    ],
+    "genres": [
+      {
+        "id": 3,
+        "name": "Adventure",
+        "slug": "adventure",
+        "games_count": 144217,
+        "image_background": "https://media.rawg.io/media/games/48c/48cb04ca483be865e3a83119c94e6097.jpg"
+      },
+      {
+        "id": 51,
+        "name": "Indie",
+        "slug": "indie",
+        "games_count": 73037,
+        "image_background": "https://media.rawg.io/media/games/4cf/4cfc6b7f1850590a4634b08bfab308ab.jpg"
+      }
+    ],
+    "tags": [
+      {
+        "id": 31,
+        "name": "Singleplayer",
+        "slug": "singleplayer",
+        "language": "eng",
+        "games_count": 233006,
+        "image_background": "https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Multiplayer",
+        "slug": "multiplayer",
+        "language": "eng",
+        "games_count": 39626,
+        "image_background": "https://media.rawg.io/media/games/4a0/4a0a1316102366260e6f38fd2a9cfdce.jpg"
+      },
+      {
+        "id": 40836,
+        "name": "Full controller support",
+        "slug": "full-controller-support",
+        "language": "eng",
+        "games_count": 20091,
+        "image_background": "https://media.rawg.io/media/games/4cf/4cfc6b7f1850590a4634b08bfab308ab.jpg"
+      },
+      {
+        "id": 13,
+        "name": "Atmospheric",
+        "slug": "atmospheric",
+        "language": "eng",
+        "games_count": 35490,
+        "image_background": "https://media.rawg.io/media/games/bc0/bc06a29ceac58652b684deefe7d56099.jpg"
+      },
+      {
+        "id": 36,
+        "name": "Open World",
+        "slug": "open-world",
+        "language": "eng",
+        "games_count": 8145,
+        "image_background": "https://media.rawg.io/media/games/713/713269608dc8f2f40f5a670a14b2de94.jpg"
+      },
+      {
+        "id": 8,
+        "name": "First-Person",
+        "slug": "first-person",
+        "language": "eng",
+        "games_count": 33604,
+        "image_background": "https://media.rawg.io/media/games/46d/46d98e6910fbc0706e2948a7cc9b10c5.jpg"
+      },
+      {
+        "id": 32,
+        "name": "Sci-fi",
+        "slug": "sci-fi",
+        "language": "eng",
+        "games_count": 20186,
+        "image_background": "https://media.rawg.io/media/games/f87/f87457e8347484033cb34cde6101d08d.jpg"
+      },
+      {
+        "id": 16,
+        "name": "Horror",
+        "slug": "horror",
+        "language": "eng",
+        "games_count": 46092,
+        "image_background": "https://media.rawg.io/media/games/da1/da1b267764d77221f07a4386b6548e5a.jpg"
+      },
+      {
+        "id": 30,
+        "name": "FPS",
+        "slug": "fps",
+        "language": "eng",
+        "games_count": 13848,
+        "image_background": "https://media.rawg.io/media/games/737/737ea5662211d2e0bbd6f5989189e4f1.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Exploration",
+        "slug": "exploration",
+        "language": "eng",
+        "games_count": 25227,
+        "image_background": "https://media.rawg.io/media/games/951/951572a3dd1e42544bd39a5d5b42d234.jpg"
+      },
+      {
+        "id": 37,
+        "name": "Sandbox",
+        "slug": "sandbox",
+        "language": "eng",
+        "games_count": 7457,
+        "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg"
+      },
+      {
+        "id": 1,
+        "name": "Survival",
+        "slug": "survival",
+        "language": "eng",
+        "games_count": 9453,
+        "image_background": "https://media.rawg.io/media/games/5c0/5c0dd63002cb23f804aab327d40ef119.jpg"
+      },
+      {
+        "id": 14,
+        "name": "Early Access",
+        "slug": "early-access",
+        "language": "eng",
+        "games_count": 16761,
+        "image_background": "https://media.rawg.io/media/games/35b/35b47c4d85cd6e08f3e2ca43ea5ce7bb.jpg"
+      },
+      {
+        "id": 125,
+        "name": "Crafting",
+        "slug": "crafting",
+        "language": "eng",
+        "games_count": 4627,
+        "image_background": "https://media.rawg.io/media/screenshots/2b9/2b9a49e89c1ba892a648620194dcf327.jpg"
+      },
+      {
+        "id": 172,
+        "name": "Aliens",
+        "slug": "aliens",
+        "language": "eng",
+        "games_count": 7057,
+        "image_background": "https://media.rawg.io/media/games/4cb/4cb463b5588adc672124fb041f09e91c.jpg"
+      },
+      {
+        "id": 33,
+        "name": "VR",
+        "slug": "vr",
+        "language": "eng",
+        "games_count": 12609,
+        "image_background": "https://media.rawg.io/media/screenshots/f24/f24122a8e3d30ec3e99472e3e826d0cb.jpg"
+      },
+      {
+        "id": 413,
+        "name": "online",
+        "slug": "online",
+        "language": "eng",
+        "games_count": 6550,
+        "image_background": "https://media.rawg.io/media/games/9f1/9f1891779cb20f44de93cef33b067e50.jpg"
+      },
+      {
+        "id": 180,
+        "name": "Base Building",
+        "slug": "base-building",
+        "language": "eng",
+        "games_count": 2337,
+        "image_background": "https://media.rawg.io/media/screenshots/010/0101f021b2dc123c98969fda7e4bcd92.jpg"
+      },
+      {
+        "id": 5816,
+        "name": "console",
+        "slug": "console",
+        "language": "eng",
+        "games_count": 1390,
+        "image_background": "https://media.rawg.io/media/games/faa/faa6a4a7a2e57faf2960329630aee211.jpg"
+      },
+      {
+        "id": 4565,
+        "name": "offline",
+        "slug": "offline",
+        "language": "eng",
+        "games_count": 1072,
+        "image_background": "https://media.rawg.io/media/games/df4/df415b18835f91a1b4db1da294996ee5.jpg"
+      },
+      {
+        "id": 250,
+        "name": "Underwater",
+        "slug": "underwater",
+        "language": "eng",
+        "games_count": 2154,
+        "image_background": "https://media.rawg.io/media/games/3a5/3a54ad7b51f0bb9bfc558abcde90258e.jpg"
+      },
+      {
+        "id": 2326,
+        "name": "explore",
+        "slug": "explore",
+        "language": "eng",
+        "games_count": 3340,
+        "image_background": "https://media.rawg.io/media/games/c7b/c7b853c1a0ffd4f5ea24a263fe895855.jpg"
+      },
+      {
+        "id": 177,
+        "name": "Voxel",
+        "slug": "voxel",
+        "language": "eng",
+        "games_count": 2515,
+        "image_background": "https://media.rawg.io/media/games/ef9/ef932227105f9a8fa3f8848050b76230.jpg"
+      },
+      {
+        "id": 1743,
+        "name": "collect",
+        "slug": "collect",
+        "language": "eng",
+        "games_count": 8078,
+        "image_background": "https://media.rawg.io/media/games/ccd/ccd36642cee0cbb95681a6e3b7715381.jpg"
+      },
+      {
+        "id": 2191,
+        "name": "alien",
+        "slug": "alien",
+        "language": "eng",
+        "games_count": 1215,
+        "image_background": "https://media.rawg.io/media/screenshots/647/6476130d9866c6ece9774728d44029d5.jpg"
+      },
+      {
+        "id": 1807,
+        "name": "water",
+        "slug": "water",
+        "language": "eng",
+        "games_count": 3862,
+        "image_background": "https://media.rawg.io/media/screenshots/f19/f19a4ae83ee78d1ca9ac533c3b02ab88.jpg"
+      },
+      {
+        "id": 1068,
+        "name": "sea",
+        "slug": "sea",
+        "language": "eng",
+        "games_count": 2413,
+        "image_background": "https://media.rawg.io/media/games/612/612845e0bbebca79922082d6de5f2eb7.jpg"
+      },
+      {
+        "id": 1778,
+        "name": "food",
+        "slug": "food",
+        "language": "eng",
+        "games_count": 4925,
+        "image_background": "https://media.rawg.io/media/screenshots/066/066f5a66b41d48d554fec57185dc61e1.jpg"
+      },
+      {
+        "id": 2062,
+        "name": "sun",
+        "slug": "sun",
+        "language": "eng",
+        "games_count": 499,
+        "image_background": "https://media.rawg.io/media/screenshots/926/9266108a6e453a14bc8d268e225ed0c5.jpg"
+      },
+      {
+        "id": 2296,
+        "name": "crash",
+        "slug": "crash",
+        "language": "eng",
+        "games_count": 633,
+        "image_background": "https://media.rawg.io/media/screenshots/78a/78a31a24c2fb358358a82a869908636d_gGdjEZQ.jpg"
+      },
+      {
+        "id": 4934,
+        "name": "health",
+        "slug": "health",
+        "language": "eng",
+        "games_count": 1556,
+        "image_background": "https://media.rawg.io/media/games/c87/c87402bf3b30f4cb2e3d45ba5840d69a.jpg"
+      }
+    ],
+    "publishers": [
+      {
+        "id": 3495,
+        "name": "Unknown Worlds Entertainment",
+        "slug": "unknown-worlds-entertainment",
+        "games_count": 6,
+        "image_background": "https://media.rawg.io/media/games/739/73990e3ec9f43a9e8ecafe207fa4f368.jpg"
+      }
+    ],
+    "esrb_rating": {
+      "id": 2,
+      "name": "Everyone 10+",
+      "slug": "everyone-10-plus"
+    },
+    "clip": null,
+    "description_raw": "Subnautica is a first-person game about survival in the deep sea. You control Ryley Robinson, a space traveler in the 22nd century, who crash-landed his starship on a planet that is covered almost entirely by the ocean. The protagonist needs to eat and drink, although this can be disabled in lower difficulty modes. He can desalinate oceanic water, catch or gather the seafood, and create useful tools and structures. Unlike many survival games, Subnautica has a detailed plot, in which Ryley has to uncover why his ship crashed. By exploring the ocean, finding the remnants of other crashes, and listening to the radio messages, Robinson will learn about the enormous Leviathan, the mysterious Precursors, and the reason why this planet is quarantined.\r\nThe game is famous for its spectacular portrayal of the ocean and its wildlife. Robinson is equipped with a scuba diving gear that allows the player to spend most of the game underwater, although oxygen still has to be replenished. The player can dive deep and explore the world full of corals, fish, and other colorful sea creatures, often grotesque or bio-luminescent. The environment is randomly generated to improve replayability."
   }
 ]

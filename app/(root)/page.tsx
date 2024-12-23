@@ -1,5 +1,5 @@
 import { auth, signIn } from '@/auth';
-import { getAllGames } from '../db/gameDB';
+import { detectGames, getAllGames } from '../db/gameDB';
 import { GameDetails } from '../db/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
@@ -12,7 +12,6 @@ export default async function Page({searchParams}: {
   const gamesList: GameDetails[] = getAllGames();
   // get query form parameter
   const query: string = (await searchParams).query || '';
-
 
   return (
     <section className="py-24">
