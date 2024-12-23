@@ -1,7 +1,6 @@
 import { auth } from '@/auth';
 import { signIn, signOut } from '@/auth';
 import Image from 'next/image';
-import react from 'react';
 
 export const Navbar = async () => {
     const session = await auth();

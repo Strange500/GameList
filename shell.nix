@@ -8,6 +8,8 @@ pkgs.mkShell {
     pkgs.git    # For version control
     pkgs.vite   # If you're planning to use Vite for development
     pkgs.nodePackages."@tailwindcss/language-server"
+    pkgs.mariadb
+    pkgs.mysql-client
   ];
 
 
@@ -17,5 +19,6 @@ pkgs.mkShell {
   shellHook = ''
     echo "Welcome to the Next.js development shell!"
     echo "Starting the development environment..."
+    echo "MySQL environment ready. You can connect using: mysql -u your_user -p"
   '';
 }
