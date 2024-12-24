@@ -116,7 +116,7 @@ export async function getAllGames(): Promise<GameDetails[]> {
     });
 }
 
-export function displayGame(id: number): Promise<GameDetails | undefined> {
+export function getGame(id: number): Promise<GameDetails | undefined> {
     const query = `SELECT * FROM games WHERE id = ?;`;
     return new Promise((resolve, reject) => {
         db.get(query, [id], (err: Error | null, row: GameDetails) => {
