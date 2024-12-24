@@ -23,8 +23,8 @@ async function initializeDatabase() {
     // Define the SQL to create the tables only if they do not exist
     const createGamesTable = `
         CREATE TABLE IF NOT EXISTS games (
-            path VARCHAR(255) NOT NULL,
-            id INT PRIMARY KEY,
+            path VARCHAR(255) PRIMARY KEY,
+            id INT NOT NULL,
             slug VARCHAR(255) NOT NULL,
             name VARCHAR(255) NOT NULL,
             name_original VARCHAR(255),
@@ -116,6 +116,14 @@ export async function getAllGames(): Promise<GameDetails[]> {
     });
 }
 
+
+export async function changeGameId(path: string, newId: number) {
+    const delQuery = `DELETE FROM games WHERE path = ?;`;
+    db.run(delQuery, [path]);
+    console.log(`Game with path ${path} deleted`);
+    saveGameWithId(newId, path);
+}
+
 export function getGame(id: number): Promise<GameDetails | undefined> {
     const query = `SELECT * FROM games WHERE id = ?;`;
     return new Promise((resolve, reject) => {
@@ -161,7 +169,9 @@ export async function getGameDetails(id: number): Promise<GameDetails> {
 }
 
 export async function saveGameWithId(id: number, path: string) {
-    return saveGame((await getGameDetails(id)), path);
+    const game = await getGameDetails(id);
+    game.path = path;
+    return saveGame(game);
 }
 
 export function saveGame(game: GameDetails) {

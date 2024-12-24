@@ -3,7 +3,6 @@ import { Input } from './ui/input';
 import Form from "next/form";
 import { RefreshCcw, Search } from 'lucide-react';
 import { detectGames } from '@/app/db/gameDB';
-import Link from 'next/link';
 
 
 // Assuming `Input` is a custom component or can be a simple HTML input
