@@ -9,7 +9,7 @@ export default async function Page({searchParams}: {
 }) {
 
   const session = await auth();
-  const gamesList: GameDetails[] = getAllGames();
+  const gamesList: GameDetails[] = await getAllGames();
   // get query form parameter
   const query: string = (await searchParams).query || '';
 

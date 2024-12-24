@@ -1,46 +1,148 @@
-// we will store games info inside a json file
-// here we will provide to other ts file function a acces games info easily
-
 import fs from 'fs';
 import { SearchResults } from './apiInterfaces';
 import { GameDetails } from './gameDetail';
-
-// make sure data.json exists else create it
-
-
-import * as data from './data.json';
+import { join } from 'path';
+import sqlite3 from 'sqlite3';
+sqlite3.verbose();
 
 
-let games: GameDetails[] = [];
+const DB_PATH = 'app/db/game.db';
 
-try {
-    games = Array.isArray(data) ? data : Object.values(data);
-    if (!Array.isArray(games)) {
-        throw new Error('Data is not an array');
+
+
+const db = new sqlite3.Database(DB_PATH, (err) => {
+    if (err) {
+        console.error('Error opening database:', err);
+        return;
     }
-} catch (error) {
-    console.error('Error reading data.json:', error);
-    games = [];
-    fs.writeFileSync('app/db/data.json', JSON.stringify(games, null, 2));
+    console.log('Connected to the SQLite database');
+}
+);
+
+async function initializeDatabase() {
+    // Define the SQL to create the tables only if they do not exist
+    const createGamesTable = `
+        CREATE TABLE IF NOT EXISTS games (
+            path VARCHAR(255) NOT NULL,
+            id INT PRIMARY KEY,
+            slug VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL,
+            name_original VARCHAR(255),
+            description TEXT,
+            released DATE,
+            background_image VARCHAR(512),
+            screenshots_count INT
+        );
+    `;
+
+    
+
+    const createGenresTable = `
+        CREATE TABLE IF NOT EXISTS genres (
+            id INT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            slug VARCHAR(255) NOT NULL
+        );
+    `;
+
+    const createTagsTable = `
+        CREATE TABLE IF NOT EXISTS tags (
+            id INT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            slug VARCHAR(255) NOT NULL,
+            language VARCHAR(10),
+            games_count INT
+        );
+    `;
+
+    const createGameGenresTable = `
+        CREATE TABLE IF NOT EXISTS game_genres (
+            game_id INT,
+            genre_id INT,
+            PRIMARY KEY (game_id, genre_id),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+            FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE CASCADE
+        );
+    `;
+
+    const createGameTagsTable = `
+        CREATE TABLE IF NOT EXISTS game_tags (
+            game_id INT,
+            tag_id INT,
+            PRIMARY KEY (game_id, tag_id),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+            FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
+        );
+    `;
+
+    //const testgame:string = 'INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count) VALUES ("test", 1, "test", "test", "test", "test", "2021-01-01", "https://placehold.co/600x400", 2);';
+
+    // Execute the create table statements
+    db.exec(createGamesTable);
+    db.exec(createGenresTable);
+    db.exec(createTagsTable);
+    db.exec(createGameGenresTable);
+    db.exec(createGameTagsTable);
+    //db.exec(testgame);
+    
+    console.log("Tables created or already exist.");
 }
 
-export function getAllGames() {
-    let gamess: GameDetails[] = [];
 
-    // Try to read the existing games data from the file
-    try {
-        const dataBuffer = fs.readFileSync('app/db/data.json');
-        gamess = JSON.parse(dataBuffer.toString()).filter((item: any) => typeof item === 'object' && item !== null && item.id);
-    } catch (error) {
-        console.error('Error reading game data:', error);
-        // The file may not exist or may be malformed; create a clean state.
-    }
 
-    return gamess;
+
+export async function getAllGames(): Promise<GameDetails[]> {
+    const query = 'SELECT * FROM games;';
+    return new Promise((resolve, reject) => {
+        db.all(query, (err: Error | null, rows: GameDetails[]) => {
+            if (err) {
+                console.error('Error querying games:', err);
+                reject(err);
+                return;
+            }
+            const gamess: GameDetails[] = rows.map((row: GameDetails) => ({
+                path: row.path,
+                id: row.id,
+                slug: row.slug,
+                name: row.name,
+                name_original: row.name_original,
+                description: row.description,
+                released: row.released,
+                background_image: row.background_image,
+                screenshots_count: row.screenshots_count
+            }));
+            resolve(gamess);
+        });
+    });
 }
-export function displayGame(id: number) {
-    const game: GameDetails | undefined = games.find(game => game.id === id);
-    return game;
+
+export function displayGame(id: number): Promise<GameDetails | undefined> {
+    const query = `SELECT * FROM games WHERE id = ?;`;
+    return new Promise((resolve, reject) => {
+        db.get(query, [id], (err: Error | null, row: GameDetails) => {
+            if (err) {
+                console.error('Error querying game:', err);
+                reject(err);
+                return;
+            }
+            if (row) {
+                const game: GameDetails = {
+                    path: row.path,
+                    id: row.id,
+                    slug: row.slug,
+                    name: row.name,
+                    name_original: row.name_original,
+                    description: row.description,
+                    released: row.released,
+                    background_image: row.background_image,
+                    screenshots_count: row.screenshots_count
+                };
+                resolve(game);
+            } else {
+                resolve(undefined);
+            }
+        });
+    });
 }
 
 export async function findGame(title: string): Promise<SearchResults> {
@@ -58,51 +160,37 @@ export async function getGameDetails(id: number): Promise<GameDetails> {
     return (response as GameDetails);
 }
 
-export async function saveGameWithId(id: number) {
-    return saveGame((await getGameDetails(id)));
-}
-
-export function setGamePath(id: number, path: string) {
-    const gameIndex = games.findIndex(g => g.id === id);
-    if (gameIndex !== -1) {
-        games[gameIndex].path = path;
-    }
-    try {
-        fs.writeFileSync('app/db/data.json', JSON.stringify(games, null, 2));
-        console.log('Game path saved');
-    } catch (error) {
-        console.error('Error saving game path:', error);
-    }
+export async function saveGameWithId(id: number, path: string) {
+    return saveGame((await getGameDetails(id)), path);
 }
 
 export function saveGame(game: GameDetails) {
-    let gamess: GameDetails[] = [];
-
-    // Try to read the existing games data from the file
-    try {
-        const dataBuffer = fs.readFileSync('app/db/data.json');
-        gamess = JSON.parse(dataBuffer.toString()).filter((item: any) => typeof item === 'object' && item !== null && item.id);
-    } catch (error) {
-        console.error('Error reading game data:', error);
-        // The file may not exist or may be malformed; create a clean state.
-    }
-
-    // Upsert the game: update if exists, else add new game
-    const gameIndex = gamess.findIndex(g => g.id === game.id);
-    
-    if (gameIndex !== -1) {
-        gamess[gameIndex] = game;
-    } else {
-        gamess.push(game);
-    }
-
-    // Write the updated games array back to the file
-    try {
-        fs.writeFileSync('app/db/data.json', JSON.stringify(gamess, null, 2));
-        console.log('Game saved');
-    } catch (error) {
-        console.error('Error saving game data:', error);
-    }
+    const query = `
+        INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+    const values = [
+        game.path,
+        game.id,
+        game.slug,
+        game.name,
+        game.name_original,
+        game.description,
+        game.released,
+        game.background_image,
+        game.screenshots_count
+    ];
+    return new Promise((resolve, reject) => {
+        db.run(query, values, function (err) {
+            if (err) {
+                console.error('Error saving game:', err);
+                reject(err);
+                return;
+            }
+            console.log(`Game saved with id ${game.id}`);
+            resolve(this.lastID);
+        });
+    });
 }
 
 async function fetchRawgApi(path: string, params: Record<string, string>) {
@@ -152,26 +240,24 @@ export async  function detectGames() {
             console.error('Error reading game folder:', err);
             return;
         }
+        console.log('Files:', files);
 
         files.forEach(async (file) => {
-            if (games.find(game => game.path === file)) {
-                console.log('Game already exists:', file);
-                return;
-            }else {
-                const game: SearchResults = await findGame(file);
-                if (game.count === 0) {
-                    console.error('Game not found:', file);
-                    return;
+            const path = join(gameFolder, file);
+            const stat = fs.statSync(path);
+            if (stat.isDirectory()) {
+                const game = await findGame(file);
+                if (game.results.length > 0) {
+                    const gameDetails = await getGameDetails(game.results[0].id);
+                    gameDetails.path = file;
+                    await saveGame(gameDetails);
                 }
-                console.log('Game found:', game.results[0].name);
-                saveGameWithId(game.results[0].id);
-                setGamePath(game.results[0].id, file);
             }
-            
         });
     });
 
-
-
     return;
 }
+
+
+initializeDatabase().catch(console.error);

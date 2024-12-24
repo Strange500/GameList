@@ -7,7 +7,7 @@ export const Navbar = async () => {
     return (
         <div className="px-5 py-3 bg-black shadow-sm text-white">
             <nav className='flex justify-between items-center'>
-                <Image src="https://placehold.co/600x400" alt="logo" height="84" width="84"/>
+                <Image src={'/logo.png'} alt="logo" height="100" width="130"/>
                 <div className='flex justify-between items-center gap-5'>
                     {session && session?.user ? (
                         <>

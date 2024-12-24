@@ -11,6 +11,7 @@ import {
 import { GameDetails } from '@/app/db/gameDetail';
 import Link from 'next/link';
 import { buttonVariants } from './ui/button';
+import { DownloadIcon } from 'lucide-react';
 
 export const GameCard = async ({ game}: { game: GameDetails }) => {
     return (
@@ -29,7 +30,11 @@ export const GameCard = async ({ game}: { game: GameDetails }) => {
                 </CardDescription>
               </CardContent>
               <CardFooter>
-              <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Click here</Link>
+                <div className='flex flex-row gap-3'>
+                  <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Click here</Link>
+                  
+                    <Link className={buttonVariants({ variant: "outline" })} href={`/api/download/${game.id}`}><DownloadIcon/></Link>
+                </div>
               </CardFooter>
         </Card>
     )
