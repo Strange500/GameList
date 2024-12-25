@@ -10,12 +10,14 @@ import {
     CarouselNext,
     CarouselPrevious,
   } from "@/components/ui/carousel"
+import { Edit } from "lucide-react";
+import { EditGameForm } from "@/components/editGameForm";
 
 interface GamesPageProps {
     params: { id: string };
 }
 
-async function GamesPage({ params }: GamesPageProps)  {
+async function GamesPage({ params, searchParams }: {paams :GamesPageProps, searchParams: Promise<{ modifquery?: string }>})  {
     let id: number;
     try {
         id = parseInt((await params).id, 10);
@@ -33,6 +35,7 @@ async function GamesPage({ params }: GamesPageProps)  {
 
 
     const { name, name_original, released, background_image, description } = game;
+    const modifquery = (await searchParams).modifquery || '';
 
     return (
         <div className="h-full w-full flex flex-col space-y-8 p-4">
@@ -43,9 +46,13 @@ async function GamesPage({ params }: GamesPageProps)  {
             </div>
             <div className="flex flex-col justify-center items-start space-y-4">
                 <h1 className="text-3xl font-bold">{name}</h1>
-                <h2 className="text-lg font-semibold">{name_original} {released.to}</h2>
+                <h2 className="text-lg font-semibold">{name_original} {released}</h2>
                 <p className="text-sm" dangerouslySetInnerHTML={{__html: description}}></p>
-                <Link href={`/api/download/${id}`} className={buttonVariants()}>Download</Link>
+                <div className="flex flex-row">
+                    <Link href={`/api/download/${id}`} className={buttonVariants()}>Download</Link>
+                    <EditGameForm game={game} modifquery={modifquery} />
+                </div>
+                
             </div>
             </section>
 
