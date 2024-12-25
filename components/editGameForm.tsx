@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { changeGameId, findGame } from '@/app/db/gameDB';
 import { Result } from '@/app/db/apiInterfaces';
+import { Textarea } from './ui/textarea';
 
 
 
@@ -48,7 +49,7 @@ export const EditGameForm = async ({ game, modifquery }: { game: GameDetails, mo
                             </div>
                             <div className="space-y-1">
                             <Label htmlFor="description">Description</Label>
-                            <Input type="text" id="description" defaultValue={game.description} />
+                            <Textarea placeholder="Type your message here." id="description" defaultValue={game.description} />
                             </div>
                         </CardContent>
                         <CardFooter>
