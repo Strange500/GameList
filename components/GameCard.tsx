@@ -33,7 +33,7 @@ export const GameCard = async ({ game, modifquery}: { game: GameDetails, modifqu
               <CardFooter>
                   <div className='flex flex-row gap-3'>
                 
-                  <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Click here</Link>
+                  <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Details</Link>
                   
                   <Link className={buttonVariants({ variant: "outline" })} href={`/api/download/${game.id}`}><DownloadIcon/></Link>
                 

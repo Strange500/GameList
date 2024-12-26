@@ -75,6 +75,15 @@ async function initializeDatabase() {
         );
     `;
 
+    const createScreenshotsTable = `
+        CREATE TABLE IF NOT EXISTS screenshots (
+            game_id INT,
+            url VARCHAR(512),
+            PRIMARY KEY (game_id, url),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+        );
+    `;
+
     //const testgame:string = 'INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count) VALUES ("test", 1, "test", "test", "test", "test", "2021-01-01", "https://placehold.co/600x400", 2);';
 
     // Execute the create table statements
@@ -83,6 +92,7 @@ async function initializeDatabase() {
     db.exec(createTagsTable);
     db.exec(createGameGenresTable);
     db.exec(createGameTagsTable);
+    db.exec(createScreenshotsTable);
     //db.exec(testgame);
     
     console.log("Tables created or already exist.");
@@ -179,6 +189,7 @@ export function saveGame(game: GameDetails) {
         INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
+
     const values = [
         game.path,
         game.id,
@@ -191,6 +202,7 @@ export function saveGame(game: GameDetails) {
         game.screenshots_count
     ];
     return new Promise((resolve, reject) => {
+        
         db.run(query, values, function (err) {
             if (err) {
                 console.error('Error saving game:', err);
