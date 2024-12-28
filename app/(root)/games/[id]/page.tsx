@@ -18,7 +18,7 @@ import { EditGameForm } from "@/components/editGameForm";
 async function GamesPage({ params, searchParams }: {params :{ id: string }, searchParams: Promise<{ modifquery?: string }>})  {
     let id: number;
     try {
-        id = parseInt((await params).id, 10);
+        id = parseInt(params.id, 10);
         if (isNaN(id)) throw new Error('Invalid ID');
     } catch (e) {
         console.error(e);
