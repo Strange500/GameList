@@ -3,11 +3,11 @@ import { GameDetails } from "@/app/db/gameDetail";
 import archiver from 'archiver';
 import { join } from "path";
 
-export async function GET(_: Request, { params }: { params: { id: string } }) {
+export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   // Parse ID from params
   let id: number;
   try {
-      id = parseInt(params.id, 10);
+      id = parseInt((await params).id, 10);
       if (isNaN(id)) throw new Error('Invalid ID');
   } catch {
       return new Response(JSON.stringify({ error: 'Invalid ID' }), {

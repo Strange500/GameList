@@ -15,7 +15,7 @@ import { EditGameForm } from "@/components/editGameForm";
 
 
 
-async function GamesPage({ params, searchParams }: {params :{ id: string }, searchParams: Promise<{ modifquery?: string }>})  {
+async function GamesPage({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ modifquery?: string }> }) {
     let id: number;
     try {
         id = parseInt((await params).id, 10);

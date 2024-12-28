@@ -6,7 +6,9 @@
     "git@latest",
     "vite@latest",
     "tree@latest",
-    "pnpm@latest"
+    "pnpm@latest",
+    "vagrant@latest",
+    "virtualbox@latest"
   ],
   "shell": {
     "init_hook": [
