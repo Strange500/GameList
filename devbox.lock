@@ -234,6 +234,76 @@
         }
       }
     },
+    "vagrant@latest": {
+      "last_modified": "2024-12-17T11:43:56Z",
+      "resolved": "github:NixOS/nixpkgs/4989a246d7a390a859852baddb1013f825435cee#vagrant",
+      "source": "devbox-search",
+      "version": "2.4.3",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/z6km2j3vs7q3sx5ghp8wa7hwppnqz924-vagrant-2.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/z6km2j3vs7q3sx5ghp8wa7hwppnqz924-vagrant-2.4.3"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mc5i2z656bym9bc1r9zn39vf5lqhzvaq-vagrant-2.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mc5i2z656bym9bc1r9zn39vf5lqhzvaq-vagrant-2.4.3"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9k58r7rr8b3jl7p6j2kg3nsm2fyv819p-vagrant-2.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9k58r7rr8b3jl7p6j2kg3nsm2fyv819p-vagrant-2.4.3"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/4f91vyak7r8db7fzvqcczimc30p4fxm4-vagrant-2.4.3",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/4f91vyak7r8db7fzvqcczimc30p4fxm4-vagrant-2.4.3"
+        }
+      }
+    },
+    "virtualbox@latest": {
+      "last_modified": "2024-12-03T12:40:06Z",
+      "resolved": "github:NixOS/nixpkgs/566e53c2ad750c84f6d31f9ccb9d00f823165550#virtualbox",
+      "source": "devbox-search",
+      "version": "7.0.22",
+      "systems": {
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rh970hzjd3dww7vkw23w5z38w0lmim2s-virtualbox-7.0.22",
+              "default": true
+            },
+            {
+              "name": "modsrc",
+              "path": "/nix/store/bxxgk6hx7i5dncdwyayarnjkjrj7p6gn-virtualbox-7.0.22-modsrc"
+            }
+          ],
+          "store_path": "/nix/store/rh970hzjd3dww7vkw23w5z38w0lmim2s-virtualbox-7.0.22"
+        }
+      }
+    },
     "vite@latest": {
       "last_modified": "2024-11-16T04:25:12Z",
       "resolved": "github:NixOS/nixpkgs/34a626458d686f1b58139620a8b2793e9e123bba#vite",
