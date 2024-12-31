@@ -20,6 +20,8 @@ This project is a web application built with Next.js that provides an interactiv
 
 ## Installation
 
+# Direct install
+
 To set up and run this project locally, follow these steps:
 
 1. **Clone the repository**:
@@ -57,6 +59,29 @@ To set up and run this project locally, follow these steps:
 6. **Open the application**:
 
     Open your browser and go to `http://localhost:3000`.
+
+# Docker install
+
+To set up and run this project using Docker, follow these steps:
+
+1. **Build the Docker image**:
+
+    ```bash
+    docker build -t gamelist:latest .
+    ```
+
+2. **Run the Docker container**:
+Pass the required environment variables as arguments: AUTH_AUTHENTIK_ID, AUTH_AUTHENTIK_SECRET, AUTH_AUTHENTIK_ISSUER, RAWG_API_KEY
+
+```bash
+docker run -p 3000:3000  -e AUTH_AUTHENTIK_ID=auth_id  -e AUTH_AUTHENTIK_SECRET=auth_secret -e AUTH_AUTHENTIK_ISSUER=auth_issuer -e RAWG_API_KEY=api_key_rawg -e GAME_FOLDER_PATH=/games -v path_to_games_folders:/games gamelist
+```
+
+3. **Open the application**:
+
+    Open your browser and go to `http://localhost:3000`.
+
+
 
 ## Usage
 

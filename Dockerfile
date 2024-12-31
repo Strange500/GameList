@@ -1,41 +1,32 @@
-# Use the official Node.js image as the base image
-FROM node:22 AS builder
+# Use Ubuntu 20.04 as the base image
+FROM ubuntu:20.04
+
+# Set environment variables to prevent interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update package list and install prerequisites
+RUN apt-get update -y && \
+    apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Node.js (using NodeSource)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /app
 
-# Install pnpm globally
-RUN npm install -g pnpm
-
-# Copy package.json and pnpm-lock.yaml
-COPY package.json pnpm-lock.yaml ./
-
-# Install dependencies
-RUN pnpm install
-
-# Copy the entire application code
+# Copy local files into the container
 COPY . .
 
-# Build the application
-RUN pnpm build
+# Install project dependencies
+RUN npm install --legacy-peer-deps && npx -y auth secret && npm run build
 
-# Use a smaller Node.js image for the production build
-FROM node:22 AS runner
-
-# Set the working directory
-WORKDIR /app
-
-# Copy only the necessary files from the builder
-COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-RUN npm install -g pnpm
-
-# Install only production dependencies
-RUN pnpm install --prod
 
 # Expose the application port
 EXPOSE 3000
 
-# Set the command to start the Next.js app
-CMD ["pnpm", "start"]
+CMD ["npm", "run", "start"]
