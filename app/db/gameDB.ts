@@ -19,7 +19,7 @@ const db = new sqlite3.Database(DB_PATH, (err) => {
 }
 );
 
-async function initializeDatabase() {
+export async function initializeDatabase() {
     // Define the SQL to create the tables only if they do not exist
     const createGamesTable = `
         CREATE TABLE IF NOT EXISTS games (
@@ -186,7 +186,7 @@ export async function saveGameWithId(id: number, path: string) {
 
 export function saveGame(game: GameDetails) {
     const query = `
-        INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
+        INSERT OR IGNORE INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
@@ -209,7 +209,9 @@ export function saveGame(game: GameDetails) {
                 reject(err);
                 return;
             }
-            console.log(`Game saved with id ${game.id}`);
+            if (this.lastID) {
+                console.log(`Game saved with ID: ${this.lastID}`);
+            }
             resolve(this.lastID);
         });
     });
@@ -262,7 +264,6 @@ export async  function detectGames() {
             console.error('Error reading game folder:', err);
             return;
         }
-        console.log('Files:', files);
 
         files.forEach(async (file) => {
             const path = join(gameFolder, file);
@@ -282,4 +283,3 @@ export async  function detectGames() {
 }
 
 
-initializeDatabase().catch(console.error);

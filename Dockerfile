@@ -29,4 +29,4 @@ RUN npm install --legacy-peer-deps && npx -y auth secret && npm run build
 # Expose the application port
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD /bin/bash -c "npx tsx app/db/initDb.tsx && npm run start"

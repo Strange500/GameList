@@ -1,0 +1,22 @@
+services:
+      
+  GameList:
+    image: gamelist:latest
+    container_name: gamelist
+    environment:
+      - AUTH_AUTHENTIK_ID=authid
+      - AUTH_AUTHENTIK_SECRET=authscret
+      - AUTH_AUTHENTIK_ISSUER=authurl
+      - RAWG_API_KEY=rawgkey
+      - GAME_FOLDER_PATH=/games
+      - AUTH_TRUST_HOST=true
+      - AUTH_URL=http://localhost:3124/api/auth/
+    volumes:
+      - pathtogames:/games:ro
+    # Ports not needed when already passed to Traefik
+    ports:
+      - 3124:3000
+    restart: unless-stopped
+
+
+
