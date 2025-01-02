@@ -1,4 +1,5 @@
 # Video Game Information App
+[![CodeFactor](https://www.codefactor.io/repository/github/strange500/gamelist/badge)](https://www.codefactor.io/repository/github/strange500/gamelist)
 
 ## Overview
 
