@@ -2,7 +2,6 @@ import { getGame } from "@/app/db/gameDB";
 import { GameDetails } from "@/app/db/gameDetail";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
 import {
     Dialog,
     DialogContent,
@@ -65,7 +64,7 @@ async function GamesPage({ params, searchParams }: { params: Promise<{ id: strin
                             </DialogContent>
                         </Dialog>
                         <div className="flex flex-row space-x-4">
-                            <Link href={`/api/download/${id}`} className={buttonVariants()}>Download</Link>
+                            <a href={`/api/download/${id}`} className={buttonVariants()}>Download</a>
                             <EditGameForm game={game} modifquery={modifquery} />
                         </div>
                     </div>

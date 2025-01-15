@@ -35,7 +35,7 @@ export const GameCard = async ({ game, modifquery}: { game: GameDetails, modifqu
                 
                   <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Details</Link>
                   
-                  <Link className={buttonVariants({ variant: "outline" })} href={`/api/download/${game.id}`}><DownloadIcon/></Link>
+                  <a className={buttonVariants({ variant: "outline" })} href={`/api/download/${game.id}`}><DownloadIcon/></a>
                 
                   <EditGameForm game={game} modifquery={modifquery} />
                 
