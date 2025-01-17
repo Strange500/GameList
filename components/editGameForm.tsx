@@ -3,7 +3,7 @@ import { Label } from './ui/label';
 import { Input } from './ui/input';
 import Form from 'next/form';
 import { Button, buttonVariants } from './ui/button';
-import { Edit } from 'lucide-react';
+import { Edit, EllipsisVertical } from 'lucide-react';
 import { GameDetails } from '@/app/db/gameDetail';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
@@ -18,8 +18,9 @@ export const EditGameForm = async ({ game, modifquery }: { game: GameDetails, mo
     
     return (
         <Dialog>
-            <DialogTrigger className={buttonVariants({ variant: "outline" })} >
-                <Edit/>
+            <DialogTrigger >
+                <div className='absolute w-12 h-12 bg-black opacity-25 rounded-tr-full rotate-180 -top-2 -right-2'></div>
+                <EllipsisVertical className='text-white'/>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
