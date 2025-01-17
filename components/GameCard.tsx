@@ -1,46 +1,38 @@
 import Image from 'next/image';
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
 import { GameDetails } from '@/app/db/gameDetail';
 import Link from 'next/link';
-import { buttonVariants } from './ui/button';
+import { Button} from './ui/button';
 import { DownloadIcon } from 'lucide-react';
 import { EditGameForm } from './editGameForm';
 
 export const GameCard = async ({ game, modifquery}: { game: GameDetails, modifquery: string }) => {
     return (
-        <Card key={game.id}>
-              <CardHeader>
-                {game.background_image ? (
-                    <Image src={game.background_image} alt={game.name} width={300} height={200} />
-                ) : (
-                    <Image src="https://placehold.co/600x400" alt={game.name} width={300} height={200} />
-                )}
-                
-              </CardHeader>
-              <CardContent>
-                <CardTitle>{game.name} ({game.path})</CardTitle>
-                <CardDescription dangerouslySetInnerHTML={{__html: game.description.length > 100 ? `${game.description.substring(0, 250)}...` : game.description}}>
-                </CardDescription>
-              </CardContent>
-              <CardFooter>
-                  <div className='flex flex-row gap-3'>
-                
-                  <Link className={buttonVariants({ variant: "outline" })} href={`/games/${game.id}`}>Details</Link>
+        <section key={game.id} className='overflow-hidden h-80 shadow-lg bg-card relative'>
+          <Link href={`/games/${game.id}`}>
+            <Image 
+              src={game.background_image} 
+              alt={game.name} 
+              layout="fill" 
+              objectFit="cover" 
+              className='w-full h-full' 
+            />
+          </Link>
+    
+            <div className='bg-black w-full  absolute bottom-0  text-white p-2 place-content-evenly'>
+            <Link href={`/games/${game.id}`}><h3 className='font-bold'>{game.name} </h3></Link>
+                <div className='flex flex-row justify-between mt-2'>
+                    <Button variant="outline" asChild>
+                      <a href={`/api/download/${game.id}`}><DownloadIcon/></a>
+                    </Button>
                   
-                  <a className={buttonVariants({ variant: "outline" })} href={`/api/download/${game.id}`}><DownloadIcon/></a>
-                
-                  <EditGameForm game={game} modifquery={modifquery} />
-                
+                  <p>{new Date(game.released).toLocaleDateString('fr-FR')}</p>
                 </div>
-              </CardFooter>
-        </Card>
+            </div>
+
+            <div className='absolute top-2 right-2'>
+              <EditGameForm game={game} modifquery={modifquery} />
+            </div>
+        </section>
     )
 }
