@@ -2,8 +2,8 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Label } from './ui/label';
 import { Input } from './ui/input';
 import Form from 'next/form';
-import { Button, buttonVariants } from './ui/button';
-import { Edit, EllipsisVertical } from 'lucide-react';
+import { Button } from './ui/button';
+import { EllipsisVertical } from 'lucide-react';
 import { GameDetails } from '@/app/db/gameDetail';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
