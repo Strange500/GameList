@@ -1,3 +1,4 @@
+'use server';
 import fs from 'fs';
 import { SearchResults } from './apiInterfaces';
 import { GameDetails } from './gameDetail';
@@ -134,7 +135,7 @@ export async function changeGameId(path: string, newId: number) {
     saveGameWithId(newId, path);
 }
 
-export function getGame(id: number): Promise<GameDetails | undefined> {
+export async function  getGame(id: number): Promise<GameDetails | undefined> {
     const query = `SELECT * FROM games WHERE id = ?;`;
     return new Promise((resolve, reject) => {
         db.get(query, [id], (err: Error | null, row: GameDetails) => {
@@ -184,7 +185,7 @@ export async function saveGameWithId(id: number, path: string) {
     return saveGame(game);
 }
 
-export function saveGame(game: GameDetails) {
+export async function saveGame(game: GameDetails) {
     const query = `
         INSERT OR IGNORE INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
