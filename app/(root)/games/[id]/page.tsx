@@ -14,7 +14,7 @@ import { EditGameForm } from "@/components/editGameForm";
 
 
 
-async function GamesPage({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ modifquery?: string }> }) {
+async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
     let id: number;
     try {
         id = parseInt((await params).id, 10);
@@ -32,7 +32,6 @@ async function GamesPage({ params, searchParams }: { params: Promise<{ id: strin
 
 
     const { name, released, background_image, description, path } = game;
-    const modifquery = (await searchParams).modifquery || '';
 
     return (
         <>
@@ -65,7 +64,7 @@ async function GamesPage({ params, searchParams }: { params: Promise<{ id: strin
                         </Dialog>
                         <div className="flex flex-row space-x-4">
                             <a href={`/api/download/${id}`} className={buttonVariants()}>Download</a>
-                            <EditGameForm game={game} modifquery={modifquery} />
+                            <EditGameForm game={game} />
                         </div>
                     </div>
                 </section>

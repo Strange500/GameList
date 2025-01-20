@@ -1,10 +1,21 @@
 import { getGame } from "@/app/db/gameDB";
 import { GameDetails } from "@/app/db/gameDetail";
+import { auth } from "@/auth";
 import archiver from 'archiver';
 import { join } from "path";
 
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
   // Parse ID from params
+  const session = await auth();
+    if (!session || !session.user) {
+        return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            status: 401,
+        });
+    }
+
   let id: number;
   try {
       id = parseInt((await params).id, 10);

@@ -1,20 +1,69 @@
+"use client"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
-import Form from 'next/form';
 import { Button } from './ui/button';
 import { EllipsisVertical } from 'lucide-react';
 import { GameDetails } from '@/app/db/gameDetail';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { changeGameId, findGame } from '@/app/db/gameDB';
-import { Result } from '@/app/db/apiInterfaces';
 import { Textarea } from './ui/textarea';
 
 
 
-export const EditGameForm = async ({ game, modifquery }: { game: GameDetails, modifquery: string }) => {
-    const searchGames: Result[]  = (await findGame(modifquery)).results;
+import React from 'react';
+import { Result, SearchResults } from '@/app/db/apiInterfaces';
+import dynamic from 'next/dynamic';
+const SmallGameCard = dynamic(() => import('./SmallGameCard').then(mod => mod.SmallGameCard), { ssr: true });
+
+
+
+export const EditGameForm = ({ game }: { game: GameDetails }) => {
+
+    const [searchGames, setSearchGames] = React.useState<string>("");
+    const [gameGrid, setGameGrid] = React.useState<React.ReactNode>();
+    const [debouncedQuery, setDebouncedQuery] = React.useState(searchGames);
+
+    
+
+    React.useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedQuery(searchGames);
+        }, 1000);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }
+    , [searchGames]);
+
+    React.useEffect(() => {
+        function genCardPrezList(games: SearchResults)  {
+            if (games === undefined) {
+                return <></>;
+            }
+            console.log(games);
+            return (
+                <>
+        
+                    {games.results.map((r: Result, index: number) => (
+                        
+                        <SmallGameCard key={index} name={r.name} released={r.released} path={game.path} id={r.id} />
+                    ))}
+                </>
+            );
+        }
+        if (debouncedQuery) {
+          // Call your research function here with the debouncedQuery
+            const response = fetch(`/api/search/${debouncedQuery}`);
+            response.then((r) => r.json()).then((r: SearchResults) => {
+                setGameGrid(genCardPrezList(r));
+            });
+        }
+      }, [debouncedQuery, game.path]);
+
+
+      
     
     return (
         <Dialog>
@@ -63,38 +112,11 @@ export const EditGameForm = async ({ game, modifquery }: { game: GameDetails, mo
                             
                                 <CardHeader>
                                     <CardTitle>Search the game</CardTitle>
-                                    <Form action={"/"}>
-                                        <Input id="modifquery" name="modifquery" type="search" placeholder="Search the game"/>
-                                    </Form>
+                                        <Input type="search" placeholder="Search the game" value={searchGames} onChange={(e) => setSearchGames(e.target.value)}/>
                                 </CardHeader>
                                 
                                     <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-h-64 overflow-y-auto">
-                                        {modifquery && modifquery.length > 0 ? (
-                                            
-                                            searchGames.map((r, index) => (
-                                                <Form key={index} action={async () => {
-                                                    "use server";
-                                                    changeGameId(game.path, r.id);
-                                                }}>
-                                                    <Card className='h-full'>
-                                                        <CardHeader>
-                                                            <CardTitle>{r.name}</CardTitle>
-                                                        </CardHeader>
-                                                        <CardContent>
-                                                            <CardDescription>
-                                                                {r.released}
-                                                            </CardDescription>
-                                                        </CardContent>
-                                                        <CardFooter>
-                                                            <Button>Select</Button>
-                                                        </CardFooter>
-                                                    </Card>
-                                                </Form>
-                                            ))
-                                            
-                                        ) : (
-                                            <div>Search for a game</div>
-                                        )}
+                                            {gameGrid}
                                     </CardContent>
                                     
                                 
@@ -103,9 +125,6 @@ export const EditGameForm = async ({ game, modifquery }: { game: GameDetails, mo
                     </TabsContent>
                     
                 </Tabs>
-                {/* <DialogFooter>
-                    <Button type="submit">Save changes</Button>
-                </DialogFooter> */}
             </DialogContent>
         </Dialog>
     )

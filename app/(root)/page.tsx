@@ -4,6 +4,9 @@ import { GameDetails } from '../db/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
 
+export const experimental_ppr = true;
+
+
 export default async function Page({searchParams}: {
   searchParams: Promise<{ query?: string, modifquery?: string}>
 }) {
