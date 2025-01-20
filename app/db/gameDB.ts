@@ -185,6 +185,23 @@ export async function saveGameWithId(id: number, path: string) {
     return saveGame(game);
 }
 
+export async function deleteGame(path: string) {
+    const query = `DELETE FROM games WHERE path = ?;`;
+    return new Promise((resolve, reject) => {
+        db.run(query, [path], function (err) {
+            if (err) {
+                console.error('Error deleting game:', err);
+                reject(err);
+                return;
+            }
+            if (this.changes > 0) {
+                console.log(`Game deleted with path: ${path}`);
+            }
+            resolve(this.changes);
+        });
+    });
+}
+
 export async function saveGame(game: GameDetails) {
     const query = `
         INSERT OR IGNORE INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
@@ -260,6 +277,8 @@ export async  function detectGames() {
         return;
     }
 
+    const currentGames = await getAllGames();
+
     fs.readdir(gameFolder, (err, files) => {
         if (err) {
             console.error('Error reading game folder:', err);
@@ -278,6 +297,14 @@ export async  function detectGames() {
                 }
             }
         });
+
+        currentGames.forEach(async (game) => {
+            const path = join(gameFolder, game.path);
+            if (!fs.existsSync(path)) {
+                await deleteGame(game.path);
+            }
+        }
+        );
     });
 
     return;
