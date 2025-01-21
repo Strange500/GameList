@@ -15,8 +15,8 @@ export const GameCard = async ({ game}: { game: GameDetails, modifquery: string 
             <Image 
               src={game.background_image} 
               alt={game.name} 
-              layout="fill" 
-              objectFit="cover" 
+              fill={true}
+              style={{objectFit: 'cover'}}
               className='w-full h-full group-hover:animate-zoom-slide' 
             />
           </Link>

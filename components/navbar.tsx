@@ -1,8 +1,9 @@
 import { auth } from '@/auth';
 import { signIn, signOut } from '@/auth';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ThemeSwitcher } from './ThemeSwitchBtn';
+import ThemedLogo from './ThemedLogo';
+
 
 export const Navbar = async () => {
     const session = await auth();
@@ -10,8 +11,8 @@ export const Navbar = async () => {
         <div className="px-5 py-3 dark:bg-gray-900 bg-slate-100  border-b dark:border-gray-500 border-gray-300 p-4 shadow-md ">
             <nav className='flex justify-between items-center'>
                 <div className='flex flex-row gap-10'>
-                    <Link href={"/"}>
-                        <Image src={'/logo.png'} alt="logo" height="100" width="130"/>
+                    <Link href={"/"} suppressHydrationWarning>
+                        <ThemedLogo/>
                     </Link>
                     <ThemeSwitcher />
                 </div>

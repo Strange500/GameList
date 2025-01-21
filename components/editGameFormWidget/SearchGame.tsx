@@ -40,7 +40,7 @@ export const SearchGame = ({ game }: { game: GameDetails }) => {
         
                     {games.results.map((r: Result, index: number) => (
                         
-                        <SmallGameCard key={index} name={r.name} released={r.released} path={game.path} id={r.id} />
+                        <SmallGameCard key={index} name={r.name} released={r.released} path={game.path} id={r.id} background_image={r.background_image} />
                     ))}
                 </>
             );
@@ -59,19 +59,22 @@ export const SearchGame = ({ game }: { game: GameDetails }) => {
     
     return (
         
-            <Card>
+            <Card >
                 
                     <CardHeader>
                         <CardTitle>Search the game</CardTitle>
                             <Input type="search" placeholder="Search the game" value={searchGames} onChange={(e) => setSearchGames(e.target.value)}/>
                     </CardHeader>
-                    
-                        <CardContent className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-h-64 overflow-y-auto">
+                        {gameGrid ? (
+                            <CardContent className="grid grid-cols-1 sm:grid-cols-5 gap-2 w-full h-96 overflow-y-auto">
                                 {gameGrid}
-                        </CardContent>
+                            </CardContent>
+                        ) : (
+                            <div className="flex justify-center items-center h-96">
+                                <p>Search a game</p>
+                            </div>
+                        )}
                         
-                    
-                
             </Card>
                    
     )

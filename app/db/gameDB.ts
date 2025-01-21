@@ -14,9 +14,9 @@ const DB_PATH = 'app/db/game.db';
 const db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) {
         console.error('Error opening database:', err);
-        return;
+    } else {
+        console.log('Connected to the SQLite database');
     }
-    console.log('Connected to the SQLite database');
 }
 );
 
@@ -196,6 +196,38 @@ export async function deleteGame(path: string) {
             }
             if (this.changes > 0) {
                 console.log(`Game deleted with path: ${path}`);
+            }
+            resolve(this.changes);
+        });
+    });
+}
+
+export async function modifyGame(game: GameDetails) {
+    const query = `
+        UPDATE games
+        SET slug = ?, name = ?, name_original = ?, description = ?, released = ?, background_image = ?, screenshots_count = ?
+        WHERE path = ?;
+    `;
+
+    const values = [
+        game.slug,
+        game.name,
+        game.name_original,
+        game.description,
+        game.released,
+        game.background_image,
+        game.screenshots_count,
+        game.path
+    ];
+    return new Promise((resolve, reject) => {
+        db.run(query, values, function (err) {
+            if (err) {
+                console.error('Error updating game:', err);
+                reject(err);
+                return;
+            }
+            if (this.changes > 0) {
+                console.log(`Game updated with path: ${game.path}`);
             }
             resolve(this.changes);
         });
