@@ -202,6 +202,20 @@ export async function deleteGame(path: string) {
     });
 }
 
+async function gameWithPathExists(path: string): Promise<boolean> {
+    const query = `SELECT * FROM games WHERE path = ?;`;
+    return new Promise((resolve, reject) => {
+        db.get(query, [path], (err: Error | null, row: GameDetails) => {
+            if (err) {
+                console.error('Error querying game:', err);
+                reject(err);
+                return;
+            }
+            resolve(row !== undefined);
+        });
+    });
+}
+
 export async function modifyGame(game: GameDetails) {
     const query = `
         UPDATE games
@@ -320,7 +334,9 @@ export async  function detectGames() {
         files.forEach(async (file) => {
             const path = join(gameFolder, file);
             const stat = fs.statSync(path);
-            if (stat.isDirectory()) {
+            const pathExists = await gameWithPathExists(file);
+           
+            if ( !pathExists && stat.isDirectory()) {
                 const game = await findGame(file);
                 if (game.results.length > 0) {
                     const gameDetails = await getGameDetails(game.results[0].id);
