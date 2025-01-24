@@ -8,7 +8,8 @@
     "tree@latest",
     "pnpm@latest",
     "vagrant@latest",
-    "virtualbox@latest"
+    "virtualbox@latest",
+    "prisma@latest"
   ],
   "shell": {
     "init_hook": [

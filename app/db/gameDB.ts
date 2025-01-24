@@ -7,20 +7,55 @@ import sqlite3 from 'sqlite3';
 sqlite3.verbose();
 
 
-const DB_PATH = 'app/db/game.db';
+const DB_PATH = join(process.env.DATABASE_PATH || '', 'game.db');
+console.log(DB_PATH);
 
 
-
-const db = new sqlite3.Database(DB_PATH, (err) => {
+const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
     if (err) {
         console.error('Error opening database:', err);
+        return;
     } else {
-        console.log('Connected to the SQLite database');
+        initializeDatabase();
     }
+    
 }
 );
 
 export async function initializeDatabase() {
+    const checkTablesExistQuery = `
+        SELECT name FROM sqlite_master WHERE type='table' AND name IN ('games', 'genres', 'tags', 'game_genres', 'game_tags', 'screenshots');
+    `;
+
+    db.all(checkTablesExistQuery, (err, rows: { name: string }[]) => {
+        if (err) {
+            console.error('Error checking tables:', err);
+            return;
+        }
+
+        const existingTables = rows.map((row: { name: string }) => row.name);
+        const tablesToCreate = [
+            { name: 'games', query: createGamesTable },
+            { name: 'genres', query: createGenresTable },
+            { name: 'tags', query: createTagsTable },
+            { name: 'game_genres', query: createGameGenresTable },
+            { name: 'game_tags', query: createGameTagsTable },
+            { name: 'screenshots', query: createScreenshotsTable }
+        ];
+
+        tablesToCreate.forEach(table => {
+            if (!existingTables.includes(table.name)) {
+                db.exec(table.query, (err) => {
+                    if (err) {
+                        console.error(`Error creating table ${table.name}:`, err);
+                    } else {
+                        console.log(`Table ${table.name} created successfully`);
+                    }
+                });
+            }
+        });
+    });
+
     // Define the SQL to create the tables only if they do not exist
     const createGamesTable = `
         CREATE TABLE IF NOT EXISTS games (
@@ -87,16 +122,15 @@ export async function initializeDatabase() {
 
     //const testgame:string = 'INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count) VALUES ("test", 1, "test", "test", "test", "test", "2021-01-01", "https://placehold.co/600x400", 2);';
 
-    // Execute the create table statements
-    db.exec(createGamesTable);
-    db.exec(createGenresTable);
-    db.exec(createTagsTable);
-    db.exec(createGameGenresTable);
-    db.exec(createGameTagsTable);
-    db.exec(createScreenshotsTable);
+    // // Execute the create table statements
+    // db.exec(createGamesTable);
+    // db.exec(createGenresTable);
+    // db.exec(createTagsTable);
+    // db.exec(createGameGenresTable);
+    // db.exec(createGameTagsTable);
+    // db.exec(createScreenshotsTable);
     //db.exec(testgame);
     
-    console.log("Tables created or already exist.");
 }
 
 
@@ -357,5 +391,7 @@ export async  function detectGames() {
 
     return;
 }
+
+
 
 

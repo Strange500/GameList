@@ -186,6 +186,54 @@
         }
       }
     },
+    "prisma@latest": {
+      "last_modified": "2024-12-23T21:10:33Z",
+      "resolved": "github:NixOS/nixpkgs/de1864217bfa9b5845f465e771e0ecb48b30e02d#prisma",
+      "source": "devbox-search",
+      "version": "6.0.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/20wc3mp6pcagz5k2wch41fs4rm3898df-prisma-6.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/20wc3mp6pcagz5k2wch41fs4rm3898df-prisma-6.0.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/mfhak0qq6d4dnj77y3d5kynq2xgi7fss-prisma-6.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/mfhak0qq6d4dnj77y3d5kynq2xgi7fss-prisma-6.0.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cvvayxznarfc8gla7s0nckx7287pwi0q-prisma-6.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/cvvayxznarfc8gla7s0nckx7287pwi0q-prisma-6.0.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wkgz8bh8gdb3v4wqr0i4k7lg03q4ij6b-prisma-6.0.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wkgz8bh8gdb3v4wqr0i4k7lg03q4ij6b-prisma-6.0.1"
+        }
+      }
+    },
     "tree@latest": {
       "last_modified": "2024-12-04T16:45:45Z",
       "resolved": "github:NixOS/nixpkgs/2f9d395f057a50f8076f633c10519035fce8d773#tree",

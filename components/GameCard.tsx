@@ -7,7 +7,7 @@ import { EditGameForm } from './editGameForm';
 import { Suspense } from 'react';
 import GameCardSkeleton from './GameCardSkeleton';
 
-export const GameCard = async ({ game}: { game: GameDetails, modifquery: string }) => {
+export const GameCard = async ({ game}: { game: GameDetails}) => {
     return (
       <Suspense fallback={<GameCardSkeleton />}>
         <section key={game.id} className='group overflow-hidden h-80 shadow-lg bg-card relative hover:scale-105 ease-in duration-150 rounded-lg'>

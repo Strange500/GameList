@@ -46,7 +46,9 @@
     "clsx": "^2.1.1",
     "cmdk": "1.0.0",
     "date-fns": "^4.1.0",
-    "embla-carousel-react": "^8.5.1",
+    "dotenv": "^16.4.7",
+    "embla-carousel-autoplay": "^8.5.2",
+    "embla-carousel-react": "^8.5.2",
     "input-otp": "^1.4.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.469.0",
@@ -80,6 +82,7 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "prisma": "^6.2.1",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.2"
   }

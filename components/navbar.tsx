@@ -11,7 +11,7 @@ export const Navbar = async () => {
         <div className="px-5 py-3 dark:bg-gray-900 bg-slate-100  border-b dark:border-gray-500 border-gray-300 p-4 shadow-md ">
             <nav className='flex justify-between items-center'>
                 <div className='flex flex-row gap-10'>
-                    <Link href={"/"} suppressHydrationWarning>
+                    <Link href={"/"} >
                         <ThemedLogo/>
                     </Link>
                     <ThemeSwitcher />
