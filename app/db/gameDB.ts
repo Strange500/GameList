@@ -1,14 +1,34 @@
 'use server';
 import fs from 'fs';
-import { SearchResults } from './apiInterfaces';
+import { SearchResults } from './interfaces/apiInterfaces';
 import { GameDetails } from './gameDetail';
 import { join } from 'path';
 import sqlite3 from 'sqlite3';
+import stream from 'stream';
+import { ScreenShotResults } from './interfaces/screenShotsResults';
+import { ReadableStream as WebReadableStream } from 'stream/web';
 sqlite3.verbose();
 
 
-const DB_PATH = join(process.env.DATABASE_PATH || '', 'game.db');
-console.log(DB_PATH);
+
+
+const DATA_PATH = join(process.env.DATABASE_PATH || '', 'data');
+
+const DB_PATH = join(DATA_PATH, 'games.db');
+
+const IMAGE_PATH = join(DATA_PATH, 'screenshots');
+
+export async function getImagePath()  {
+    return IMAGE_PATH;
+}
+
+if (!fs.existsSync(DATA_PATH)) {
+    fs.mkdirSync(DATA_PATH);
+}
+
+if (!fs.existsSync(IMAGE_PATH)) {
+    fs.mkdirSync(IMAGE_PATH);
+}
 
 
 const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
@@ -71,6 +91,15 @@ export async function initializeDatabase() {
         );
     `;
 
+    const createScreenshotsTable = `
+        CREATE TABLE IF NOT EXISTS screenshots (
+            game_id INT,
+            url VARCHAR(512),
+            PRIMARY KEY (game_id, url),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
+        );
+    `;
+
     
 
     const createGenresTable = `
@@ -110,31 +139,8 @@ export async function initializeDatabase() {
             FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
         );
     `;
-
-    const createScreenshotsTable = `
-        CREATE TABLE IF NOT EXISTS screenshots (
-            game_id INT,
-            url VARCHAR(512),
-            PRIMARY KEY (game_id, url),
-            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
-        );
-    `;
-
-    //const testgame:string = 'INSERT INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count) VALUES ("test", 1, "test", "test", "test", "test", "2021-01-01", "https://placehold.co/600x400", 2);';
-
-    // // Execute the create table statements
-    // db.exec(createGamesTable);
-    // db.exec(createGenresTable);
-    // db.exec(createTagsTable);
-    // db.exec(createGameGenresTable);
-    // db.exec(createGameTagsTable);
-    // db.exec(createScreenshotsTable);
-    //db.exec(testgame);
     
 }
-
-
-
 
 export async function getAllGames(): Promise<GameDetails[]> {
     const query = 'SELECT * FROM games;';
@@ -161,7 +167,6 @@ export async function getAllGames(): Promise<GameDetails[]> {
     });
 }
 
-
 export async function changeGameId(path: string, newId: number) {
     const delQuery = `DELETE FROM games WHERE path = ?;`;
     db.run(delQuery, [path]);
@@ -169,7 +174,7 @@ export async function changeGameId(path: string, newId: number) {
     saveGameWithId(newId, path);
 }
 
-export async function  getGame(id: number): Promise<GameDetails | undefined> {
+export async function getGame(id: number): Promise<GameDetails | undefined> {
     const query = `SELECT * FROM games WHERE id = ?;`;
     return new Promise((resolve, reject) => {
         db.get(query, [id], (err: Error | null, row: GameDetails) => {
@@ -282,11 +287,77 @@ export async function modifyGame(game: GameDetails) {
     });
 }
 
+async function saveWebFile(savePath: string, url: string) {
+    const writeStream = fs.createWriteStream(savePath);
+    const readStream = await fetch(url);
+    const nodeStream = stream.Readable.fromWeb(readStream.body as WebReadableStream<unknown>);
+    stream.pipeline(nodeStream, writeStream, (err) => {
+        if (err) {
+            console.error('Pipeline failed:', err);
+        } else {
+            console.log('Pipeline succeeded');
+        }
+    });
+}
+
+export async function saveScreenshots(gameId: number, screenshots: string[]) {
+    for (const url of screenshots) {
+        const saveDir = join(IMAGE_PATH, gameId.toString());
+        if (!fs.existsSync(saveDir)) {
+            fs.mkdirSync(saveDir);
+        }
+
+        const fileName = url.split('/').pop();
+        const savePath = join(saveDir, fileName || '');
+        const query = `INSERT OR IGNORE INTO screenshots (game_id, url) VALUES (?, ?);`;
+        const values = [gameId, savePath];
+        
+
+        await saveWebFile(savePath, url);
+
+        db.run(query, values, function (err) {
+            if (err) {
+                console.error('Error saving screenshot:', err);
+                return;
+            }
+            if (this.changes > 0) {
+                console.log(`Screenshot saved for game ID ${gameId}`);
+            }
+        });
+        } 
+
+    return;
+
+    
+    }
+
+async function saveBackgroundImage(url: string, gameId: number) : Promise<string> {
+    const saveDir = join(IMAGE_PATH, gameId.toString());
+    if (!fs.existsSync(saveDir)) {
+        fs.mkdirSync(saveDir);
+    }
+
+    const fileName = "background.jpg";
+    const savePath = join(saveDir, fileName || '');
+    await saveWebFile(savePath, url);
+
+    return savePath;
+
+    
+}
+
+
 export async function saveGame(game: GameDetails) {
     const query = `
         INSERT OR IGNORE INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
+    const screenshots = await getScreenshots(game.id);
+    saveScreenshots(game.id, screenshots);
+    saveBackgroundImage(game.background_image, game.id);
+    game.background_image = `/api/games/${game.id}/background`;
+
+
 
     const values = [
         game.path,
@@ -299,6 +370,7 @@ export async function saveGame(game: GameDetails) {
         game.background_image,
         game.screenshots_count
     ];
+
     return new Promise((resolve, reject) => {
         
         db.run(query, values, function (err) {
@@ -313,6 +385,12 @@ export async function saveGame(game: GameDetails) {
             resolve(this.lastID);
         });
     });
+}
+
+export async function getScreenshots(id: number): Promise<string[]> {
+    const response = await fetchRawgApi(`/games/${id}/screenshots`, {"page_size": "10"});
+    const screenshots = (response as ScreenShotResults).results.map((result) => result.image);
+    return screenshots;
 }
 
 async function fetchRawgApi(path: string, params: Record<string, string>) {

@@ -21,7 +21,7 @@ export default async function Page({searchParams}: {
     <section className="py-24">
       {session && session?.user ? (
         <>
-          <RecentGames games={gamesList}/>
+          {/* <RecentGames games={gamesList}/> */}
           <SearchBar/>
           <SearchGrid games={gamesList} query={query} />
         </>) : (
