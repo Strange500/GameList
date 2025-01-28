@@ -6,6 +6,7 @@ import { DownloadIcon } from 'lucide-react';
 import { EditGameForm } from './editGameForm';
 import { Suspense } from 'react';
 import GameCardSkeleton from './GameCardSkeleton';
+import { getGameBackgroundURI } from '@/app/db/gameDB';
 
 export const GameCard = async ({ game}: { game: GameDetails}) => {
     return (
@@ -13,7 +14,7 @@ export const GameCard = async ({ game}: { game: GameDetails}) => {
         <section key={game.id} className='group overflow-hidden h-80 shadow-lg bg-card relative hover:scale-105 ease-in duration-150 rounded-lg'>
           <Link href={`/games/${game.id}`}>
             <Image 
-              src={game.background_image} 
+              src={await getGameBackgroundURI(game.id) || ''}
               alt={game.name} 
               fill={true}
               style={{objectFit: 'cover'}}

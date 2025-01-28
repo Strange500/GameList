@@ -12,22 +12,23 @@ sqlite3.verbose();
 
 
 
-const DATA_PATH = join(process.env.DATABASE_PATH || '', 'data');
+const DATA_PATH = join(process.cwd(), 'public');
 
-const DB_PATH = join(DATA_PATH, 'games.db');
+const DB_PATH = join(process.cwd(), "db", 'games.db');
+const GAME_FOLDER_PATH = join(process.cwd(), 'public', 'games');
 
-const IMAGE_PATH = join(DATA_PATH, 'screenshots');
 
-export async function getImagePath()  {
-    return IMAGE_PATH;
-}
 
 if (!fs.existsSync(DATA_PATH)) {
     fs.mkdirSync(DATA_PATH);
 }
 
-if (!fs.existsSync(IMAGE_PATH)) {
-    fs.mkdirSync(IMAGE_PATH);
+if (!fs.existsSync(DB_PATH)) {
+    fs.writeFileSync(DB_PATH, '');
+}
+
+if (!fs.existsSync(GAME_FOLDER_PATH)) {
+    fs.mkdirSync(GAME_FOLDER_PATH);
 }
 
 
@@ -225,6 +226,25 @@ export async function saveGameWithId(id: number, path: string) {
 }
 
 export async function deleteGame(path: string) {
+    const queryId = `SELECT id FROM games WHERE path = ?;`;
+    const gameId = await new Promise<number>((resolve, reject) => {
+        db.get(queryId, [path], (err, row) => {
+            if (err) {
+                console.error('Error querying game:', err);
+                reject(err);
+                return;
+            }
+            resolve((row as { id: number }).id);
+        });
+    }
+    );
+    const gameFolder = await getGameFolder(gameId);
+    fs.rm(gameFolder, { recursive: true }, (err) => {
+        if (err) {
+            console.error('Error deleting game folder:', err);
+        }
+    }
+    );
     const query = `DELETE FROM games WHERE path = ?;`;
     return new Promise((resolve, reject) => {
         db.run(query, [path], function (err) {
@@ -300,18 +320,50 @@ async function saveWebFile(savePath: string, url: string) {
     });
 }
 
+async function getGameFolder(gameId:number) {
+    const result =  join(GAME_FOLDER_PATH, gameId.toString());
+    if (!fs.existsSync(result)) {
+        fs.mkdirSync(result, { recursive: true });
+    }
+    return result;
+}
+
+async function getGameImagesFolder(gameId:number) {
+    const result=  join(await getGameFolder(gameId), "images");
+    if (!fs.existsSync(result)) {
+        fs.mkdirSync(result, { recursive: true });
+    }
+    return result;
+}
+
+export async function getGameScreenshots(gameId: number): Promise<string[]> {
+    const query = `SELECT url FROM screenshots WHERE game_id = ?;`;
+    return new Promise((resolve, reject) => {
+        db.all(query, [gameId], (err, rows: { url: string }[]) => {
+            if (err) {
+                console.error('Error querying screenshots:', err);
+                reject(err);
+                return;
+            }
+            const screenshots = rows.map((row: { url: string }) => row.url);
+            resolve(screenshots);
+        });
+    });
+}
+
+export async function getGameBackgroundURI(gameId: number): Promise<string> {
+    return `/games/${gameId}/images/background.jpg`;
+}
+
 export async function saveScreenshots(gameId: number, screenshots: string[]) {
     for (const url of screenshots) {
-        const saveDir = join(IMAGE_PATH, gameId.toString());
-        if (!fs.existsSync(saveDir)) {
-            fs.mkdirSync(saveDir);
-        }
+        const saveDir = await getGameImagesFolder(gameId);
+
 
         const fileName = url.split('/').pop();
         const savePath = join(saveDir, fileName || '');
         const query = `INSERT OR IGNORE INTO screenshots (game_id, url) VALUES (?, ?);`;
         const values = [gameId, savePath];
-        
 
         await saveWebFile(savePath, url);
 
@@ -327,23 +379,15 @@ export async function saveScreenshots(gameId: number, screenshots: string[]) {
         } 
 
     return;
-
-    
     }
 
 async function saveBackgroundImage(url: string, gameId: number) : Promise<string> {
-    const saveDir = join(IMAGE_PATH, gameId.toString());
-    if (!fs.existsSync(saveDir)) {
-        fs.mkdirSync(saveDir);
-    }
-
+    const saveDir = await getGameImagesFolder(gameId);
     const fileName = "background.jpg";
     const savePath = join(saveDir, fileName || '');
     await saveWebFile(savePath, url);
 
     return savePath;
-
-    
 }
 
 

@@ -1,4 +1,4 @@
-import { getGame } from "@/app/db/gameDB";
+import { getGame, getGameBackgroundURI } from "@/app/db/gameDB";
 import { GameDetails } from "@/app/db/gameDetail";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
@@ -31,7 +31,7 @@ async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
     }
 
 
-    const { name, released, background_image, description, path } = game;
+    const { name, released, description, path } = game;
 
     return (
         <>
@@ -40,7 +40,7 @@ async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
                 <div className="absolute w-full h-full bg-gradient-to-tl from-0% to-30%  dark:from-gray-950 from-gray-50 " />
                 <div className="absolute w-full h-full bg-gradient-to-l from-0% to-30%  dark:from-gray-950 from-gray-50 " />
                 <div className="absolute w-full h-full bg-gray-50 dark:bg-gray-950 opacity-50" />
-                <Image src={background_image} alt={name} width={1920} height={1080} className="h-full w-full object-cover " />
+                <Image src={await getGameBackgroundURI(id) || ''} alt={name} width={1920} height={1080} className="h-full w-full object-cover " />
             </div>
             
             <div className="h-full w-full flex flex-col space-y-8 p-4 pt-14">
