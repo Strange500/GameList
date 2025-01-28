@@ -14,11 +14,11 @@ function ThemeLogo() {
       src = '/logo-light.png'
       break
     default:
-      src = '/logo.png'
+      src = '/logo-light.png'
       break
   }
 
-  return <Image src={src} width={130} height={130} alt='logo' />
+  return <Image suppressHydrationWarning src={src} width={130} height={130} alt='logo' />
 }
 
 export default ThemeLogo;

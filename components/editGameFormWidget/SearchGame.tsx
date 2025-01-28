@@ -1,9 +1,9 @@
 "use client"
 import { Input } from '../ui/input';
-import { GameDetails } from '@/app/db/gameDetail';
+import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import React from 'react';
-import { Result, SearchResults } from '@/app/db/apiInterfaces';
+import { Result, SearchResults } from '@/app/db/interfaces/apiInterfaces';
 import dynamic from 'next/dynamic';
 import { findGame } from '@/app/db/gameDB';
 const SmallGameCard = dynamic(() => import('./SmallGameCard').then(mod => mod.SmallGameCard), { ssr: true });

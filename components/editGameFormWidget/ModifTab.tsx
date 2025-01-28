@@ -1,5 +1,5 @@
 "use client";
-import { GameDetails } from '@/app/db/gameDetail';
+import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 import { Label } from '../ui/label';

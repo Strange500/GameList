@@ -43,3 +43,7 @@ app/db/game.db
 
 .vagrant/
 .devbox/
+
+public/games
+
+/db
