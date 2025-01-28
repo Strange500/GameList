@@ -639,37 +639,46 @@ export async  function detectGames() {
 
     const currentGames = await getAllGames();
 
-    fs.readdir(gameFolder, (err, files) => {
-        if (err) {
-            console.error('Error reading game folder:', err);
-            return;
-        }
+    return new Promise<void>((resolve, reject) => {
+        fs.readdir(gameFolder, async (err, files) => {
+            if (err) {
+                console.error('Error reading game folder:', err);
+                reject(err);
+                return;
+            }
 
-        files.forEach(async (file) => {
-            const path = join(gameFolder, file);
-            const stat = fs.statSync(path);
-            const pathExists = await gameWithPathExists(file);
-           
-            if ( !pathExists && stat.isDirectory()) {
-                const game = await findGame(file);
-                if (game.results.length > 0) {
-                    const gameDetails = await getGameDetails(game.results[0].id);
-                    gameDetails.path = file;
-                    await saveGame(gameDetails);
+            try {
+                for (const file of files) {
+                    const path = join(gameFolder, file);
+                    const stat = fs.statSync(path);
+                    const pathExists = await gameWithPathExists(file);
+
+                    if (!pathExists && stat.isDirectory()) {
+                        const game = await findGame(file);
+                        if (game.results.length > 0) {
+                            const gameDetails = await getGameDetails(game.results[0].id);
+                            gameDetails.path = file;
+                            await saveGame(gameDetails);
+                        }
+                    }
                 }
+
+                for (const game of currentGames) {
+                    const path = join(gameFolder, game.path);
+                    if (!fs.existsSync(path)) {
+                        await deleteGame(game.path);
+                    }
+                }
+
+                resolve();
+            } catch (error) {
+                console.error('Error processing games:', error);
+                reject(error);
             }
         });
-
-        currentGames.forEach(async (game) => {
-            const path = join(gameFolder, game.path);
-            if (!fs.existsSync(path)) {
-                await deleteGame(game.path);
-            }
-        }
-        );
     });
 
-    return;
+   
 }
 
 
