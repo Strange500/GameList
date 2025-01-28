@@ -310,7 +310,7 @@ export async function saveGame(game: GameDetails) {
 
 
 export async function getAllGames(): Promise<GameDetails[]> {
-    const query = 'SELECT * FROM games;';
+    const query = 'SELECT games.*, e.slug as esrb_slug, e.name as esrb_name FROM games JOIN esrb_ratings e ON games.esrb_rating_id = e.id;';
     return new Promise((resolve, reject) => {
         db.all(query, (err: Error | null, rows: GameDetails[]) => {
             if (err) {
@@ -318,16 +318,51 @@ export async function getAllGames(): Promise<GameDetails[]> {
                 reject(err);
                 return;
             }
+            
             const gamess: GameDetails[] = rows.map((row: GameDetails) => ({
-                path: row.path,
+                path : row.path,
+                date_added: row.date_added,
                 id: row.id,
                 slug: row.slug,
                 name: row.name,
                 name_original: row.name_original,
                 description: row.description,
+                metacritic: row.metacritic,
                 released: row.released,
+                tba: row.tba,
+                updated: row.updated,
                 background_image: row.background_image,
-                screenshots_count: row.screenshots_count
+                background_image_additional: row.background_image_additional,
+                website: row.website,
+                rating: row.rating,
+                rating_top: row.rating_top,
+                added: row.added,
+                playtime: row.playtime,
+                screenshots_count: row.screenshots_count,
+                movies_count: row.movies_count,
+                creators_count: row.creators_count,
+                achievements_count: row.achievements_count,
+                parent_achievements_count: row.parent_achievements_count,
+                reddit_url: row.reddit_url,
+                reddit_name: row.reddit_name,
+                reddit_description: row.reddit_description,
+                reddit_logo: row.reddit_logo,
+                reddit_count: row.reddit_count,
+                twitch_count: row.twitch_count,
+                youtube_count: row.youtube_count,
+                reviews_text_count: row.reviews_text_count,
+                ratings_count: row.ratings_count,
+                suggestions_count: row.suggestions_count,
+                alternative_names: row.alternative_names,
+                metacritic_url: row.metacritic_url,
+                parents_count: row.parents_count,
+                additions_count: row.additions_count,
+                game_series_count: row.game_series_count,
+                esrb_rating: {
+                    id: row.esrb_rating_id,
+                    slug: row.esrb_slug,
+                    name: row.esrb_name
+                }
             }));
             resolve(gamess);
         });
@@ -510,7 +545,8 @@ export async function getGameScreenshots(gameId: number): Promise<string[]> {
                 reject(err);
                 return;
             }
-            const screenshots = rows.map((row: { url: string }) => row.url);
+            const screenshots_filenames = rows.map((row) => row.url.split('/').pop());
+            const screenshots = screenshots_filenames.map((filename) => `/games/${gameId}/images/${filename}`);
             resolve(screenshots);
         });
     });
