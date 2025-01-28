@@ -3,7 +3,6 @@ import Form from "next/form";
 import {   RefreshCcw, Search } from 'lucide-react';
 import { detectGames} from '@/app/db/gameDB';
 
-import { ReloadButton } from './ReloadButton';
 import { revalidatePath } from 'next/cache';
 import Loader from './Loader';
 
@@ -12,7 +11,6 @@ import Loader from './Loader';
 
 // Assuming `Input` is a custom component or can be a simple HTML input
 const SearchBar: React.FC = () => {
-    let loading = false;
 
     const refreshGames = async () => {
         "use server";
@@ -46,7 +44,7 @@ const SearchBar: React.FC = () => {
                 >
                     <RefreshCcw/>
                 </button>
-                <Loader mainText="Loading games"  />
+                <Loader mainText="Refreshing games" secondaryText="Please wait"/>
                     
             </Form>
 

@@ -3,7 +3,6 @@ import { getAllGames } from '../db/gameDB';
 import { GameDetails } from '../db/interfaces/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
-import RecentGames from '@/components/RecentGame';
 
 export const experimental_ppr = true;
 
