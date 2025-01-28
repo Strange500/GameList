@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { GameDetails } from '@/app/db/gameDetail';
+import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import Link from 'next/link';
 import { DownloadIcon } from 'lucide-react';
 import { EditGameForm } from './editGameForm';

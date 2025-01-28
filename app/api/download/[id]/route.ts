@@ -1,5 +1,5 @@
 import { getGame } from "@/app/db/gameDB";
-import { GameDetails } from "@/app/db/gameDetail";
+import { GameDetails } from "@/app/db/interfaces/gameDetail";
 import { auth } from "@/auth";
 import archiver from 'archiver';
 import { join } from "path";

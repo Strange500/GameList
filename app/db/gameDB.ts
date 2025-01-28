@@ -1,7 +1,7 @@
 'use server';
 import fs from 'fs';
 import { SearchResults } from './interfaces/apiInterfaces';
-import { GameDetails } from './gameDetail';
+import { GameDetails } from './interfaces/gameDetail';
 import { join } from 'path';
 import sqlite3 from 'sqlite3';
 import stream from 'stream';
@@ -15,6 +15,7 @@ sqlite3.verbose();
 const DATA_PATH = join(process.cwd(), 'public');
 
 const DB_PATH = join(process.cwd(), "db", 'games.db');
+console.log(DB_PATH);
 const GAME_FOLDER_PATH = join(process.cwd(), 'public', 'games');
 
 
@@ -61,18 +62,17 @@ export async function initializeDatabase() {
             { name: 'tags', query: createTagsTable },
             { name: 'game_genres', query: createGameGenresTable },
             { name: 'game_tags', query: createGameTagsTable },
-            { name: 'screenshots', query: createScreenshotsTable }
+            { name: 'screenshots', query: createScreenshotsTable },
+            { name: 'esrb_ratings', query: createEsrbRatingsTable },
+            { name: 'platforms', query: createPlatformsTable },
+            { name: 'game_platforms', query: createGamePlatformsTable },
+            { name: 'metacritic_platforms', query: createMetacriticPlatformsTable }
+
         ];
 
         tablesToCreate.forEach(table => {
             if (!existingTables.includes(table.name)) {
-                db.exec(table.query, (err) => {
-                    if (err) {
-                        console.error(`Error creating table ${table.name}:`, err);
-                    } else {
-                        console.log(`Table ${table.name} created successfully`);
-                    }
-                });
+                db.exec(table.query);
             }
         });
     });
@@ -81,14 +81,84 @@ export async function initializeDatabase() {
     const createGamesTable = `
         CREATE TABLE IF NOT EXISTS games (
             path VARCHAR(255) PRIMARY KEY,
+            date_added DATE,
             id INT NOT NULL,
             slug VARCHAR(255) NOT NULL,
             name VARCHAR(255) NOT NULL,
             name_original VARCHAR(255),
             description TEXT,
+            metacritic INT,
             released DATE,
+            tba BOOLEAN,
+            updated DATE,
             background_image VARCHAR(512),
-            screenshots_count INT
+            background_image_additional VARCHAR(512),
+            website VARCHAR(255),
+            rating FLOAT,
+            rating_top INT,
+            added INT,
+            playtime INT,
+            screenshots_count INT,
+            movies_count INT,
+            creators_count INT,
+            achievements_count INT,
+            parent_achievements_count VARCHAR(255),
+            reddit_url VARCHAR(255),
+            reddit_name VARCHAR(255),
+            reddit_description TEXT,
+            reddit_logo VARCHAR(255),
+            reddit_count INT,
+            twitch_count VARCHAR(255),
+            youtube_count VARCHAR(255),
+            reviews_text_count VARCHAR(255),
+            ratings_count INT,
+            suggestions_count INT,
+            alternative_names TEXT,
+            metacritic_url VARCHAR(255),
+            parents_count INT,
+            additions_count INT,
+            game_series_count INT,
+            esrb_rating_id INT,
+            FOREIGN KEY (esrb_rating_id) REFERENCES esrb_ratings(id)
+        );
+    `;
+
+    const createEsrbRatingsTable = `
+        CREATE TABLE IF NOT EXISTS esrb_ratings (
+            id INT PRIMARY KEY,
+            slug VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL
+        );
+    `;
+
+    const createPlatformsTable = `
+        CREATE TABLE IF NOT EXISTS platforms (
+            id INT PRIMARY KEY,
+            slug VARCHAR(255) NOT NULL,
+            name VARCHAR(255) NOT NULL
+        );
+    `;
+
+    const createGamePlatformsTable = `
+        CREATE TABLE IF NOT EXISTS game_platforms (
+            game_id INT,
+            platform_id INT,
+            released_at DATE,
+            requirements_minimum TEXT,
+            requirements_recommended TEXT,
+            PRIMARY KEY (game_id, platform_id),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE,
+            FOREIGN KEY (platform_id) REFERENCES platforms(id) ON DELETE CASCADE
+        );
+    `;
+
+    const createMetacriticPlatformsTable = `
+        CREATE TABLE IF NOT EXISTS metacritic_platforms (
+            game_id INT,
+            metascore INT,
+            url VARCHAR(255),
+            PRIMARY KEY (game_id, url),
+            FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
         );
     `;
 
@@ -142,6 +212,102 @@ export async function initializeDatabase() {
     `;
     
 }
+
+export async function getGamePlatforms(gameId: number) {
+    const query = `SELECT released_at, requirements_minimum, requirements_recommended, slug, name  FROM game_platforms g JOIN platforms p ON g.platform_id = p.id WHERE game_id = ?;`;
+    return new Promise((resolve, reject) => {
+        db.all(query, [gameId], (err, rows) => {
+            if (err) {
+                console.error('Error querying game platforms:', err);
+                reject(err);
+                return;
+            }
+            resolve(rows);
+        });
+    });
+}
+
+export async function saveGame(game: GameDetails) {
+    
+    const screenshots = await getScreenshots(game.id);
+    saveScreenshots(game.id, screenshots);
+    saveBackgroundImage(game.background_image, game.id);
+    game.background_image = `/api/games/${game.id}/background`;
+
+    const query = `
+        INSERT INTO games (
+            path, date_added, id, slug, name, name_original, description, metacritic, released, tba, updated, background_image, background_image_additional, website, rating, rating_top, added, playtime, screenshots_count, movies_count, creators_count, achievements_count, parent_achievements_count, reddit_url, reddit_name, reddit_description, reddit_logo, reddit_count, twitch_count, youtube_count, reviews_text_count, ratings_count, suggestions_count, alternative_names, metacritic_url, parents_count, additions_count, game_series_count, esrb_rating_id
+        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+    `;
+    const esrb_rating_query = `INSERT OR IGNORE INTO esrb_ratings (id, slug, name) VALUES (?, ?, ?);`;
+    db.run(esrb_rating_query, [game.esrb_rating.id, game.esrb_rating.slug, game.esrb_rating.name]);
+
+    const platforms_query = `INSERT OR IGNORE INTO platforms (id, slug, name) VALUES (?, ?, ?);`;
+    game.platforms.forEach(platform => {
+        db.run(platforms_query, [platform.platform.id, platform.platform.slug, platform.platform.name]);
+        const game_platforms_query = `INSERT OR IGNORE INTO game_platforms (game_id, platform_id, released_at, requirements_minimum, requirements_recommended) VALUES (?, ?, ?, ?, ?);`;
+        db.run(game_platforms_query, [game.id, platform.platform.id, platform.released_at, platform.requirements.minimum, platform.requirements.recommended]);
+    });
+    const values = [
+        game.path,
+        new Date(),
+        game.id,
+        game.slug,
+        game.name,
+        game.name_original,
+        game.description,
+        game.metacritic,
+        game.released,
+        game.tba,
+        game.updated,
+        game.background_image,
+        game.background_image_additional,
+        game.website,
+        game.rating,
+        game.rating_top,
+        game.added,
+        game.playtime,
+        game.screenshots_count,
+        game.movies_count,
+        game.creators_count,
+        game.achievements_count,
+        game.parent_achievements_count,
+        game.reddit_url,
+        game.reddit_name,
+        game.reddit_description,
+        game.reddit_logo,
+        game.reddit_count,
+        game.twitch_count,
+        game.youtube_count,
+        game.reviews_text_count,
+        game.ratings_count,
+        game.suggestions_count,
+        game.alternative_names,
+        game.metacritic_url,
+        game.parents_count,
+        game.additions_count,
+        game.game_series_count,
+        game.esrb_rating.id
+    ];
+    return new Promise((resolve, reject) => {
+        db.run(query, values, function (err) {
+            if (err) {
+                console.error('Error saving game:', err);
+                reject(err);
+                return;
+            }
+            if (this.changes > 0) {
+                console.log(`Game saved with path: ${game.path}`);
+            }
+            resolve(this.changes);
+        });
+    });
+
+
+
+    
+}
+
 
 export async function getAllGames(): Promise<GameDetails[]> {
     const query = 'SELECT * FROM games;';
@@ -315,7 +481,6 @@ async function saveWebFile(savePath: string, url: string) {
         if (err) {
             console.error('Pipeline failed:', err);
         } else {
-            console.log('Pipeline succeeded');
         }
     });
 }
@@ -390,47 +555,6 @@ async function saveBackgroundImage(url: string, gameId: number) : Promise<string
     return savePath;
 }
 
-
-export async function saveGame(game: GameDetails) {
-    const query = `
-        INSERT OR IGNORE INTO games (path, id, slug, name, name_original, description, released, background_image, screenshots_count)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
-    `;
-    const screenshots = await getScreenshots(game.id);
-    saveScreenshots(game.id, screenshots);
-    saveBackgroundImage(game.background_image, game.id);
-    game.background_image = `/api/games/${game.id}/background`;
-
-
-
-    const values = [
-        game.path,
-        game.id,
-        game.slug,
-        game.name,
-        game.name_original,
-        game.description,
-        game.released,
-        game.background_image,
-        game.screenshots_count
-    ];
-
-    return new Promise((resolve, reject) => {
-        
-        db.run(query, values, function (err) {
-            if (err) {
-                console.error('Error saving game:', err);
-                reject(err);
-                return;
-            }
-            if (this.lastID) {
-                console.log(`Game saved with ID: ${this.lastID}`);
-            }
-            resolve(this.lastID);
-        });
-    });
-}
-
 export async function getScreenshots(id: number): Promise<string[]> {
     const response = await fetchRawgApi(`/games/${id}/screenshots`, {"page_size": "10"});
     const screenshots = (response as ScreenShotResults).results.map((result) => result.image);
@@ -469,8 +593,6 @@ async function fetchData(apiUrl: string, params: Record<string, string>): Promis
         throw error; // Rethrow the error if needed
     }
 }
-
-
 
 export async  function detectGames() {
     const gameFolder = process.env.GAME_FOLDER_PATH;

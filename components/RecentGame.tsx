@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { GameDetails } from "@/app/db/gameDetail";
+import { GameDetails } from "@/app/db/interfaces/gameDetail";
 import Image from "next/image";
 import Link from "next/link";
 

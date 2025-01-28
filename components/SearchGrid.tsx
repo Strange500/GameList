@@ -1,4 +1,4 @@
-import { GameDetails } from "@/app/db/gameDetail";
+import { GameDetails } from "@/app/db/interfaces/gameDetail";
 import { GameCard } from "./GameCard";
 
 

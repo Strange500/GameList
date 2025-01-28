@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { EllipsisVertical } from 'lucide-react';
-import { GameDetails } from '@/app/db/gameDetail';
+import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 
