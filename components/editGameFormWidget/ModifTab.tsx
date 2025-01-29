@@ -6,11 +6,11 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import React from 'react';
-import { getGame, modifyGame } from '@/app/db/gameDB';
+import { getGame, getGameScreenshots, modifyGame } from '@/app/db/gameDB';
 import Form from 'next/form';
 import { revalidatePath } from 'next/cache';
 
-export const ModifTab = ({ game }: { game: GameDetails }) => {
+export const ModifTab = async ({ game }: { game: GameDetails }) => {
 
     const saveInfo = async (formData: FormData) =>  {
         "use server";
@@ -36,6 +36,9 @@ export const ModifTab = ({ game }: { game: GameDetails }) => {
         revalidatePath('/');
 
     }
+
+    const images = await getGameScreenshots(game.id);
+    images.push(game.background_image);
 
 
     return (<Card >
@@ -66,7 +69,11 @@ export const ModifTab = ({ game }: { game: GameDetails }) => {
                             </div>
                             <div className="space-y-1">
                                 <Label htmlFor="background_image">Background Image</Label>
-                                <Input id="background_image" name="background_image" defaultValue={game.background_image} />
+                                <select id="background_image" name="background_image" defaultValue={game.background_image}>
+                                    {images.map((img, index) => (
+                                        <option key={index} value={img} >{img}</option>
+                                    ))}
+                                </select>
                             </div>
                     </CardContent>
                     
