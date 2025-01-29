@@ -240,15 +240,27 @@ export async function saveGame(game: GameDetails) {
             path, date_added, id, slug, name, name_original, description, metacritic, released, tba, updated, background_image, background_image_additional, website, rating, rating_top, added, playtime, screenshots_count, movies_count, creators_count, achievements_count, parent_achievements_count, reddit_url, reddit_name, reddit_description, reddit_logo, reddit_count, twitch_count, youtube_count, reviews_text_count, ratings_count, suggestions_count, alternative_names, metacritic_url, parents_count, additions_count, game_series_count, esrb_rating_id
         ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
     `;
+    if (!game.esrb_rating ) {
+        game.esrb_rating = { id: 0, slug: '', name: '' };
+        
+    }
     const esrb_rating_query = `INSERT OR IGNORE INTO esrb_ratings (id, slug, name) VALUES (?, ?, ?);`;
     db.run(esrb_rating_query, [game.esrb_rating.id, game.esrb_rating.slug, game.esrb_rating.name]);
+    
+    
+    if (!game.platforms) {
+        game.platforms = [];
+        
+    }
 
     const platforms_query = `INSERT OR IGNORE INTO platforms (id, slug, name) VALUES (?, ?, ?);`;
-    game.platforms.forEach(platform => {
-        db.run(platforms_query, [platform.platform.id, platform.platform.slug, platform.platform.name]);
-        const game_platforms_query = `INSERT OR IGNORE INTO game_platforms (game_id, platform_id, released_at, requirements_minimum, requirements_recommended) VALUES (?, ?, ?, ?, ?);`;
-        db.run(game_platforms_query, [game.id, platform.platform.id, platform.released_at, platform.requirements.minimum, platform.requirements.recommended]);
-    });
+        game.platforms.forEach(platform => {
+            db.run(platforms_query, [platform.platform.id, platform.platform.slug, platform.platform.name]);
+            const game_platforms_query = `INSERT OR IGNORE INTO game_platforms (game_id, platform_id, released_at, requirements_minimum, requirements_recommended) VALUES (?, ?, ?, ?, ?);`;
+            db.run(game_platforms_query, [game.id, platform.platform.id, platform.released_at, platform.requirements.minimum, platform.requirements.recommended]);
+        }
+    );
+
     const values = [
         game.path,
         new Date(),
@@ -464,6 +476,7 @@ export async function getGameDetails(id: number): Promise<GameDetails> {
 export async function saveGameWithId(id: number, path: string) {
     const game = await getGameDetails(id);
     game.path = path;
+    console.log(game);
     return saveGame(game);
 }
 
