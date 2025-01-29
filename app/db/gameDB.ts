@@ -233,7 +233,7 @@ export async function saveGame(game: GameDetails) {
     const screenshots = await getScreenshots(game.id);
     saveScreenshots(game.id, screenshots);
     saveBackgroundImage(game.background_image, game.id);
-    game.background_image = `/api/games/${game.id}/background`;
+    game.background_image = `/games/${game.id}/images/background.jpg`;
 
     const query = `
         INSERT INTO games (
@@ -607,7 +607,11 @@ export async function getGameScreenshots(gameId: number): Promise<string[]> {
 }
 
 export async function getGameBackgroundURI(gameId: number): Promise<string> {
-    return `/games/${gameId}/images/background.jpg`;
+    const game = await getGame(gameId);
+    if (!game) {
+        throw new Error(`Game with ID ${gameId} not found`);
+    }
+    return game.background_image;
 }
 
 export async function saveScreenshots(gameId: number, screenshots: string[]) {
