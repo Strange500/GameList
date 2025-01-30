@@ -476,7 +476,6 @@ export async function getGameDetails(id: number): Promise<GameDetails> {
 export async function saveGameWithId(id: number, path: string) {
     const game = await getGameDetails(id);
     game.path = path;
-    console.log(game);
     return saveGame(game);
 }
 
@@ -604,6 +603,13 @@ export async function getGameScreenshots(gameId: number): Promise<string[]> {
             resolve(screenshots);
         });
     });
+}
+
+export async function getAllGameImages(gameId: number): Promise<string[]> {
+    const gameScreenshot = await getGameScreenshots(gameId);
+    const gameBackground = await getGameBackgroundURI(gameId);
+    gameScreenshot.push(`/games/${gameId}/images/background.jpg`);
+    return [gameBackground, ...gameScreenshot];
 }
 
 export async function getGameBackgroundURI(gameId: number): Promise<string> {
