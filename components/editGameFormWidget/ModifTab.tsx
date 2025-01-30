@@ -6,9 +6,10 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import React from 'react';
-import { getGame, getGameScreenshots, modifyGame } from '@/app/db/gameDB';
+import { getAllGameImages, getGame, modifyGame } from '@/app/db/gameDB';
 import Form from 'next/form';
 import { revalidatePath } from 'next/cache';
+import ImageSelector from './ImageSelector';
 
 export const ModifTab = async ({ game }: { game: GameDetails }) => {
 
@@ -26,7 +27,6 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
             released: new Date(formData.get('released') as string),
             background_image: formData.get('background_image') as string
         }
-        console.log(formData);
         game.name = gameData.name;
         game.name_original = gameData.name_original;
         game.description = gameData.description;
@@ -37,8 +37,8 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
 
     }
 
-    const images = await getGameScreenshots(game.id);
-    images.push(game.background_image);
+    const images: string[] = Array.from(new Set((await getAllGameImages(game.id)).filter(image => image !== '')));
+    
 
 
     return (<Card >
@@ -46,7 +46,7 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
                     <CardTitle>Game Info</CardTitle>
                 </CardHeader>
                 <Form action={saveInfo}>
-                    <CardContent className="space-y-2 ">
+                    <CardContent className="space-y-2 overflow-y-auto h-96 w-full">
                             <input type="hidden" name="id" value={game.id} />
 
 
@@ -67,13 +67,9 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
                                 <Label htmlFor="released">Released</Label>
                                 <Input id="released" type="date" name="released" defaultValue={new Date(game.released).toISOString().split('T')[0]} />
                             </div>
-                            <div className="space-y-1">
+                            <div className="space-y-1 ">
                                 <Label htmlFor="background_image">Background Image</Label>
-                                <select id="background_image" name="background_image" defaultValue={game.background_image}>
-                                    {images.map((img, index) => (
-                                        <option key={index} value={img} >{img}</option>
-                                    ))}
-                                </select>
+                                <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" />
                             </div>
                     </CardContent>
                     
