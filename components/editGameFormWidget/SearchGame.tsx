@@ -6,11 +6,12 @@ import React from 'react';
 import { Result, SearchResults } from '@/app/db/interfaces/apiInterfaces';
 import dynamic from 'next/dynamic';
 import { findGame } from '@/app/db/gameDB';
+import { Games } from '@/app/db/models/Games';
 const SmallGameCard = dynamic(() => import('./SmallGameCard').then(mod => mod.SmallGameCard), { ssr: true });
 
 
 
-export const SearchGame = ({ game }: { game: GameDetails }) => {
+export const SearchGame = ({ game }: { game: Games }) => {
 
     const [searchGames, setSearchGames] = React.useState<string>("");
     const [gameGrid, setGameGrid] = React.useState<React.ReactNode>();

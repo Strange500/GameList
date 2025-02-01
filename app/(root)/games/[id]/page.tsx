@@ -11,6 +11,7 @@ import {
     DialogTrigger,
   } from "@/components/ui/dialog"
 import { EditGameForm } from "@/components/editGameForm";
+import { Games } from "@/app/db/models/Games";
 
 
 
@@ -24,7 +25,7 @@ async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
         return <div>Invalid game id</div>;
     }
 
-    const game: GameDetails | undefined = await getGame(id);
+    const game: Games | null = await getGame(id);
 
     if (!game) {
         return <div>Game not found</div>;

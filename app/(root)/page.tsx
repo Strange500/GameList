@@ -3,6 +3,7 @@ import { getAllGames } from '../db/gameDB';
 import { GameDetails } from '../db/interfaces/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
+import { Model } from 'sequelize';
 
 export const experimental_ppr = true;
 
@@ -12,7 +13,7 @@ export default async function Page({searchParams}: {
 }) {
 
   const session = await auth();
-  const gamesList: GameDetails[] = await getAllGames();
+  const gamesList: Model[] = await getAllGames();
   // get query form parameter
   const query: string = (await searchParams).query || '';
 

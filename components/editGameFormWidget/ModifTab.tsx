@@ -6,12 +6,13 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import React from 'react';
-import { getAllGameImages, getGame, modifyGame } from '@/app/db/gameDB';
+import { getAllGameImages, getGame } from '@/app/db/gameDB';
 import Form from 'next/form';
 import { revalidatePath } from 'next/cache';
 import ImageSelector from './ImageSelector';
+import { Games } from '@/app/db/models/Games';
 
-export const ModifTab = async ({ game }: { game: GameDetails }) => {
+export const ModifTab = async ({ game }: { game: Games }) => {
 
     const saveInfo = async (formData: FormData) =>  {
         "use server";
@@ -32,12 +33,12 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
         game.description = gameData.description;
         game.released = gameData.released;
         game.background_image = gameData.background_image;
-        await modifyGame(game);
+        //await modifyGame(game);
         revalidatePath('/');
 
     }
 
-    const images: string[] = Array.from(new Set((await getAllGameImages(game.id)).filter(image => image !== '')));
+    const images: string[] = Array.from(new Set((await getAllGameImages(game.gameId)).filter(image => image !== '')));
     
 
 
@@ -69,7 +70,9 @@ export const ModifTab = async ({ game }: { game: GameDetails }) => {
                             </div>
                             <div className="space-y-1 ">
                                 <Label htmlFor="background_image">Background Image</Label>
-                                <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" />
+                                <div className="border-2 border-gray-900 rounded-md p-2">
+                                    <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" />
+                                </div>
                             </div>
                     </CardContent>
                     
