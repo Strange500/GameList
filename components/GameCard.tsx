@@ -1,14 +1,11 @@
 import Image from 'next/image';
 
-import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import Link from 'next/link';
 import { DownloadIcon } from 'lucide-react';
 import { EditGameForm } from './editGameForm';
 import { Suspense } from 'react';
 import GameCardSkeleton from './GameCardSkeleton';
 import { Games } from '@/app/db/models/Games';
-import { sequelize } from '@/app/db/Sequelize';
-// import { getGameBackgroundURI } from '@/app/db/gameDB';
 
 export const GameCard = async ({ game}: { game: Games}) => {
     return (

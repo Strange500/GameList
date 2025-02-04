@@ -1,4 +1,4 @@
-import { BeforeCreate, BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { BeforeCreate, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { Games } from './Games';
 import { join } from 'path';
 import { saveWebFile } from '../Utils';
