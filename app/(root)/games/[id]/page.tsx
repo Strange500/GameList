@@ -10,10 +10,12 @@ import {
   } from "@/components/ui/dialog"
 import { EditGameForm } from "@/components/editGameForm";
 import { Games } from "@/app/db/models/Games";
+import { sequelize } from "@/app/db/Sequelize";
 
 
 
 async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
+    sequelize.sync();
     let id: number;
     try {
         id = parseInt((await params).id, 10);

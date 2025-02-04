@@ -1,12 +1,14 @@
-import { Model, Column, Table, HasMany, ForeignKey, DataType, BelongsTo, BeforeCreate } from 'sequelize-typescript';
+
+import { Model, Column, Table, HasMany, DataType, BeforeCreate } from 'sequelize-typescript';
 import { ReadableStream as WebReadableStream } from 'stream/web';
 import stream from 'stream';
 
 
 import fs from 'fs';
 import { join } from 'path';
-import { DATA_PATH, GAME_FOLDER_PATH, GAMES_PATH } from '../const';
-import { RAWGIOAPI } from '../gameDB';
+import { GAME_FOLDER_PATH, GAMES_PATH } from '../const';
+import { RAWGIOAPI } from '../RawgApi';
+import { Screenshots } from './Screenshots';
 
 
 
@@ -245,18 +247,5 @@ export class Games extends Model {
 
 
 
-@Table
-export class Screenshots extends Model {
-    @ForeignKey(() => Games)
-    @Column({ primaryKey: true })
-    declare path: string;
-
-    @BelongsTo(() => Games)
-    declare gameId: number;
-
-    @Column({ primaryKey: true })
-    declare ImagePath: string;
-
-}
 
 

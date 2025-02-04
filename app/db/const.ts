@@ -32,16 +32,3 @@ if (!fs.existsSync(GAME_FOLDER_PATH)) {
 if (!fs.existsSync(GAMES_PATH)) {
     fs.mkdirSync(GAMES_PATH);
 }
-
-
-// console.log('initializing database');
-// export const db = new sqlite3.Database(DB_PATH, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
-//     if (err) {
-//         console.error('Error opening database:', err);
-//         return;
-//     } else {
-//         initializeDatabase(db);
-//     }
-    
-// }
-// );

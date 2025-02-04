@@ -1,6 +1,5 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import { EllipsisVertical } from 'lucide-react';
-import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 
@@ -8,6 +7,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import React from 'react';
 import { ModifTab } from './editGameFormWidget/ModifTab';
 import { Games } from '@/app/db/models/Games';
+import { SearchGame } from './editGameFormWidget/SearchGame';
+import { revalidatePath } from 'next/cache';
+
+
+
 
 
 
@@ -36,7 +40,7 @@ export const EditGameForm = ({ game }: { game: Games }) => {
                         <ModifTab game={game}/>
                     </TabsContent>
                     <TabsContent value="games">
-                        {/* <SearchGame game={game}/> */}
+                        <SearchGame path={game.path}/>
                     </TabsContent>
                     
                 </Tabs>

@@ -1,4 +1,4 @@
-import { RAWGIOAPI} from "@/app/db/gameDB";
+import { RAWGIOAPI} from "@/app/db/RawgApi";
 import { Games } from "@/app/db/models/Games";
 import { sequelize } from "@/app/db/Sequelize";
 

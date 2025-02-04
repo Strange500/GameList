@@ -14,10 +14,8 @@ export class RAWGIOAPI {
     static #BASE_URL = 'https://api.rawg.io/api';
 
     static async findByTitle(title: string): Promise<Games[]> {
-        const path = '/games';
-        const params = { search: title };
-        const response = await RAWGIOAPI.#fetchRawgApi(path, params);
-        const games = (response as SearchResults).results.map((result) => {
+        const response = await RAWGIOAPI.findByTitleJson(title);
+        const games = response.results.map((result) => {
             return Games.build({
                 gameId: result.id,
                 slug: result.slug,
@@ -25,12 +23,19 @@ export class RAWGIOAPI {
                 released: result.released,
                 background_image: result.background_image,
                 rating: result.rating,
-                date_added: result.added,
                 metacritic: result.metacritic,
             });
         });
-        return Promise.resolve(games);
+        return games;
     }
+
+    static async findByTitleJson(title: string): Promise<SearchResults> {
+        const path = '/games';
+        const params = { search: title };
+        const response = await RAWGIOAPI.#fetchRawgApi(path, params);
+        return response as SearchResults;
+    }
+
 
 
 

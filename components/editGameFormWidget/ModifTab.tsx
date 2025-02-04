@@ -16,26 +16,19 @@ export const ModifTab = async ({ game }: { game: Games }) => {
 
     const saveInfo = async (formData: FormData) =>  {
         "use server";
-        const game = await getGame(parseInt(formData.get('id') as string));
+        const game = await Games.findOne({ where: { path: formData.get('path') as string } });
         if (!game) {
             alert('The game you are trying to modify does not exist');
             return;
         }
-        const gameData = {
+        game.update({
             name: formData.get('name') as string,
             name_original: formData.get('name_original') as string,
             description: formData.get('description') as string,
             released: new Date(formData.get('released') as string),
             background_image: formData.get('background_image') as string
-        }
-        game.name = gameData.name;
-        game.name_original = gameData.name_original;
-        game.description = gameData.description;
-        game.released = gameData.released;
-        game.background_image = gameData.background_image;
-        //await modifyGame(game);
+        });
         revalidatePath('/');
-
     }
 
     // const images: string[] = Array.from(new Set((await getAllGameImages(game.gameId)).filter(image => image !== '')));
@@ -48,7 +41,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
                 </CardHeader>
                 <Form action={saveInfo}>
                     <CardContent className="space-y-2 overflow-y-auto h-96 w-full">
-                            <input type="hidden" name="id" value={game.id} />
+                            <input type="hidden" name="path" value={game.path} />
 
 
                         
