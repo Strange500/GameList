@@ -6,7 +6,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import React from 'react';
-import { getAllGameImages, getGame } from '@/app/db/gameDB';
+// import { getAllGameImages, getGame } from '@/app/db/gameDB';
 import Form from 'next/form';
 import { revalidatePath } from 'next/cache';
 import ImageSelector from './ImageSelector';
@@ -38,7 +38,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
 
     }
 
-    const images: string[] = Array.from(new Set((await getAllGameImages(game.gameId)).filter(image => image !== '')));
+    // const images: string[] = Array.from(new Set((await getAllGameImages(game.gameId)).filter(image => image !== '')));
     
 
 
@@ -71,7 +71,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
                             <div className="space-y-1 ">
                                 <Label htmlFor="background_image">Background Image</Label>
                                 <div className="border-2 border-gray-900 rounded-md p-2">
-                                    <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" />
+                                    {/* <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" /> */}
                                 </div>
                             </div>
                     </CardContent>

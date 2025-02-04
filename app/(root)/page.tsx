@@ -1,9 +1,11 @@
 import { auth, signIn } from '@/auth';
-import { getAllGames } from '../db/gameDB';
+// import { getAllGames } from '../db/gameDB';
 import { GameDetails } from '../db/interfaces/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
 import { Model } from 'sequelize';
+import { Games } from '../db/models/Games';
+import { sequelize } from '../db/Sequelize';
 
 export const experimental_ppr = true;
 
@@ -11,9 +13,9 @@ export const experimental_ppr = true;
 export default async function Page({searchParams}: {
   searchParams: Promise<{ query?: string}>
 }) {
-
+  await sequelize.sync();
   const session = await auth();
-  const gamesList: Model[] = await getAllGames();
+  const gamesList: Games[] = await Games.findAll();
   // get query form parameter
   const query: string = (await searchParams).query || '';
 

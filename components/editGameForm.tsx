@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 
 import React from 'react';
 import { ModifTab } from './editGameFormWidget/ModifTab';
-import { SearchGame } from './editGameFormWidget/SearchGame';
 import { Games } from '@/app/db/models/Games';
 
 
@@ -37,7 +36,7 @@ export const EditGameForm = ({ game }: { game: Games }) => {
                         <ModifTab game={game}/>
                     </TabsContent>
                     <TabsContent value="games">
-                        <SearchGame game={game}/>
+                        {/* <SearchGame game={game}/> */}
                     </TabsContent>
                     
                 </Tabs>

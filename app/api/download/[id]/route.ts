@@ -1,10 +1,14 @@
+import { GAMES_PATH } from "@/app/db/const";
 import { getGame } from "@/app/db/gameDB";
 import { GameDetails } from "@/app/db/interfaces/gameDetail";
+import { Games } from "@/app/db/models/Games";
+import { sequelize } from "@/app/db/Sequelize";
 import { auth } from "@/auth";
 import archiver from 'archiver';
 import { join } from "path";
 
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
+    sequelize.sync();
   // Parse ID from params
   const session = await auth();
     if (!session || !session.user) {
@@ -30,7 +34,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
   }
 
   // Get game folder path from environment variables
-  const gameFolderPath = process.env.GAME_FOLDER_PATH;
+  const gameFolderPath = GAMES_PATH;
   if (!gameFolderPath) {
       return new Response(JSON.stringify({ error: 'GAME_FOLDER_PATH environment variable not set' }), {
           headers: {
@@ -41,7 +45,7 @@ export async function GET(_: Request, { params }: { params: Promise<{ id: string
   }
 
   // Retrieve game details
-  const game: GameDetails | undefined = await getGame(id);
+  const game: Games | null = await Games.findOne({ where: { gameId: id } });
   if (!game) {
       return new Response(JSON.stringify({ error: 'Game not found' }), {
           headers: {

@@ -5,13 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import React from 'react';
 import { Result, SearchResults } from '@/app/db/interfaces/apiInterfaces';
 import dynamic from 'next/dynamic';
-import { findGame } from '@/app/db/gameDB';
+// import { findGame } from '@/app/db/gameDB';
 import { Games } from '@/app/db/models/Games';
+import Form from 'next/form';
 const SmallGameCard = dynamic(() => import('./SmallGameCard').then(mod => mod.SmallGameCard), { ssr: true });
 
 
 
-export const SearchGame = ({ game }: { game: Games }) => {
+export const SearchGame = ({ path }: { path: string }) => {
 
     const [searchGames, setSearchGames] = React.useState<string>("");
     const [gameGrid, setGameGrid] = React.useState<React.ReactNode>();
@@ -30,6 +31,13 @@ export const SearchGame = ({ game }: { game: Games }) => {
     }
     , [searchGames]);
 
+   
+
+    const changeGame = async (formData: FormData) => {
+        "use server";
+        await Games.changeGameId(formData.get('path') as string, parseInt(formData.get('id') as string));
+    }
+
     React.useEffect(() => {
         function genCardPrezList(games: SearchResults)  {
             if (games === undefined) {
@@ -40,8 +48,12 @@ export const SearchGame = ({ game }: { game: Games }) => {
                 <>
         
                     {games.results.map((r: Result, index: number) => (
+                        <Form key={index} action={changeGame}>
+                            <Input type='hidden' name='path' value={path} />
+                            <Input type='hidden' name='id' value={r.id} />
+                            <SmallGameCard  name={r.name} released={r.released} path={game.path} id={r.id} background_image={r.background_image} />
                         
-                        <SmallGameCard key={index} name={r.name} released={r.released} path={game.path} id={r.id} background_image={r.background_image} />
+                        </Form>
                     ))}
                 </>
             );
@@ -53,7 +65,9 @@ export const SearchGame = ({ game }: { game: Games }) => {
                 setGameGrid(genCardPrezList(r));
             });
         }
-      }, [debouncedQuery, game.path]);
+      }, [debouncedQuery, path]);
+        
+
 
 
       
@@ -62,8 +76,10 @@ export const SearchGame = ({ game }: { game: Games }) => {
         
             <Card >
                 
+                
                     <CardHeader>
                         <CardTitle>Search the game</CardTitle>
+                            <Input type='hidden' name='path' value={path} />
                             <Input type="search" placeholder="Search the game" value={searchGames} onChange={(e) => setSearchGames(e.target.value)}/>
                     </CardHeader>
                         {gameGrid ? (

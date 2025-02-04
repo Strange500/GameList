@@ -1,6 +1,27 @@
-import { Model, Column, Table, HasMany, ForeignKey, DataType, BelongsTo } from 'sequelize-typescript';
-import "../dao.ts"
-import sequelize from "@/app/db/dao"; 
+import { Model, Column, Table, HasMany, ForeignKey, DataType, BelongsTo, BeforeCreate } from 'sequelize-typescript';
+import { ReadableStream as WebReadableStream } from 'stream/web';
+import stream from 'stream';
+
+
+import fs from 'fs';
+import { join } from 'path';
+import { DATA_PATH, GAME_FOLDER_PATH, GAMES_PATH } from '../const';
+import { RAWGIOAPI } from '../gameDB';
+
+
+
+
+async function saveWebFile(savePath: string, url: string) {
+    const writeStream = fs.createWriteStream(savePath);
+    const readStream = await fetch(url);
+    const nodeStream = stream.Readable.fromWeb(readStream.body as WebReadableStream<unknown>);
+    stream.pipeline(nodeStream, writeStream, (err) => {
+        if (err) {
+            console.error('Pipeline failed:', err);
+        } else {
+        }
+    });
+}
 
 @Table
 export class Games extends Model {
@@ -22,7 +43,7 @@ export class Games extends Model {
     @Column
     declare name_original: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare description: string;
 
     @Column
@@ -46,7 +67,7 @@ export class Games extends Model {
     @Column
     declare website: string;
 
-    @Column
+    @Column(DataType.DOUBLE)
     declare rating: number;
 
     @Column
@@ -120,6 +141,106 @@ export class Games extends Model {
 
     @HasMany(() => Screenshots)
     declare screenshots: Screenshots[];
+
+
+    declare gamePath: string;
+
+    #getGamePath() {
+        return join(GAME_FOLDER_PATH, this.gameId.toString());
+    }
+
+
+    #getBackgoundPath() {
+        return join(this.#getGamePath(), 'background.jpg');
+    }
+
+    getBackgroundPathPublicPath() {
+        return join('/games', this.gameId.toString(), 'background.jpg');
+    }
+
+
+    @BeforeCreate
+    static async createGameDirectory(instance: Games) {
+        fs.mkdirSync(instance.#getGamePath(), { recursive: true });
+    }
+
+    @BeforeCreate
+    static async createGameScreenshotDirectory(instance: Games) {
+        fs.mkdirSync(join(instance.#getGamePath(), 'screenshots'), { recursive: true });
+    }
+
+
+
+    @BeforeCreate
+    static async saveBackgound(instance: Games) {
+        if (instance.background_image) {
+            const backgoundPath = instance.#getBackgoundPath();
+            saveWebFile(backgoundPath, instance.background_image);
+            instance.background_image = instance.getBackgroundPathPublicPath();
+        }
+    }
+
+    static async refreshGamesList() {
+    
+        const currentGames = await Games.findAll();
+    
+        return new Promise<void>((resolve, reject) => {
+            fs.readdir(GAMES_PATH, async (err, files) => {
+                if (err) {
+                    console.error('Error reading game folder:', err);
+                    reject(err);
+                    return;
+                }
+    
+                try {
+                    for (const file of files) {
+                        const path = join(GAMES_PATH, file);
+                        const stat = fs.statSync(path);
+                        const pathExists = await Games.findOne({ where: { path: file } });
+    
+                        if (!pathExists && stat.isDirectory()) {
+                            const games = await RAWGIOAPI.findByTitle(file);
+                            if (games.length > 0) {
+                                const fullGame = await RAWGIOAPI.getGameDetails(games[0].gameId);
+                                fullGame.path = file;
+                                await fullGame.save();
+                            }
+                        }
+                    }
+    
+                    for (const game of currentGames) {
+                        if (!fs.existsSync(join(GAMES_PATH, game.path))) {
+                            await game.destroy();
+                        }
+                    }
+    
+                    resolve();
+                } catch (error) {
+                    console.error('Error processing games:', error);
+                    reject(error);
+                }
+            });
+        });
+        
+           
+        }
+
+    static async changeGameId(path: string, newId: number) {
+        const newGame = await RAWGIOAPI.getGameDetails(newId);
+        const oldGame = await Games.findOne({ where: { path: path } });
+        if (!oldGame) {
+            console.error('Game not found');
+            return;
+        }
+        newGame.path = path;
+        await oldGame.destroy();
+        await newGame.save();
+
+    }
+
+
+  
+
 }
 
 
@@ -137,6 +258,5 @@ export class Screenshots extends Model {
     declare ImagePath: string;
 
 }
-sequelize.addModels([Games, Screenshots]);
 
 

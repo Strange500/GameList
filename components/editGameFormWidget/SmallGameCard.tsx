@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { changeGameId } from "@/app/db/gameDB";
+// import { changeGameId } from "@/app/db/gameDB";
 import GameCardSkeleton from "../GameCardSkeleton";
 import Image from "next/image";
 
@@ -8,13 +8,13 @@ export const SmallGameCard = ({ name, released, path, id, background_image}: { n
     return (
     <Suspense fallback={<GameCardSkeleton />}>
         <a onClick={()=> {
-            changeGameId(path, id).then(() => {
-                setTimeout(() => {
-                    window.location.reload();
-                }
-                , 1000);
-            }
-            );
+            // changeGameId(path, id).then(() => {
+            //     setTimeout(() => {
+            //         window.location.reload();
+            //     }
+            //     , 1000);
+            // }
+            // );
         }}>
         <section key={id} className='group overflow-hidden h-80 shadow-lg bg-card relative rounded-lg hover:scale-105 hover:cursor-pointer'>
             
