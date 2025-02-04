@@ -2,7 +2,7 @@ import pg from 'pg';
 
 import { Sequelize } from 'sequelize-typescript';
 import { Games } from "./models/Games";
-import { Screenshots } from "./models/Screenshots";
+import { Screenshots } from './models/Screenshots';
 
 const db_name = process.env.POSTGRES_DB ;
 const db_user = process.env.POSTGRES_USER 

@@ -1,9 +1,6 @@
 import { auth, signIn } from '@/auth';
-// import { getAllGames } from '../db/gameDB';
-import { GameDetails } from '../db/interfaces/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
-import { Model } from 'sequelize';
 import { Games } from '../db/models/Games';
 import { sequelize } from '../db/Sequelize';
 

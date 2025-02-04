@@ -1,4 +1,3 @@
-import { Result } from "@/app/db/interfaces/apiInterfaces";
 import { RAWGIOAPI } from "@/app/db/RawgApi";
 import { auth } from "@/auth";
 

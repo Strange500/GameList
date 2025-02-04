@@ -1,13 +1,6 @@
-import { SearchResults } from './interfaces/apiInterfaces';
+import { ScreenShotResults, SearchResults } from './interfaces/apiInterfaces';
 import { GameDetails } from './interfaces/gameDetail';
-import { ScreenShotResults } from './interfaces/screenShotsResults';
 import { Games } from './models/Games';
-
-
-
-
-
-
 
 export class RAWGIOAPI {
     static #API_KEY = process.env.RAWG_API_KEY;

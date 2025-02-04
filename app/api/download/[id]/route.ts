@@ -1,6 +1,4 @@
 import { GAMES_PATH } from "@/app/db/const";
-import { getGame } from "@/app/db/RawgApi";
-import { GameDetails } from "@/app/db/interfaces/gameDetail";
 import { Games } from "@/app/db/models/Games";
 import { sequelize } from "@/app/db/Sequelize";
 import { auth } from "@/auth";

@@ -1,9 +1,6 @@
 import fs from 'fs';
 import { join } from 'path';
 
-
-
-
 // path where all data related to the app is stored
 export const DATA_PATH = join(process.cwd(), 'public');
 

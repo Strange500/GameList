@@ -1,7 +1,5 @@
 
-import { Model, Column, Table, HasMany, DataType, BeforeCreate } from 'sequelize-typescript';
-import { ReadableStream as WebReadableStream } from 'stream/web';
-import stream from 'stream';
+import { Model, Column, Table, HasMany, DataType, BeforeCreate, AfterCreate } from 'sequelize-typescript';
 
 
 import fs from 'fs';
@@ -9,21 +7,11 @@ import { join } from 'path';
 import { GAME_FOLDER_PATH, GAMES_PATH } from '../const';
 import { RAWGIOAPI } from '../RawgApi';
 import { Screenshots } from './Screenshots';
+import { saveWebFile } from '../Utils';
 
 
 
 
-async function saveWebFile(savePath: string, url: string) {
-    const writeStream = fs.createWriteStream(savePath);
-    const readStream = await fetch(url);
-    const nodeStream = stream.Readable.fromWeb(readStream.body as WebReadableStream<unknown>);
-    stream.pipeline(nodeStream, writeStream, (err) => {
-        if (err) {
-            console.error('Pipeline failed:', err);
-        } else {
-        }
-    });
-}
 
 @Table
 export class Games extends Model {
@@ -160,6 +148,23 @@ export class Games extends Model {
         return join('/games', this.gameId.toString(), 'background.jpg');
     }
 
+    getScreenshotDirectory() {
+        return join(this.#getGamePath(), 'screenshots');
+    }
+
+    getAllScreenshotsURI(): string[] | undefined {
+        return this.screenshots?.map(screenshot => screenshot.ImagePath);
+    }
+
+    getAllRelatedImages() {
+        const images = [this.background_image];
+        const screenshots = this.getAllScreenshotsURI();
+        if (screenshots) {
+            images.push(...screenshots);
+        }
+        return images;
+    }
+
 
     @BeforeCreate
     static async createGameDirectory(instance: Games) {
@@ -168,7 +173,7 @@ export class Games extends Model {
 
     @BeforeCreate
     static async createGameScreenshotDirectory(instance: Games) {
-        fs.mkdirSync(join(instance.#getGamePath(), 'screenshots'), { recursive: true });
+        fs.mkdirSync(instance.getScreenshotDirectory(), { recursive: true });
     }
 
 
@@ -181,6 +186,19 @@ export class Games extends Model {
             instance.background_image = instance.getBackgroundPathPublicPath();
         }
     }
+
+    @AfterCreate
+    static async saveScreenshots(instance: Games) {
+            const screenshots = await RAWGIOAPI.getScreenshotsForGame(instance.gameId);
+            for (const screenshot of screenshots) {
+                await Screenshots.build({
+                    path: instance.path,
+                    gameId: instance.gameId,
+                    ImagePath: screenshot,
+                }).save();
+            }
+    }
+
 
     static async refreshGamesList() {
     

@@ -1,4 +1,3 @@
-import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 import { Label } from '../ui/label';
@@ -31,7 +30,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
         revalidatePath('/');
     }
 
-    // const images: string[] = Array.from(new Set((await getAllGameImages(game.gameId)).filter(image => image !== '')));
+    const images: string[] = game.getAllRelatedImages();
     
 
 
@@ -64,7 +63,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
                             <div className="space-y-1 ">
                                 <Label htmlFor="background_image">Background Image</Label>
                                 <div className="border-2 border-gray-900 rounded-md p-2">
-                                    {/* <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" /> */}
+                                    <ImageSelector images={images} defaultChecked={game.background_image} inputName="background_image" />
                                 </div>
                             </div>
                     </CardContent>
