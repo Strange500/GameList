@@ -24,13 +24,13 @@ export class Games extends Model {
     @Column
     declare gameId: number;
 
-    @Column
+    @Column(DataType.TEXT)
     declare slug: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare name: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare name_original: string;
 
     @Column(DataType.TEXT)
@@ -48,13 +48,13 @@ export class Games extends Model {
     @Column
     declare updated: Date;
 
-    @Column
+    @Column(DataType.TEXT)
     declare background_image: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare background_image_additional: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare website: string;
 
     @Column(DataType.DOUBLE)
@@ -81,31 +81,31 @@ export class Games extends Model {
     @Column
     declare achievements_count: number;
 
-    @Column
+    @Column(DataType.TEXT)
     declare parent_achievements_count: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare reddit_url: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare reddit_name: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare reddit_description: string;
 
-    @Column
-    declare  reddit_logo: string;
+    @Column(DataType.TEXT)
+    declare reddit_logo: string;
 
     @Column
     declare reddit_count: number;
 
-    @Column
+    @Column(DataType.TEXT)
     declare twitch_count: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare youtube_count: string;
 
-    @Column
+    @Column(DataType.TEXT)
     declare reviews_text_count: string;
 
     @Column
@@ -117,7 +117,7 @@ export class Games extends Model {
     // @Column({ type: DataType.ARRAY(DataType.STRING) })
     // declare alternative_names: string[];
 
-    @Column
+    @Column(DataType.TEXT)
     declare metacritic_url: string;
 
     @Column
