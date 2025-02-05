@@ -6,7 +6,17 @@ import archiver from 'archiver';
 import { join } from "path";
 
 export async function GET(_: Request, { params }: { params: Promise<{ id: string }> }) {
-    sequelize.sync();
+    try {
+        sequelize.sync();
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+        return new Response(JSON.stringify({ error: 'Unable to connect to the database' }), {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            status: 500,
+        });
+    }
   // Parse ID from params
   const session = await auth();
     if (!session || !session.user) {

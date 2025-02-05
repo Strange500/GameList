@@ -10,7 +10,17 @@ export const experimental_ppr = true;
 export default async function Page({searchParams}: {
   searchParams: Promise<{ query?: string}>
 }) {
-  await sequelize.sync();
+  try {
+    sequelize.sync();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    return new Response(JSON.stringify({ error: 'Unable to connect to the database' }), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      status: 500,
+    });
+  }
   const session = await auth();
   const gamesList: Games[] = await Games.findAll();
   // get query form parameter

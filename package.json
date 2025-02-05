@@ -66,6 +66,7 @@
     "react-resizable-panels": "^2.1.7",
     "react-spinners": "^0.15.0",
     "recharts": "^2.15.0",
+    "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.5",
     "sequelize-typescript": "^2.1.6",
     "sonner": "^1.7.1",

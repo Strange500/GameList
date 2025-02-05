@@ -1,9 +1,6 @@
 # Use Ubuntu 20.04 as the base image
 FROM ubuntu:20.04
 
-# Set environment variables to prevent interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
-
 # Update package list and install prerequisites
 RUN apt-get update -y && \
     apt-get install -y curl && \

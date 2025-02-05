@@ -4,7 +4,7 @@ import { Model, Column, Table, HasMany, DataType, BeforeCreate, AfterCreate } fr
 
 import fs from 'fs';
 import { join } from 'path';
-import { GAME_FOLDER_PATH, GAMES_PATH } from '../const';
+import { DATA_PATH, GAMES_PATH } from '../const';
 import { RAWGIOAPI } from '../RawgApi';
 import { Screenshots } from './Screenshots';
 import { saveWebFile } from '../Utils';
@@ -136,7 +136,7 @@ export class Games extends Model {
     declare gamePath: string;
 
     #getGamePath() {
-        return join(GAME_FOLDER_PATH, this.gameId.toString());
+        return join(DATA_PATH, "games", this.gameId.toString());
     }
 
 

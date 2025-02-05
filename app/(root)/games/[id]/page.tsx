@@ -15,7 +15,13 @@ import { sequelize } from "@/app/db/Sequelize";
 
 
 async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
-    sequelize.sync();
+    try  {
+        sequelize.sync();
+    }
+    catch (error) {
+        console.error('Unable to connect to the database:', error);
+        return <div>Unable to connect to the database</div>;
+    }
     let id: number;
     try {
         id = parseInt((await params).id, 10);
