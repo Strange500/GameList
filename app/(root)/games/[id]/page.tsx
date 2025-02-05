@@ -50,7 +50,6 @@ async function GamesPage({ params }: { params: Promise<{ id: string }> }) {
                         <h1 className="text-4xl font-bold pt-10">{name}</h1>
                         <h2 className="text-lg font-semibold">{new Date(released).toDateString()}</h2>
                         <h2 className="text-lg font-semibold pb-20">({path})</h2>
-                        <h2>{game.getAllRelatedImages()}</h2>
                         <Dialog>
                             <DialogTrigger suppressHydrationWarning>
                                 <div className="text-sm" dangerouslySetInnerHTML={{ __html: game.description.length > 100 ? `${game.description.substring(0, 250)}...` : game.description }}></div>

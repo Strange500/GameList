@@ -152,17 +152,24 @@ export class Games extends Model {
         return join(this.#getGamePath(), 'screenshots');
     }
 
-    getAllScreenshotsURI(): string[] | undefined {
-        return this.screenshots?.map(screenshot => screenshot.ImagePath);
+    async getAllScreenshotsURI(): Promise<string[] | null> {
+        const srs = await Screenshots.findAll({ where: { gameId: this.gameId } });
+        if (srs.length === 0) {
+            return null;
+        }
+        const uris = srs.map(sr => sr.ImagePath);
+        return uris;
     }
 
-    getAllRelatedImages() {
-        const images = [this.background_image];
-        const screenshots = this.getAllScreenshotsURI();
+    async getAllRelatedImages() {
+        const images = [];
+        images.push(this.getBackgroundPathPublicPath());
+        images.push(this.background_image);
+        const screenshots = await  this.getAllScreenshotsURI();
         if (screenshots) {
             images.push(...screenshots);
         }
-        return images;
+        return [...new Set(images)];
     }
 
 

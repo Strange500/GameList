@@ -30,7 +30,7 @@ export const ModifTab = async ({ game }: { game: Games }) => {
         revalidatePath('/');
     }
 
-    const images: string[] = game.getAllRelatedImages();
+    const images: string[] = await game.getAllRelatedImages();
     
 
 
