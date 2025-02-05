@@ -1,10 +1,11 @@
 import { Input } from './ui/input';
 import Form from "next/form";
 import {   RefreshCcw, Search } from 'lucide-react';
-import { detectGames} from '@/app/db/gameDB';
+// import { detectGames} from '@/app/db/gameDB';
 
 import { revalidatePath } from 'next/cache';
 import Loader from './Loader';
+import { Games } from '@/app/db/models/Games';
 
 
 
@@ -15,7 +16,7 @@ const SearchBar: React.FC = () => {
     const refreshGames = async () => {
         "use server";
 
-        await detectGames();
+        await Games.refreshGamesList();
         revalidatePath('/');
         
     }

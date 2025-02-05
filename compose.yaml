@@ -1,22 +1,64 @@
 services:
       
-  GameList:
-    image: gamelist:latest
-    container_name: gamelist
+  server:
+    # image: gamelist:latest
+    build: 
+      context: ./
+      
     environment:
-      - AUTH_AUTHENTIK_ID=authid
-      - AUTH_AUTHENTIK_SECRET=authscret
-      - AUTH_AUTHENTIK_ISSUER=authurl
-      - RAWG_API_KEY=rawgkey
-      - GAME_FOLDER_PATH=/games
+      - AUTH_AUTHENTIK_ID=token
+      - AUTH_AUTHENTIK_SECRET=secret
+      - AUTH_AUTHENTIK_ISSUER=https://exemple/application/o/gamelist/
+      - RAWG_API_KEY=api
       - AUTH_TRUST_HOST=true
       - AUTH_URL=http://localhost:3124/api/auth/
+      - DATABASE_PATH=/db
+      - GAMES_PATH=/games
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=gamelist
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=gamelist
     volumes:
-      - pathtogames:/games:ro
+      - /path:/games:ro
+      - /path:/db
     # Ports not needed when already passed to Traefik
     ports:
       - 3124:3000
     restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - default
 
+  db:
+    image: postgres
+    restart: always
+    container_name: db
+    
+    environment:
+      POSTGRES_USER: gamelist
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: gamelist
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    ports:
+      - 5432:5432
+    networks:
+      - default
+ 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - default
+
+
+networks:
+  default:
 
 

@@ -8,3 +8,5 @@ out
 *.lock
 .git
 .gitignore
+.env
+.env.local

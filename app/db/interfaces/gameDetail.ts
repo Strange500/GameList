@@ -1,23 +1,3 @@
-// export interface GameDetails {
-//     path:                        string;
-//     id:                          number;
-//     slug:                        string;
-//     name:                        string;
-//     name_original:               string;
-//     description:                 string;
-//     metacritic:                  number;
-//     released:                    Date;
-//     tba:                         boolean;
-//     background_image:            string;
-//     background_image_additional: string;
-//     website:                     string;
-//     reddit_url:                  string;
-//     reddit_name:                 string;
-//     reddit_description:          string;
-//     reddit_logo:                 string;
-//     screenshots_count:           number;
-// }
-
 export interface GameDetails {
     path:                        string;
     date_added:                  Date;

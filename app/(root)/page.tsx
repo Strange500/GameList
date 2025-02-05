@@ -1,8 +1,8 @@
 import { auth, signIn } from '@/auth';
-import { getAllGames } from '../db/gameDB';
-import { GameDetails } from '../db/interfaces/gameDetail';
 import SearchGrid from '@/components/SearchGrid';
 import SearchBar from '@/components/SearchBar';
+import { Games } from '../db/models/Games';
+import { sequelize } from '../db/Sequelize';
 
 export const experimental_ppr = true;
 
@@ -10,9 +10,19 @@ export const experimental_ppr = true;
 export default async function Page({searchParams}: {
   searchParams: Promise<{ query?: string}>
 }) {
-
+  try {
+    sequelize.sync();
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    return new Response(JSON.stringify({ error: 'Unable to connect to the database' }), {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      status: 500,
+    });
+  }
   const session = await auth();
-  const gamesList: GameDetails[] = await getAllGames();
+  const gamesList: Games[] = await Games.findAll();
   // get query form parameter
   const query: string = (await searchParams).query || '';
 

@@ -1,16 +1,14 @@
 "use client"
 import { Input } from '../ui/input';
-import { GameDetails } from '@/app/db/interfaces/gameDetail';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import React from 'react';
 import { Result, SearchResults } from '@/app/db/interfaces/apiInterfaces';
-import dynamic from 'next/dynamic';
-import { findGame } from '@/app/db/gameDB';
-const SmallGameCard = dynamic(() => import('./SmallGameCard').then(mod => mod.SmallGameCard), { ssr: true });
+import { SmallGameCard } from './SmallGameCard';
 
 
 
-export const SearchGame = ({ game }: { game: GameDetails }) => {
+
+export const SearchGame = ({ path }: { path: string }) => {
 
     const [searchGames, setSearchGames] = React.useState<string>("");
     const [gameGrid, setGameGrid] = React.useState<React.ReactNode>();
@@ -40,19 +38,20 @@ export const SearchGame = ({ game }: { game: GameDetails }) => {
         
                     {games.results.map((r: Result, index: number) => (
                         
-                        <SmallGameCard key={index} name={r.name} released={r.released} path={game.path} id={r.id} background_image={r.background_image} />
+                        <SmallGameCard key={index} name={r.name} released={r.released} path={path} id={r.id} background_image={r.background_image} />
                     ))}
                 </>
             );
         }
         if (debouncedQuery) {
           // Call your research function here with the debouncedQuery
-            const response = findGame(debouncedQuery);
-            response.then((r: SearchResults) => {
-                setGameGrid(genCardPrezList(r));
-            });
-        }
-      }, [debouncedQuery, game.path]);
+            const response = fetch(`/api/games/search/${debouncedQuery}`);
+            response.then(res => res.json())
+                    .then((r: SearchResults) => {
+                        setGameGrid(genCardPrezList(r));
+                    });
+                }
+      }, [debouncedQuery, path]);
 
 
       
