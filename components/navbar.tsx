@@ -8,7 +8,7 @@ import ThemedLogo from './ThemedLogo';
 export const Navbar = async () => {
     const session = await auth();
     return (
-        <div className="px-5 py-3 dark:bg-gray-900 bg-slate-100  border-b dark:border-gray-500 border-gray-300 p-4 shadow-md ">
+        <div className="fixed top-0 left-0 right-0 px-5 py-3 dark:bg-gray-900 bg-slate-100 border-b dark:border-gray-500 border-gray-300 p-4 shadow-md z-50">
             <nav className='flex justify-between items-center'>
                 <div className='flex flex-row gap-10'>
                     <Link href={"/"} >
