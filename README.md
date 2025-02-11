@@ -5,6 +5,10 @@
 
 This project is a web application built with Next.js that provides an interactive interface for displaying information about video games using the RAWG API. Users can search for games, view detailed information, and download games directly from the server.
 
+## Screenshots
+
+![Home Page](./doc/images/1738255952_grim.png)
+
 ## Features
 
 - **Game Search**: Users can search for video games using various criteria.
