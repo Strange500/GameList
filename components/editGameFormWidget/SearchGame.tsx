@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import React from 'react';
 import { Result, SearchResults } from '@/app/db/interfaces/apiInterfaces';
 import { SmallGameCard } from './SmallGameCard';
+import Loader from '../Loader';
 
 
 
@@ -59,7 +60,6 @@ export const SearchGame = ({ path }: { path: string }) => {
     return (
         
             <Card >
-                
                     <CardHeader>
                         <CardTitle>Search the game</CardTitle>
                             <Input type="search" placeholder="Search the game" value={searchGames} onChange={(e) => setSearchGames(e.target.value)}/>

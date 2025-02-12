@@ -4,7 +4,8 @@ import { useTheme } from 'next-themes'
 
 function ThemeLogo() {
   const { resolvedTheme } = useTheme()
-  let src
+  let src ;
+
 
   switch (resolvedTheme) {
     case 'light':
@@ -14,11 +15,10 @@ function ThemeLogo() {
       src = '/logo-light.png'
       break
     default:
-      src = '/logo-light.png'
-      break
+      src = '/logo.png'
   }
 
-  return <Image suppressHydrationWarning src={src} width={130} height={130} alt='logo' />
+  return <Image src={src} alt="Logo" width={200} height={200} suppressHydrationWarning/>
 }
 
 export default ThemeLogo;

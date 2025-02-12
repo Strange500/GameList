@@ -27,7 +27,7 @@ export default async function Page({searchParams}: {
   const query: string = (await searchParams).query || '';
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-[hsl(var(--background))]">
       {session && session?.user ? (
         <>
           {/* <RecentGames games={gamesList}/> */}
@@ -39,7 +39,7 @@ export default async function Page({searchParams}: {
             "use server";
             await signIn('github')
           }}>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Sign In to view content</button>
+            <button type="submit" className="bg-[hsl(var(--foreground))] hover:bg-[hsl(var(--background))] text-white font-bold py-2 px-4 rounded">Sign In to view content</button>
           </form>
         </div>
         )}

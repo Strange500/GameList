@@ -21,7 +21,7 @@ export const GameCard = async ({ game}: { game: Games}) => {
             />
           </Link>
     
-            <div className='bg-black w-full  absolute  bottom-0  text-white p-2 place-content-evenly'>
+            <div className='bg-[hsl(var(--foreground))] w-full  absolute  bottom-0 p-2 place-content-evenly'>
               <Link href={`/games/${game.gameId}`} className='flex flex-row justify-between'>
                   <h3 className='font-bold'>{game.name.slice(0, 55)}{game.name.length > 55 ? '...' : ''}</h3>
                   <p className='text-sm'>{new Date(game.released).toLocaleDateString('fr-FR')}</p>
