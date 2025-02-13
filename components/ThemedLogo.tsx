@@ -18,7 +18,7 @@ function ThemeLogo() {
       src = '/logo.png'
   }
 
-  return <Image src={src} alt="Logo" width={200} height={200} suppressHydrationWarning/>
+  return <Image src={src} alt="Logo" width={130} height={130} />
 }
 
 export default ThemeLogo;

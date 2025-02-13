@@ -31,8 +31,10 @@ export const EditGameForm = ({ game }: { game: Games }) => {
                 </DialogHeader>
                 <Tabs defaultValue='info' >
 
-                    <TabsList className="grid w-full grid-cols-2">
-                        <TabsTrigger value="info">Info</TabsTrigger>
+                    <TabsList className="grid w-full grid-cols-2 bg-card">
+                        <TabsTrigger value="info" className='color-primary'>
+                            Info
+                        </TabsTrigger>
                         <TabsTrigger value="games">Games</TabsTrigger>
                     </TabsList>
                     <TabsContent value="info">
